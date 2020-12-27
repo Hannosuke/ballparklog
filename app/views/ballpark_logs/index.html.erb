@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ballpark Logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ballpark_logs.each do |ballpark_log| %>
+      <tr>
+        <td><%= ballpark_log.title %></td>
+        <td><%= ballpark_log.description %></td>
+        <td><%= link_to 'Show', ballpark_log %></td>
+        <td><%= link_to 'Edit', edit_ballpark_log_path(ballpark_log) %></td>
+        <td><%= link_to 'Destroy', ballpark_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ballpark Log', new_ballpark_log_path %>

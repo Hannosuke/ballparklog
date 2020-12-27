@@ -1,0 +1,2 @@
+class BallparkLog < ApplicationRecord
+end
