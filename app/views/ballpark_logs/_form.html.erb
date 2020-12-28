@@ -1,8 +1,7 @@
-<%= form_with(model: ballpark_log, local: true) do |form| %>
+<%= form_with(model: ballpark_log, local: true) do |f| %>
   <% if ballpark_log.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(ballpark_log.errors.count, "error") %> prohibited this ballpark_log from being saved:</h2>
-
       <ul>
         <% ballpark_log.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,17 +10,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
+  <%= f.label :description %>
+  <%= f.text_field :description, class: "form-control" %>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.submit "完了", class:"btn btn-primary mt-3"%>
 <% end %>
