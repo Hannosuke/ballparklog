@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Ballpark Logs</h1>
-
-<table>
+<%= link_to("NEW", new_ballpark_log_path, class:"mb-2 btn btn-primary")%>
+<table class="table">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
+      <th>タイトル</th>
+      <th>詳細(仮)</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +15,9 @@
       <tr>
         <td><%= ballpark_log.title %></td>
         <td><%= ballpark_log.description %></td>
-        <td><%= link_to 'Show', ballpark_log %></td>
-        <td><%= link_to 'Edit', edit_ballpark_log_path(ballpark_log) %></td>
-        <td><%= link_to 'Destroy', ballpark_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "詳細", ballpark_log %></td>
+        <td><%= link_to "編集", edit_ballpark_log_path(ballpark_log) %></td>
+        <td><%= link_to "削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +25,3 @@
 
 <br>
 
-<%= link_to 'New Ballpark Log', new_ballpark_log_path %>
