@@ -15,7 +15,7 @@ class BallparkLogsController < ApplicationController
   def create
     @ballpark_log = BallparkLog.new(ballpark_log_params)
     if @ballpark_log.save
-      flash[:notice] = "投稿しました"
+      flash[:notice] = "「#{@ballpark_log.title}」を投稿しました"
       redirect_to("/")
     else
       render :new
@@ -27,8 +27,8 @@ class BallparkLogsController < ApplicationController
 
   def update
     @ballpark_log.update(ballpark_log_params)
-    flash[:notice] = "内容を更新しました"
-    render("/")
+    flash[:notice] = "「#{@ballpark_log.title}」を更新しました"
+    redirect_to("/")
   end
 
   def destroy
