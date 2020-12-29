@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'users/edit'
-  get 'users/show'
   get 'new/edit'
   get 'new/show'
   get  '/login', to: 'sessions#new'

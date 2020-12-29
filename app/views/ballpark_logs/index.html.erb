@@ -1,4 +1,6 @@
-<%= link_to("NEW", new_ballpark_log_path, class:"mb-3 mt-3 btn btn-primary")%>
+<% if current_user %>
+  <%= link_to("NEW", new_ballpark_log_path, class:"mb-3 mt-3 btn btn-primary")%>
+<% end %>
 <table class="table">
   <thead>
     <tr>
