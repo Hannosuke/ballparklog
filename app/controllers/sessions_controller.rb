@@ -14,8 +14,15 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    reset_session
+    flash[:notice] = "ログアウトしました"
+    redirect_to("/")
+  end
+
   private
   
   def session_params
     params.require(:session).permit(:email, :password)
+  end
 end

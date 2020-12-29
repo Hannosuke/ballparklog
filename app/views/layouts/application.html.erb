@@ -12,7 +12,15 @@
 
   <body>
     <div class="navbar navbar-expand-md navbar-light bg-light">
-      <div class="navbar-brand">BallPark Log</div>
+      <h1 class="navbar-brand">BallPark Log</h1>
+      
+      <% if session[:user_id]%>
+        <%= link_to("ログアウト", logout_path, method: :delete, class:"nav-link")%>
+      <% else %>
+        <%= link_to("ログイン", login_path, class:"nav-link")%>
+      <% end %>
+
+    </div>
     </div>
     <div class="container">
       <%= yield %>
