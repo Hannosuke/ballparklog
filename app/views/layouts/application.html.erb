@@ -12,9 +12,10 @@
 
   <body>
     <div class="navbar navbar-expand-md navbar-light bg-light">
-      <h1 class="navbar-brand">BallPark Log</h1>
+      <h1 class="navbar-brand"><%= link_to("BallPark Log", "/", class:"noline") %></h1>
       
       <% if session[:user_id]%>
+        <%= link_to("#{current_user.name}さん", user_path(current_user.id), class:"nav-link")%>
         <%= link_to("ログアウト", logout_path, method: :delete, class:"nav-link")%>
       <% else %>
         <%= link_to("ログイン", login_path, class:"nav-link")%>

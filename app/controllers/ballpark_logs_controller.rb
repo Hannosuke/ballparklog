@@ -1,11 +1,11 @@
 class BallparkLogsController < ApplicationController
-  before_action :set_ballpark_log, only: [:show, :edit, :update, :destroy]
 
   def index
     @ballpark_logs = BallparkLog.all
   end
 
   def show
+    @ballpark_log = BallparkLog.find(params[:id])
   end
 
   def new
@@ -13,7 +13,7 @@ class BallparkLogsController < ApplicationController
   end
 
   def create
-    @ballpark_log = BallparkLog.new(ballpark_log_params)
+    @ballpark_log = current_user.ballpark_logs.new(ballpark_log_params)
     if @ballpark_log.save
       flash[:notice] = "「#{@ballpark_log.title}」を投稿しました"
       redirect_to("/")
@@ -23,25 +23,24 @@ class BallparkLogsController < ApplicationController
   end
 
   def edit
+    @ballpark_log = BallparkLog.find(params[:id])
   end
 
   def update
+    @ballpark_log = BallparkLog.find(params[:id])
     @ballpark_log.update(ballpark_log_params)
     flash[:notice] = "「#{@ballpark_log.title}」を更新しました"
     redirect_to("/")
   end
 
   def destroy
+    @ballpark_log = BallparkLog.find(params[:id])
     @ballpark_log.destroy
     flash[:notice] = "削除しました"
     redirect_to("/")
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ballpark_log
-      @ballpark_log = BallparkLog.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def ballpark_log_params
