@@ -1,5 +1,5 @@
-<h1><%= current_user.name%></h1>
-<p><%= current_user.email%></p>
+<h1><%= @user.name%></h1>
+<p><%= @user.email%></p>
 <%= link_to("編集",edit_user_path, class:"btn btn-secondary")%>
 
 <table class="table">
@@ -11,7 +11,7 @@
   </thead>
 
   <tbody>
-    <% current_user.ballpark_logs.each do |ballpark_log| %>
+    <% @user.ballpark_logs.each do |ballpark_log| %>
       <tr>
         <td><%= link_to(ballpark_log.title, ballpark_log, class:"noline") %></td>
         <td><%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-success") %>

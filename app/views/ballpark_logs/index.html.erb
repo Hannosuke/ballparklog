@@ -6,18 +6,14 @@
     <tr>
       <th></th>
       <th>タイトル</th>
-      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @ballpark_logs.each do |ballpark_log| %>
       <tr>
-        <td><%= ballpark_log.user.name%></td>
+        <td><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline") %></td>
         <td><%= link_to(ballpark_log.title, ballpark_log, class:"noline") %></td>
-        <td><%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-success") %>
-            <%= link_to("削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" }, class:"btn btn-danger") %>
-        </td>
       </tr>
     <% end %>
   </tbody>
