@@ -24,6 +24,17 @@
     border-radius: 5px;
 }
 
+.alert {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcoral;
+    height: 45px;
+    width: auto;
+    border-radius: 5px;
+}
+
 ul {
     list-style: none;
 }

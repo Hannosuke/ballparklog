@@ -10,4 +10,12 @@
     <%= f.label :"パスワード(確認)" %>
     <%= f.text_field :passwordf_confirmation, class:"form-control" %>
     <%= f.submit "Sign up", class:"btn btn-primary"%>
+
+    <% if @user.errors.any? %>
+    <ul id="error_explanation" class="alert alert-warning mt-3">
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+    </ul>
+  <% end %>
 <% end %>
