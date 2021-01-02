@@ -18,7 +18,7 @@ class BallparkLogsController < ApplicationController
       flash[:notice] = "「#{@ballpark_log.title}」を投稿しました"
       redirect_to("/")
     else
-      render :new
+      render(new_ballpark_log_path)
     end
   end
 
