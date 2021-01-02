@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "ログインしました"
       redirect_to("/")
     else
-      render("/login")
+      render :new
     end
   end
 
