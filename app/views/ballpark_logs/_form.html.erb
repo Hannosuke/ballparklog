@@ -1,14 +1,14 @@
 
 <%= form_with(model: ballpark_log, local: true) do |f| %>
-  
-  
   <%= f.label :title %>
-  <%= f.text_field :title, class: "form-control" %>
-
+  <%= f.text_field :title, class:"form-control" %>
   <%= f.label :description %>
-  <%= f.text_field :description, class: "form-control" %>
+  <%= f.text_field :description, class:"form-control" %>
+  <%= f.label :image %>
+  <%= f.file_field :image, class:"form-control"%>
 
   <%= f.submit "完了", class:"btn btn-primary mt-3"%>
+  
   <% if ballpark_log.errors.any? %>
     <ul id="error_explanation" class="alert alert-warning mt-3">
         <% ballpark_log.errors.full_messages.each do |message| %>
