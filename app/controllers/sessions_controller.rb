@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "ログインしました"
       redirect_to("/")
     else
+      flash.now[:alert] = 'メールアドレスまたはパスワードが間違っています'
       render :new
     end
   end
