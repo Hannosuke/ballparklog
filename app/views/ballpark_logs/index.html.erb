@@ -6,6 +6,7 @@
     <tr>
       <th></th>
       <th>タイトル</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -14,6 +15,7 @@
       <tr>
         <td><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline") %></td>
         <td><%= link_to(ballpark_log.title, ballpark_log, class:"noline") %></td>
+        <td><%= image_tag ballpark_log.image, width:"10%", height:"10%" if ballpark_log.image.attached? %></td>
       </tr>
     <% end %>
   </tbody>
