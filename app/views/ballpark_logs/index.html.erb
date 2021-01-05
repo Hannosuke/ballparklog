@@ -1,22 +1,18 @@
 <% if current_user %>
   <%= link_to("NEW", new_ballpark_log_path, class:"mb-3 mt-3 btn btn-primary")%>
 <% end %>
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>タイトル</th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @ballpark_logs.each do |ballpark_log| %>
-      <tr>
-        <td><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline") %></td>
-        <td><%= link_to(ballpark_log.title, ballpark_log, class:"noline") %></td>
-        <td><%= image_tag ballpark_log.image, width:"10%", height:"10%" if ballpark_log.image.attached? %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <% @ballpark_logs.each do |ballpark_log| %>
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+        <%= image_tag ballpark_log.image, class:"bd-placeholder-img card-img-top", width:"100%", height:"150", alt:"/assets/images/no-image.png" if ballpark_log.image.attached? %>
+        
+          <div class="card-body">
+            <p class="card-text"><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline") %></p>
+            <%= link_to(ballpark_log.title, ballpark_log, class:"noline") %>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>
