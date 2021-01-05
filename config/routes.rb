@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   get 'new/edit'
   get 'new/show'
-  get  '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get  '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
 
-  post 'likes/:ballpark_log_id/create', to: 'likes#create'
+  post 'likes/:ballpark_log_id/create' => 'likes#create'
+  delete 'likes/:ballpark_log_id/destroy' => 'likes#destroy'
+
+  get 'users/:id/likes' => 'users#likes'
 
   root to: 'ballpark_logs#index'
   resources :ballpark_logs

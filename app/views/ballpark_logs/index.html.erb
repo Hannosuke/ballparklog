@@ -13,6 +13,7 @@
             <%= link_to(ballpark_log.title, ballpark_log, class:"noline") %>
           </div>
           <%= link_to("Like", "likes/:ballpark_log_id/create", method: :post, class:"btn btn-primary")%>
+          <%= link_to("Unlike", "Likes/:ballpark_log_id/destroy", method: :delete, class:"btn btn-danger")%>
       </div>
     </div>
   <% end %>
