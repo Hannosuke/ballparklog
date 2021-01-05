@@ -1,8 +1,9 @@
 <h1><%= @user.name%></h1>
 <% if current_user && current_user.id == @user.id %>
-  <%= link_to("編集",edit_user_path, class:"btn btn-secondary")%>
+  <%= link_to("編集", edit_user_path, class:"btn btn-secondary")%>
+  <%= link_to("Likes","/users/#{@user.id}/likes", class:"nav-link")%>
 <% end %>
-<table class="table">
+<table class="table mt-3">
   <thead>
     <tr>
       <th>タイトル</th>
