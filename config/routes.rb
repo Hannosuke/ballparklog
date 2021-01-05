@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  post 'likes/:ballpark_log_id/create', to: 'likes#create'
+
   root to: 'ballpark_logs#index'
   resources :ballpark_logs
 

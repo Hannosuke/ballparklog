@@ -12,6 +12,7 @@
             <p class="card-text"><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline") %></p>
             <%= link_to(ballpark_log.title, ballpark_log, class:"noline") %>
           </div>
+          <%= link_to("Like", "likes/:ballpark_log_id/create", method: :post, class:"btn btn-primary")%>
       </div>
     </div>
   <% end %>
