@@ -1,9 +1,24 @@
 
-<h1><%= @ballpark_log.title %></h1>
-<p><%= @ballpark_log.description %></p>
-<%= image_tag @ballpark_log.image, width:"60%", height:"60%" if @ballpark_log.image.attached? %><br>
-
 <% if current_user && current_user.id = @ballpark_log.user_id %>
     <%= link_to("Edit", edit_ballpark_log_path(@ballpark_log), class:"btn btn-info") %> 
 <% end %>
 <%= link_to("Back", "/", class:"btn btn-secondary") %>
+<h1><%= @ballpark_log.title %></h1>
+<p><%= @ballpark_log.description %></p>
+<%= image_tag @ballpark_log.image, width:"60%", height:"60%" if @ballpark_log.image.attached? %><br>
+
+<% if current_user %>
+    <div>
+        <% if Like.find_by(user_id: current_user.id, ballpark_log_id: @ballpark_log.id) %>
+        <%= link_to("likes/#{@ballpark_log.id}/destroy", method: :delete) do %>
+            <i class="fas fa-thumbs-up"></i>
+        <% end %>
+        <% else %>
+        <%= link_to("likes/#{@ballpark_log.id}/create", method: :post) do %>
+            <i class="far fa-thumbs-up"></i>
+        <% end %>
+        <% end %>
+        <%= Like.where(ballpark_log_id: @ballpark_log.id).count %>
+    </div>
+<% end %>
+
