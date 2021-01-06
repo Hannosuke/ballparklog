@@ -12,8 +12,18 @@
             <p class="card-text"><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline") %></p>
             <%= link_to(ballpark_log.title, ballpark_log, class:"noline") %>
           </div>
-          <%= link_to("Like", "likes/:ballpark_log_id/create", method: :post, class:"btn btn-primary")%>
-          <%= link_to("Unlike", "Likes/:ballpark_log_id/destroy", method: :delete, class:"btn btn-danger")%>
+
+          <% if current_user %>
+            <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
+              <%= link_to("likes/:ballpark_log_id/destroy", method: :delete) do %>
+                <i class="fas fa-thumbs-up"></i>
+              <% end %>
+            <% else %>
+              <%= link_to("likes/:ballpark_log_id/create", method: :post) do %>
+                <i class="far fa-thumbs-up"></i>
+              <% end %>
+            <% end %>
+          <% end %>
       </div>
     </div>
   <% end %>

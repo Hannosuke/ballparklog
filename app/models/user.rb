@@ -3,4 +3,5 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
 
     has_many :ballpark_logs
+    has_many :likes
 end
