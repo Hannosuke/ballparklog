@@ -5,6 +5,7 @@ class LikesController < ApplicationController
             ballpark_log_id: params[:ballpark_log_id]
         )
         @like.save
+        flash[:notice] = "Liked"
         redirect_to("/")
     end
 
