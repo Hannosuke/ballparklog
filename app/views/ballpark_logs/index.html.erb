@@ -14,15 +14,18 @@
           </div>
 
           <% if current_user %>
-            <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
-              <%= link_to("likes/#{ballpark_log.id}/destroy", method: :delete) do %>
-                <i class="fas fa-thumbs-up"></i>
+            <div class="ml-3 pb-3">
+              <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
+                <%= link_to("likes/#{ballpark_log.id}/destroy", method: :delete) do %>
+                  <i class="fas fa-thumbs-up"></i>
+                <% end %>
+              <% else %>
+                <%= link_to("likes/#{ballpark_log.id}/create", method: :post) do %>
+                  <i class="far fa-thumbs-up"></i>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= link_to("likes/#{ballpark_log.id}/create", method: :post) do %>
-                <i class="far fa-thumbs-up"></i>
-              <% end %>
-            <% end %>
+              <%= Like.where(ballpark_log_id: ballpark_log.id).count %>
+            </div>
           <% end %>
       </div>
     </div>
