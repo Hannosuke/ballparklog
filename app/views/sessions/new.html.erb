@@ -1,8 +1,25 @@
-<h1>ログイン</h1>
-<%= form_with(scope: :session, url: login_path, local: true) do |f|%>
-    <%= f.label :"メールアドレス"%>
-    <%= f.email_field :email, class:"form-control"%>
-    <%= f.label :"パスワード"%>
-    <%= f.password_field :password, class:"form-control"%>
-    <%= f.submit "ログイン", class: "mt-2 btn btn-primary btn-lg btn-block"%>
-<% end %>
+<div class="container">
+    <form class="form-signin">
+        <div class="text-center mb-4">
+            <h1 class="h3 font-weight-normal">Sign in</h1>
+        </div>
+
+        <div class="form-group">
+            <%= form_with(scope: :session, url: login_path, local: true) do |f|%>
+                <div class="form-lagel-group">
+                    <%= f.email_field :email, class:"form-control mb-3",:placeholder => "メールアドレス"%>
+                </div>
+
+                <div class="form-lagel-group">
+                    <%= f.password_field :password, class:"form-control mb-3", :placeholder =>"パスワード"%>
+                </div>
+                
+                <div class="checkbox mb-3">
+                    <input type="checkbox" value="remember-me">
+                    <label>次回から自動でサインイン</label>
+                </div>
+                <%= f.submit "サインイン", class: "mt-2 btn btn-primary btn-lg btn-block"%>
+            <% end %>
+        </div>
+    </form>
+</div>

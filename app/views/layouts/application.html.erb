@@ -5,15 +5,15 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
 
   <body>
-    <div class="navbar navbar-expand-md navbar-light bg-light">
-      <h1 class="navbar-brand"><%= link_to("BallPark Log", "/", class:"noline") %></h1>
+    <div class="header navbar navbar-expand-md navbar-light ">
+      <h1 class="navbar-brand float-left"><%= link_to("BallPark Log", "/", class:"noline") %></h1>
       
       <% if session[:user_id]%>
         <%= link_to("#{current_user.name}さん", user_path(current_user.id), class:"nav-link")%>
@@ -22,16 +22,17 @@
         <%= link_to("新規登録", new_user_path, class:"nav-link") %>
         <%= link_to("ログイン", login_path, class:"nav-link")%>
       <% end %>
-
     </div>
-    </div>
-    <div class="container">
-    <div class="notifications">
-        <% flash.each do |key, value|%>
-          <%= content_tag(:div, value, class: key)%>
-        <% end %>
+      <div class="notifications">
+          <% flash.each do |key, value|%>
+            <%= content_tag(:div, value, class: key)%>
+          <% end %>
       </div>
       <%= yield %>
-    </div>
   </body>
+  <footer>
+    <div class="text-center pt-4 web-copyright">
+      Copurigith ©︎ 2021 BallParkLog.All Rights Reserved.
+    </div>
+  </footer>
 </html>
