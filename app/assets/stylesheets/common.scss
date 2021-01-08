@@ -1,7 +1,10 @@
 /*--全体--*/
-
 .header {
     background-color: rgba(34, 49, 52, 0.7);
+}
+
+.logo {
+   color: black;
 }
 
 footer {
@@ -13,12 +16,6 @@ footer {
     color: azure;
 }
 
-.top-background {
-    background-image: image-url('background-img.JPEG');
-    height: 800px;
-    width: 100%;
-    background-size: cover;
-}
 .notice {
    color: white;
    display: flex;
@@ -44,24 +41,34 @@ ul {
    list-style: none;
 }
 
-.noline {
+.black-link {
    color: black;
 }
-
 .noline:hover {
    color: black;
    text-decoration: none;
 }
 
 .index-body {
-   background-color: rgba(34, 49, 52, 0.7);
+   background-color: white;
    width: 100%;
 }
-/*--ログインページ*/
+
+
+/*----ログインページ----*/
 .form-sign {
    height: 650px;
    width: 100%;
    max-width: 420px;
    padding: 15px;
    margin: auto;
+}
+
+
+/*----index----*/
+.top-background {
+      background-image: image-url('ballpark-img.jpeg');
+      height: 800px;
+      width: 100%;
+      background-size: cover;
 }
