@@ -4,7 +4,7 @@
 }
 
 .logo {
-   color: black;
+   color: white;
 }
 
 footer {
@@ -37,6 +37,10 @@ footer {
    border-radius: 5px;
 }
 
+.container {
+   padding-top: 56px;
+}
+
 ul {
    list-style: none;
 }
@@ -44,6 +48,7 @@ ul {
 .black-link {
    color: black;
 }
+
 .noline:hover {
    color: black;
    text-decoration: none;

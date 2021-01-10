@@ -12,27 +12,27 @@
   </head>
 
   <body>
-    <div class="header navbar navbar-expand-md bg-white border-bottom">
+    <nav class="header navbar navbar-dark navbar-expand-md fixed-top">
       <h1 class="navbar-brand mr-0 mb-0"><%= link_to("BallPark Log", "/", class:"noline logo") %></h1>
       
       <% if session[:user_id]%>
-        <%= link_to("#{current_user.name}さん", user_path(current_user.id), class:"nav black-link noline")%>
-        <%= link_to("ログアウト", logout_path, method: :delete, class:"black-link noline")%>
+        <%= link_to("マイページ", user_path(current_user.id), class:"noline ml-2")%>
+        <%= link_to("ログアウト", logout_path, method: :delete, class:"noline")%>
       <% else %>
-        <%= link_to("新規登録", new_user_path, class:"black-link noline") %>
-        <%= link_to("ログイン", login_path, class:"nav-link noline")%>
+        <%= link_to("新規登録", new_user_path, class:"noline") %>
+        <%= link_to("ログイン", login_path, class:"noline")%>
       <% end %>
+    </nav>
+    <div class="notifications">
+        <% flash.each do |key, value|%>
+          <%= content_tag(:div, value, class: key)%>
+        <% end %>
     </div>
-      <div class="notifications">
-          <% flash.each do |key, value|%>
-            <%= content_tag(:div, value, class: key)%>
-          <% end %>
-      </div>
-      <%= yield %>
+    <%= yield %>
   </body>
   <footer>
     <div class="text-center pt-4 web-copyright">
-      Copurigith ©︎ 2021 BallParkLog.All Rights Reserved.
+      Copyrigith ©︎ 2021 BallParkLog.All Rights Reserved.
     </div>
   </footer>
 </html>
