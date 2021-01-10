@@ -13,7 +13,7 @@
             <%= f.label :パスワード%>
             <%= f.text_field :password, class:"form-control mb-3" %>
             <%= f.label :"パスワード(確認)" %>
-            <%= f.text_field :passwordf_confirmation, class:"form-control mb-3" %>
+            <%= f.text_field :password_confirmation, class:"form-control mb-3" %>
             <%= f.submit "Sign up", class:"btn btn-primary btn-block"%>
 
             <% if @user.errors.any? %>
