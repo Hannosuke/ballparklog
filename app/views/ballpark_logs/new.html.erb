@@ -1,5 +1,12 @@
-<h1>New Ballpark Log</h1>
-
+<% if @ballpark_log.errors.any? %>
+    <ul id="error_explanation" class="alert alert-warning mt-3">
+        <% @ballpark_log.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+    </ul>
+  <% end %>
+<div class="container">
+<h1>Logを投稿</h1>
 <%= link_to("Back", "/") %>
 <%= render "form", ballpark_log: @ballpark_log %>
-
+</div>
