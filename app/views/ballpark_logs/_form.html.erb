@@ -1,19 +1,90 @@
-
-<%= form_with(model: ballpark_log, local: true) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title, class:"form-control" %>
-  <%= f.label :description %>
-  <%= f.text_field :description, class:"form-control" %>
-  <%= f.label :image %>
-  <%= f.file_field :image, class:"form-control"%>
-
-  <%= f.submit "完了", class:"btn btn-primary mt-3"%>
+<div class="col-md-8 order-md-1 container border shadow-sm pt-3 pt-0 mb-4">
   
-  <% if ballpark_log.errors.any? %>
-    <ul id="error_explanation" class="alert alert-warning mt-3">
-        <% ballpark_log.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-    </ul>
+  <%= form_with(model: ballpark_log, local: true) do |f| %>
+  <!----- 球場セレクトボックス 
+    <div class="mb-3">
+      <label for="country">Ballpark</label>
+      <select class="custom-select d-block w-100" id="country" required>
+        <option value="">Choose...</option>
+        <option>福岡PayPayドーム</option>
+        <option>ZoZoマリンスタジアム</option>
+        <option>西武ドーム</option>
+        <option>楽天生命パーク</option>
+        <option>札幌ドーム</option>
+        <option>京セラドーム大阪</option>
+        <option>東京ドーム</option>
+        <option>阪神甲子園球場</option>
+        <option>名古屋ドーム</option>
+        <option>横浜スタジアム</option>
+        <option>マツダzoomzoomスタジアム</option>
+        <option>明治神宮野球場</option>
+      </select>
+      <div class="invalid-feedback">
+        Please select a valid country.
+      </div>
+    </div>
+    --->
+
+    <div class="mb-3">
+      <%= f.label :title %>
+      <span class="badge badge-danger">※必須</span>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">@</span>
+        </div>
+        <%= f.text_field :title, class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :description %>
+      <%= f.text_field :description, class:"form-control" %>
+    </div>
+
+    <div class="mb-3">
+    <%= f.label :image %>
+    <%= f.file_field :image, class:"form-control"%>
+    </div>
+
+
+
+    <!---何かに使えそう
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="same-address">
+      <label class="custom-control-label" for="same-address">何かに使えそう</label>
+    </div>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="save-info">
+      <label class="custom-control-label" for="save-info">何かに使えそう</label>
+    </div>
+    <hr class="mb-4">
+    <h4 class="mb-3">何かに使えそう</h4>
+
+    <div class="d-block my-3">
+      <div class="custom-control custom-radio">
+        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+        <label class="custom-control-label" for="credit">Credit card</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+        <label class="custom-control-label" for="debit">Debit card</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+        <label class="custom-control-label" for="paypal">PayPal</label>
+      </div>
+    </div>
+    <hr class="mb-4">
+    --->
+
+    
+    
+    <%= f.submit "完了", class:"btn btn-primary btn-block mt-3 mb-5"%>
+  
   <% end %>
-<% end %>
+</div>
+
+
+
+
+
