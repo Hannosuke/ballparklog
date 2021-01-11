@@ -6,6 +6,14 @@
 .logo {
    color: white;
 }
+.logo:hover {
+   color: white;
+   text-decoration: none;
+}
+
+.noline:hover {
+   text-decoration: none;
+}
 
 footer {
     background-color: rgb(34, 49, 52);
@@ -21,7 +29,7 @@ footer {
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color: lightblue;
+   background-color: rgb(98, 98, 221);
    height: 45px;
    width: auto;
 }
@@ -49,7 +57,7 @@ ul {
    color: black;
 }
 
-.noline:hover {
+.black-link:hover {
    color: black;
    text-decoration: none;
 }
