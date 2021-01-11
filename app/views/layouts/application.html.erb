@@ -12,17 +12,21 @@
   </head>
 
   <body>
-    <nav class="header navbar navbar-dark navbar-expand-md fixed-top">
-      <h1 class="navbar-brand mr-0 mb-0"><%= link_to("BallPark Log", "/", class:"noline logo") %></h1>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-dark">
+      <h1 class="my-0 mr-md-auto font-weight-normal"><%= link_to("BallParkLog", "/", class:"noline logo") %></h1>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <% if current_user %>
+        <%= link_to("Logを投稿", new_ballpark_log_path, class:"p-2 text-white noline")%>
+        <%= link_to("マイページ", user_path(current_user.id), class:"p-2 text-white noline")%>
+        <%= link_to("ログアウト", logout_path, method: :delete, class:"p-2 text-white noline")%>
+        <% else %>
+        <%= link_to("新規登録", new_user_path, class:"btn btn-outline-light") %>
+        <%= link_to("ログイン", login_path, class:"btn btn-outline-light")%>
+        <% end %>
+      </nav>
+    </div>
       
-      <% if session[:user_id]%>
-        <%= link_to("マイページ", user_path(current_user.id), class:"noline ml-2")%>
-        <%= link_to("ログアウト", logout_path, method: :delete, class:"noline")%>
-      <% else %>
-        <%= link_to("新規登録", new_user_path, class:"noline") %>
-        <%= link_to("ログイン", login_path, class:"noline")%>
-      <% end %>
-    </nav>
+    
     <div class="notifications">
         <% flash.each do |key, value|%>
           <%= content_tag(:div, value, class: key)%>
