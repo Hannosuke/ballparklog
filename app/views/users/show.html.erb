@@ -1,26 +1,63 @@
-<h1><%= @user.name%></h1>
-<% if current_user && current_user.id == @user.id %>
-  <%= link_to("編集", edit_user_path, class:"btn btn-secondary")%>
-  <%= link_to("Likes","/users/#{@user.id}/likes", class:"nav-link")%>
-<% end %>
-<table class="table mt-3">
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="show-top mb-0 p-0">
+  <div class="bg-mask text-center d-flex align-items-center">
+    <div class="show-contents border">
+      <h1 class="text-white pt-4">3勝3敗  .500</h1>
+      <div class="form-group">
+        <label>
+          <select class="form-control border-0 opacity-form">
+            <option value="">2020年〜</option>
+            <option value="">2019年〜2020年</option>
+            <option value="">ALL</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <tbody>
-    <% @user.ballpark_logs.each do |ballpark_log| %>
-      <tr>
-        <td><%= link_to(ballpark_log.title, ballpark_log, class:"noline") %></td>
-        <% if current_user && current_user.id == @user.id %>
-          <td><%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-success") %>
-              <%= link_to("削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" }, class:"btn btn-danger") %>
-          </td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-5 bg-white border-bottom">
+  <div class="show-icon mx-4"></div>
+  <h1 class="my-0 mr-md-auto font-weight-normal"><%= @user.name %></h1>
+  <nav class="my-2 my-md-0 mr-md-3">
+  <% if current_user && current_user.id == @user.id %>
+      <%= link_to("設定", edit_user_path, class:"btn btn-outline-secondary")%>
+  <% end %>
+</div>
+
+<div class="container pt-4">
+
+  <div class="mb-5 shadow-sm">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item w-50">
+        <a class="nav-link active rounded-0 text-center black-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">投稿</a>
+      </li>
+      <li class="nav-item w-50">
+        <a class="nav-link rounded-0  text-center black-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">いいね</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <!--投稿部分-->
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <table class="table table-borderless mt-3">
+          <tbody>
+            <% @user.ballpark_logs.each do |ballpark_log| %>
+              <tr>
+                <td><%= link_to(ballpark_log.title, ballpark_log, class:"noline black-link") %></td>
+                <% if current_user && current_user.id == @user.id %>
+                  <td class="btn-group"><%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-outline-secondary") %>
+                      <%= link_to("削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" }, class:"btn btn-outline-danger") %>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!--いいね部分-->
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      </div>
+    </div>
+    
+  </div>
+  
+</div>
