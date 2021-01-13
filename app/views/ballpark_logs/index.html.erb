@@ -6,15 +6,15 @@
     <% @ballpark_logs.each do |ballpark_log| %>
       <div class="col-md-3 d-flex justify-content-around mt-3">
         <div class="card mb-4 shadow-sm">
-          <% if ballpark_log.image.attached?%>
+          <% if ballpark_log.image.attached? %>
             <%= image_tag ballpark_log.image, class:"bd-placeholder-img card-img-top", width:"100%", height:"200" %>
           <% else %>
             <%= image_tag "no-image.png", width:"100%", height:"200" %>
           <% end %>
           
           <div class="card-body">
-            <p class="card-text"><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline") %></p>
-            <%= link_to(ballpark_log.title, ballpark_log, class:"noline") %>
+            <p class="card-text"><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline black-link") %></p>
+            <%= link_to(ballpark_log.title, ballpark_log, class:"noline black-link") %>
           </div>
 
           <% if current_user %>

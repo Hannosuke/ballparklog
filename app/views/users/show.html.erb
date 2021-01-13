@@ -25,8 +25,8 @@
 </div>
 
 <div class="container pt-4">
-
   <div class="mb-5 shadow-sm">
+    <!--投稿・Likeタブ-->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item w-50">
         <a class="nav-link active rounded-0 text-center black-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">投稿</a>
@@ -35,6 +35,7 @@
         <a class="nav-link rounded-0  text-center black-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">いいね</a>
       </li>
     </ul>
+
     <div class="tab-content" id="myTabContent">
       <!--投稿部分-->
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -53,9 +54,22 @@
           </tbody>
         </table>
       </div>
+      
       <!--いいね部分-->
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <table class="table table-borderless mt-3">
+          <tbody>
+            <tr>
+              <% @likes.each do |like|%>
+                <% like_ballpark_log = BallparkLog.find_by(id: like.ballpark_log_id)%>
+                <td><%= link_to(like.ballpark_log.user.name, user_path(like.ballpark_log.user_id), class:"noline black-link") %></td>
+                <td><%= link_to(like_ballpark_log.title, like_ballpark_log, class:"noline black-link") %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
     </div>
     
   </div>
