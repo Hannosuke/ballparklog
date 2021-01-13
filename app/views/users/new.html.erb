@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="form-sign">
+  <div class="form-sign">
     <div class="text-center mb-4">
       <h1 class="h3 font-weight-normal">Sign up</h1>
     </div>
@@ -11,9 +11,9 @@
             <%= f.label :メールアドレス %>
             <%= f.email_field :email, class:"form-control mb-3" %>
             <%= f.label :パスワード%>
-            <%= f.text_field :password, class:"form-control mb-3" %>
+            <%= f.password_field :password, class:"form-control mb-3" %>
             <%= f.label :"パスワード(確認)" %>
-            <%= f.text_field :password_confirmation, class:"form-control mb-3" %>
+            <%= f.password_field :password_confirmation, class:"form-control mb-3" %>
             <%= f.submit "Sign up", class:"btn btn-primary btn-block"%>
 
             <% if @user.errors.any? %>
@@ -24,6 +24,6 @@
             </ul>
           <% end %>
     </div>
-  </form>
+  </div>
 <% end %>
 </div>
