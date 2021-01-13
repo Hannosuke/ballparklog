@@ -28,7 +28,7 @@
                   <i class="far fa-thumbs-up"></i>
                 <% end %>
               <% end %>
-              <%= Like.where(ballpark_log_id: ballpark_log.id).count %>
+              <%= ballpark_log.count_likes %>
             </div>
           <% end %>
         </div>
