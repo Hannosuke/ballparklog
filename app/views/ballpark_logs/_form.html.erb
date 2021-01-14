@@ -1,11 +1,9 @@
 <div class="col-md-8 order-md-1 container border shadow-sm pt-3 pt-0 mb-4">
   
   <%= form_with(model: ballpark_log, local: true) do |f| %>
-  <!----- 球場セレクトボックス 
     <div class="mb-3">
       <label for="country">Ballpark</label>
       <select class="custom-select d-block w-100" id="country" required>
-        <option value="">Choose...</option>
         <option>福岡PayPayドーム</option>
         <option>ZoZoマリンスタジアム</option>
         <option>西武ドーム</option>
@@ -23,7 +21,6 @@
         Please select a valid country.
       </div>
     </div>
-    --->
 
     <div class="mb-3">
       <%= f.label :title %>
@@ -33,6 +30,9 @@
           <span class="input-group-text">@</span>
         </div>
         <%= f.text_field :title, class:"form-control" %>
+        <div class="invalid-feedback">
+        Please select a valid country.
+      </div>
       </div>
     </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_021626) do
+ActiveRecord::Schema.define(version: 2021_01_14_043627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 2021_01_14_021626) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.bigint "stadium_id"
+    t.bigint "team_id"
+    t.index ["stadium_id"], name: "index_ballpark_logs_on_stadium_id"
+    t.index ["team_id"], name: "index_ballpark_logs_on_team_id"
     t.index ["user_id"], name: "index_ballpark_logs_on_user_id"
   end
 
@@ -73,4 +77,6 @@ ActiveRecord::Schema.define(version: 2021_01_14_021626) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "ballpark_logs", "stadia"
+  add_foreign_key "ballpark_logs", "teams"
 end
