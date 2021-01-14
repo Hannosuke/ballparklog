@@ -2,24 +2,8 @@
   
   <%= form_with(model: ballpark_log, local: true) do |f| %>
     <div class="mb-3">
-      <label for="country">Ballpark</label>
-      <select class="custom-select d-block w-100" id="country" required>
-        <option>福岡PayPayドーム</option>
-        <option>ZoZoマリンスタジアム</option>
-        <option>西武ドーム</option>
-        <option>楽天生命パーク</option>
-        <option>札幌ドーム</option>
-        <option>京セラドーム大阪</option>
-        <option>東京ドーム</option>
-        <option>阪神甲子園球場</option>
-        <option>名古屋ドーム</option>
-        <option>横浜スタジアム</option>
-        <option>マツダzoomzoomスタジアム</option>
-        <option>明治神宮野球場</option>
-      </select>
-      <div class="invalid-feedback">
-        Please select a valid country.
-      </div>
+      <%= f.label :球場 %>
+      <%= f.collection_select :stadium_id, Stadium.all, :id, :name, include_blank: true, class:"custom-select" %>   
     </div>
 
     <div class="mb-3">
@@ -30,9 +14,6 @@
           <span class="input-group-text">@</span>
         </div>
         <%= f.text_field :title, class:"form-control" %>
-        <div class="invalid-feedback">
-        Please select a valid country.
-      </div>
       </div>
     </div>
 
@@ -43,7 +24,7 @@
 
     <div class="mb-3">
       <%= f.label :image %>
-      <%= f.file_field :image, class:"form-control"%>
+      <%= f.file_field :image, class:"form-control-file"%>
     </div>
 
 
