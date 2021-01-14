@@ -6,6 +6,6 @@ class BallparkLog < ApplicationRecord
     has_one_attached :image
 
     def count_likes
-        likes.count
+        likes.size
     end
 end

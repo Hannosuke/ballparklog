@@ -18,7 +18,7 @@
 .footer-fixed{
    min-height: 100vh; /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
    position: relative;/* ←相対位置 */
-   padding-bottom: 60px; /* ←フッターの高さを指定 */
+   padding-bottom: 200px; /* ←フッターの高さを指定 */
    box-sizing: border-box;/* ←ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
 }
 
@@ -39,7 +39,7 @@ footer{
    display: flex;
    justify-content: center;
    align-items: center;
-   background-color: rgb(98, 98, 221);
+   background-color: rgba(98, 98, 221, 0.8);
    height: 45px;
    width: auto;
 }

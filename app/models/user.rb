@@ -3,6 +3,6 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
 
     has_many :ballpark_logs
-    has_many :like_ballpark_logs, through: :likes, source: :ballpark_log
     has_many :likes
+    has_many :like_ballpark_logs, through: :likes, source: :ballpark_log
 end
