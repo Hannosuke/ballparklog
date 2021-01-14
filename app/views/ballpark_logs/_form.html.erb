@@ -6,6 +6,16 @@
       <%= f.collection_select :stadium_id, Stadium.all, :id, :name, include_blank: true, class:"custom-select" %>   
     </div>
 
+    <div class="row">
+      <div class="col-md-5 mb-3 d-flex align-items-center justify-content-center">
+        <%= f.collection_select :team_id, Team.all, :id, :name, include_blank: true, class:"custom-select" %>   
+      </div>
+      <h2 class="col-md-2 text-center">VS</h2>
+      <div class="col-md-5 d-flex align-items-center justify-content-center mb-3">
+        <%= f.collection_select :team_id, Team.all, :id, :name, include_blank: true, class:"custom-select" %>   
+      </div>
+    </div>
+
     <div class="mb-3">
       <%= f.label :title %>
       <span class="badge badge-danger">※必須</span>
