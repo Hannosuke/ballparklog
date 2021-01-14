@@ -19,7 +19,8 @@
 
 <div class="container d-flex flex-column flex-md-row align-items-center p-3 px-md-2 bg-white">
   <div class="show-icon mr-4"></div>
-  <h1 class="my-0 mr-md-auto font-weight-normal"><%= @user.name %></h1>
+  <h1 class="my-0 mr-3 font-weight-normal"><%= @user.name %></h1>
+  <p class="mr-md-auto">お気に入り球団:<%= @user.team.name %></p>
   <nav class="my-2 my-md-0 mr-md-3">
   <% if current_user&.id == @user.id %>
       <%= link_to("設定", edit_user_path, class:"btn btn-outline-secondary")%>

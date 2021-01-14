@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  get 'new/edit'
-  get 'new/show'
   get  '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
   post 'likes/:ballpark_log_id/create' => 'likes#create'
   delete 'likes/:ballpark_log_id/destroy' => 'likes#destroy'
+
 
   get 'users/:id/likes' => 'users#likes'
 
