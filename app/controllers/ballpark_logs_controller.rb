@@ -44,6 +44,6 @@ class BallparkLogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ballpark_log_params
-      params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id)
+      params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :team_id)
     end
 end

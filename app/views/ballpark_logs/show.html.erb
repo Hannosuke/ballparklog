@@ -4,8 +4,7 @@
 <% end %>
 <%= link_to("Back", "/", class:"btn btn-secondary") %>
 <h1><%= @ballpark_log.title %></h1>
-<p><%= @ballpark_log.user.name %></p>
-<p><%= @ballpark_log.stadium_id %></p>
+<p><%= @ballpark_log.stadium.name %></p>
 <p><%= @ballpark_log.description %></p>
 <%= image_tag @ballpark_log.image, width:"60%", height:"60%" if @ballpark_log.image.attached? %><br>
 

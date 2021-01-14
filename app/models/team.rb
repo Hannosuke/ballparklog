@@ -1,4 +1,4 @@
 class Team < ApplicationRecord
-    belongs_to :ballpark_logs
+    has_many :ballpark_logs
     
 end
