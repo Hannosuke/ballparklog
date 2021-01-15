@@ -6,9 +6,13 @@
 
     <div class="form-group">
         <%= form_with(model: @user, local: true) do |f| %>
-            <%= f.label :名前%>
+            <%= f.label :name%>
             <%= f.text_field :name, class:"form-control mb-3" %>
-            <%= f.label :メールアドレス %>
+            <%= f.label :team_id %>
+            <%= f.fields_for :favorite_team do |fav|%>
+              <%= fav.collection_select :team_id, Team.all, :id, :name, include_blank: true, class:"custom-select" %>
+            <% end %>            
+            <%= f.label :email %>
             <%= f.email_field :email, class:"form-control mb-3" %>
             <%= f.label :パスワード%>
             <%= f.password_field :password, class:"form-control mb-3" %>

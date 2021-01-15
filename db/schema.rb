@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_043627) do
+ActiveRecord::Schema.define(version: 2021_01_14_075505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,15 @@ ActiveRecord::Schema.define(version: 2021_01_14_043627) do
     t.index ["user_id"], name: "index_ballpark_logs_on_user_id"
   end
 
+  create_table "favorite_teams", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_favorite_teams_on_team_id"
+    t.index ["user_id"], name: "index_favorite_teams_on_user_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "ballpark_log_id"
@@ -79,4 +88,6 @@ ActiveRecord::Schema.define(version: 2021_01_14_043627) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "ballpark_logs", "stadia"
   add_foreign_key "ballpark_logs", "teams"
+  add_foreign_key "favorite_teams", "teams"
+  add_foreign_key "favorite_teams", "users"
 end
