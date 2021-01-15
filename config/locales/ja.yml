@@ -9,6 +9,8 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       ballpark_log: 参戦歴
+      user: ユーザー
+      favorite_team: お気に入り球団
     attributes:
       ballpark_log:
         id: ID
@@ -17,12 +19,18 @@ ja:
         image: 画像
         crated_at: 登録日時
         updated_at: 更新日時
+        user_id: ユーザーID
+        stadium_id: 球場
+        team_id: チーム
       user:
         id: ID
         name: 名前
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード(確認)
+      favorite_team:
+        user_id: ユーザー
+        team_id: お気に入り球団
   date:
     abbr_day_names:
     - 日

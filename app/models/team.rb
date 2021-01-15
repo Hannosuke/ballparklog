@@ -1,5 +1,5 @@
 class Team < ApplicationRecord
     has_many :ballpark_logs
-    has_one :favorite_team
+    has_many :favorite_team
     
 end

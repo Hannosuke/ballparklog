@@ -20,11 +20,11 @@
           <% if current_user %>
             <div class="ml-3 pb-3">
               <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
-                <%= link_to("likes/#{ballpark_log.id}/destroy", method: :delete) do %>
+                <%= link_to(ballpark_log_like_path(ballpark_log.id, current_user.id), method: :delete) do %>
                   <i class="fas fa-thumbs-up"></i>
                 <% end %>
               <% else %>
-                <%= link_to("likes/#{ballpark_log.id}/create", method: :post) do %>
+                <%= link_to(ballpark_log_likes_path(ballpark_log.id), method: :post) do %>
                   <i class="far fa-thumbs-up"></i>
                 <% end %>
               <% end %>
