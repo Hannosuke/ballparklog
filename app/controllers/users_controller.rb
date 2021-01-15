@@ -20,9 +20,12 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    flash[:notice] = "ユーザー情報を更新しました"
-    redirect_to(user_path)
+    if @user.update(update_user_params)
+      flash[:notice] = "ユーザー情報を更新しました"
+      redirect_to(user_path)
+    else
+      render :edit
+    end
   end
 
   def show
@@ -36,4 +39,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, favorite_team_attributes: [:team_id])
   end
   
+  def update_user_params
+    params.require(:user).permit(:name, :email, favorite_team_attributes: [:team_id, :_destroy, :id])
+  end
 end
