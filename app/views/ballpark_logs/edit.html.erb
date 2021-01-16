@@ -1,3 +1,12 @@
-<%= link_to 'Back', ballpark_logs_path %>
-
-<%= render 'form', ballpark_log: @ballpark_log %>
+<% if @ballpark_log.errors.any? %>
+    <ul id="error_explanation" class="alert alert-warning">
+        <% @ballpark_log.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+    </ul>
+  <% end %>
+<div class="container">
+<h1>Logを編集</h1>
+<%= link_to("Back", user_path(current_user.id)) %>
+<%= render "form", ballpark_log: @ballpark_log %>
+</div>

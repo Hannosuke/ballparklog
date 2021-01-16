@@ -28,9 +28,12 @@ class BallparkLogsController < ApplicationController
 
   def update
     @ballpark_log = BallparkLog.find(params[:id])
-    @ballpark_log.update(ballpark_log_params)
-    flash[:notice] = "「#{@ballpark_log.title}」を更新しました"
-    redirect_to("/")
+    if @ballpark_log.update(update_ballpark_log_params)
+      flash[:notice] = "「#{@ballpark_log.title}」を更新しました"
+      redirect_to(user_path(current_user.id))
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -44,6 +47,10 @@ class BallparkLogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ballpark_log_params
+      params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :team_id)
+    end
+
+    def update_ballpark_log_params
       params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :team_id)
     end
 end
