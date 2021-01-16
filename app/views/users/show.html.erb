@@ -22,9 +22,10 @@
   <h1 class="my-0 mr-3 font-weight-normal"><%= @user.name %></h1>
   <p class="mr-md-auto">お気に入り球団:<%= @user.favteam %></p>
   <nav class="my-2 my-md-0 mr-md-3">
-  <% if current_user&.id == @user.id %>
-      <%= link_to("設定", edit_user_path, class:"btn btn-outline-secondary")%>
-  <% end %>
+    <% if current_user&.id == @user.id %>
+        <%= link_to("設定", edit_user_path, class:"btn btn-outline-secondary")%>
+    <% end %>
+  </nav>
 </div>
 
 <div class="container pt-4">

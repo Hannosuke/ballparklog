@@ -1,7 +1,7 @@
 <div class="container">
   <div class="form-sign">
     <div class="text-center mb-4">
-      <h1 class="h3 font-weight-normal">Sign up</h1>
+      <h1 class="h3 font-weight-normal">SIGN UP</h1>
     </div>
 
     <div class="form-group">
@@ -18,7 +18,7 @@
             <%= f.password_field :password, class:"form-control mb-3" %>
             <%= f.label :"パスワード(確認)" %>
             <%= f.password_field :password_confirmation, class:"form-control mb-3" %>
-            <%= f.submit "Sign up", class:"btn btn-primary btn-block"%>
+            <%= f.submit "登録", class:"btn btn-primary btn-block"%>
 
             <% if @user.errors.any? %>
             <ul id="error_explanation" class="alert alert-warning mt-3">

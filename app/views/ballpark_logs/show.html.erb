@@ -1,25 +1,68 @@
+<%= link_to("Back", user_path(@ballpark_log.user_id), class:"btn btn-secondary") %>
 
-<% if current_user && current_user.id == @ballpark_log.user_id %>
-    <%= link_to("Edit", edit_ballpark_log_path(@ballpark_log), class:"btn btn-info") %> 
-<% end %>
-<%= link_to("Back", "/", class:"btn btn-secondary") %>
-<h1><%= @ballpark_log.title %></h1>
-<p><%= @ballpark_log.stadium.name %></p>
-<p><%= @ballpark_log.description %></p>
-<%= image_tag @ballpark_log.image, width:"60%", height:"60%" if @ballpark_log.image.attached? %><br>
+<div class="col-md-8 container border shadow-sm pt-3 my-4">
+    <div class="mx-4">
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-2 bg-white">
+            <div class="show-icon mr-4"></div>
+            <h1 class="my-0 mr-md-auto font-weight-normal"><%= @ballpark_log.user.name %></h1>
+            <nav class="my-2 my-md-0 mr-md-3">
+                <% if current_user && current_user.id == @ballpark_log.user_id %>
+                    <%= link_to("Edit", edit_ballpark_log_path(@ballpark_log), class:"btn btn-outline-secondary") %> 
+                <% end %>
+            </nav>
+        </div>
+        
+        <h1 class="text-center border-bottom"><%= @ballpark_log.title %></h1>
+        <p>2020年8月1日     <%= @ballpark_log.stadium.name %></p>
 
-<% if current_user %>
-    <div>
-        <% if Like.find_by(user_id: current_user.id, ballpark_log_id: @ballpark_log.id) %>
-        <%= link_to("likes/#{@ballpark_log.id}/destroy", method: :delete) do %>
-            <i class="fas fa-thumbs-up"></i>
+        <div>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <p>TIGERS</p>
+                </div>
+                <div class="col-md-4">
+                    <span>3</span>
+                    <span>-</span>
+                    <span>7</span>
+                </div>
+                <div class="col-md-4">
+                    <p>BAYSTARS</p>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <p>VISITOR</p>
+                </div>
+                <div class="col-md-4">
+                    <h1>WIN</h1>
+                </div>
+                <div class="col-md-4">
+                    <p>HOME</p>
+                </div>
+            </div>
+        </div>
+           
+           
+           
+           
+            <p><%= @ballpark_log.description %></p>
+            <div class="text-center pb-3">
+                <%= image_tag @ballpark_log.image, width:"60%", height:"60%" if @ballpark_log.image.attached? %>
+            </div>
+        <% if current_user %>
+            <div>
+                <% if Like.find_by(user_id: current_user.id, ballpark_log_id: @ballpark_log.id) %>
+                    <%= link_to("likes/#{@ballpark_log.id}/destroy", method: :delete) do %>
+                        <i class="fas fa-thumbs-up"></i>
+                    <% end %>
+                <% else %>
+                    <%= link_to("likes/#{@ballpark_log.id}/create", method: :post) do %>
+                        <i class="far fa-thumbs-up"></i>
+                    <% end %>
+                <% end %>
+                <%= Like.where(ballpark_log_id: @ballpark_log.id).count %>
+            </div>
         <% end %>
-        <% else %>
-        <%= link_to("likes/#{@ballpark_log.id}/create", method: :post) do %>
-            <i class="far fa-thumbs-up"></i>
-        <% end %>
-        <% end %>
-        <%= Like.where(ballpark_log_id: @ballpark_log.id).count %>
     </div>
-<% end %>
-
+</div>
