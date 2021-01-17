@@ -28,6 +28,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード(確認)
+        image: アイコン画像
       favorite_team:
         user_id: ユーザー
         team_id: お気に入り球団

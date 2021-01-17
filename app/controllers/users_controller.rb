@@ -36,10 +36,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, favorite_team_attributes: [:team_id])
+    params.require(:user).permit(:name, :email, :image, :password, :password_confirmation, favorite_team_attributes: [:team_id])
   end
   
   def update_user_params
-    params.require(:user).permit(:name, :email, favorite_team_attributes: [:team_id, :_destroy, :id])
+    params.require(:user).permit(:name, :email, :image, favorite_team_attributes: [:team_id, :_destroy, :id])
   end
 end
