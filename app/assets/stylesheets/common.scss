@@ -75,7 +75,7 @@ ul {
 
 
 /*----index----*/
-.top-background {
+.top-bg {
       background-image: image-url('ballpark-img.jpeg');
       height: 800px;
       width: 100%;
@@ -135,4 +135,17 @@ ul {
    height: 70px;
    width: 70px;
    border-radius: 100%;
+}
+
+
+/*---投稿詳細ページ---*/
+.ballparklog-show-bg {
+   background-image: image-url('ballpark-img.jpeg');
+   height: 900px;
+   width: 100%;
+   background-size: cover;
+}
+
+.show-header {
+   height: 50px;
 }
