@@ -23,16 +23,16 @@ stadiums = Stadium.create([
 ])
 
 teams = Team.create([
-    {name: "福岡ソフトバンクホークス"},
-    {name: "千葉ロッテマリーンズ"},
-    {name: "埼玉西武ライオンズ"},
-    {name: "東北楽天ゴールデンイーグルス"},
-    {name: "北海道日本ハムファイターズ"},
-    {name: "オリックスバファローズ"},
-    {name: "読売ジャイアンツ"},
-    {name: "阪神タイガース"},
-    {name: "中日ドラゴンズ"},
-    {name: "横浜DeNAベイスターズ"},
-    {name: "広島東洋カープ"},
-    {name: "東京ヤクルトスワローズ"}
+    {name: "福岡ソフトバンクホークス", first_name: "ソフトバンク"},
+    {name: "千葉ロッテマリーンズ", first_name: "ロッテ"},
+    {name: "埼玉西武ライオンズ", first_name: "西武"},
+    {name: "東北楽天ゴールデンイーグルス", first_name: "楽天"},
+    {name: "北海道日本ハムファイターズ", first_name: "日本ハム"},
+    {name: "オリックスバファローズ", first_name: "オリックス"},
+    {name: "読売ジャイアンツ", first_name: "巨人"},
+    {name: "阪神タイガース", first_name: "阪神"},
+    {name: "中日ドラゴンズ", first_name: "中日"},
+    {name: "横浜DeNAベイスターズ", first_name: "DeNA"},
+    {name: "広島東洋カープ", first_name: "広島"} ,
+    {name: "東京ヤクルトスワローズ", first_name: "ヤクルト"},
 ])
