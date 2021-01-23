@@ -57,3 +57,4 @@ gem 'pry-rails'
 gem 'pry-doc'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
