@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_075505) do
+ActiveRecord::Schema.define(version: 2021_01_20_071913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(version: 2021_01_14_075505) do
     t.index ["user_id"], name: "index_favorite_teams_on_user_id"
   end
 
+  create_table "games", force: :cascade do |t|
+    t.bigint "visitor_team_id", null: false
+    t.bigint "home_team_id", null: false
+    t.date "date", null: false
+    t.integer "visitor_score", null: false
+    t.integer "home_score", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["home_team_id"], name: "index_games_on_home_team_id"
+    t.index ["visitor_team_id"], name: "index_games_on_visitor_team_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "ballpark_log_id"
@@ -75,6 +87,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_075505) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,4 +103,6 @@ ActiveRecord::Schema.define(version: 2021_01_14_075505) do
   add_foreign_key "ballpark_logs", "teams"
   add_foreign_key "favorite_teams", "teams"
   add_foreign_key "favorite_teams", "users"
+  add_foreign_key "games", "teams", column: "home_team_id"
+  add_foreign_key "games", "teams", column: "visitor_team_id"
 end

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  visitor_team: one
+  home_team: one
+  date: 2021-01-19
+  score_visitor: 1
+  score_home: 1
+
+two:
+  visitor_team: two
+  home_team: two
+  date: 2021-01-19
+  score_visitor: 1
+  score_home: 1
