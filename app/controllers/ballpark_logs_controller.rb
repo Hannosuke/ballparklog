@@ -14,7 +14,7 @@ class BallparkLogsController < ApplicationController
 
   def create
     @ballpark_log = current_user.ballpark_logs.new(ballpark_log_params)
-    if @ballpark_log.save
+    if @ballpark_log&.save
       flash[:notice] = "「#{@ballpark_log.title}」を投稿しました"
       redirect_to("/")
     else
@@ -47,10 +47,10 @@ class BallparkLogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ballpark_log_params
-      params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :team_id)
+      params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :game_id)
     end
 
     def update_ballpark_log_params
-      params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :team_id)
+      params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :game_id)
     end
 end
