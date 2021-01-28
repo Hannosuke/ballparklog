@@ -11,11 +11,13 @@ ja:
       ballpark_log: 参戦歴
       user: ユーザー
       favorite_team: お気に入り球団
+      stadium: 球場
+      game: 試合
     attributes:
       ballpark_log:
         id: ID
         title: タイトル
-        description: 詳細(仮)
+        description: メモ
         image: 画像
         crated_at: 登録日時
         updated_at: 更新日時
@@ -32,6 +34,14 @@ ja:
       favorite_team:
         user_id: ユーザー
         team_id: お気に入り球団
+      stadium:
+        name: 球場
+      game:
+        visitor_team_id: ビジターチーム
+        home_team_id: ホームチーム
+        date: 日付
+        visitor_score: ビジターチーム得点
+        home_score: ホームチーム点
   date:
     abbr_day_names:
     - 日
