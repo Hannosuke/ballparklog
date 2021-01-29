@@ -4,6 +4,7 @@
         <div class="log-show-body container shadow-sm bg-white">
             <div class="mx-4">  
                 <!--ユーザー情報部分-->
+                
                 <div class="show-header d-flex flex-column flex-md-row align-items-center p-3 px-md-2 bg-white">
                     <% if @ballpark_log.user.image.attached? %>
                         <div class="rounded-circle">
@@ -23,19 +24,23 @@
                 <h1 class="text-center border-bottom pt-4"><%= @ballpark_log.title %></h1>
 
                 <!--試合結果部分-->
-                <p>2020年8月1日     <%= @ballpark_log.stadium.name %></p>
+                <div class="row">
+                <p class="col-2"><%= @ballpark_log.game.date.strftime("%Y年%m月%d日")%></p>
+                <p class="col-2"><%= @ballpark_log.stadium.name %></p>
+                <div class="col-8"></div>
+                </div>
                 <div>
                     <div class="row text-center">
-                        <div class="col-md-4">
-                            <h2>TIGERS</h2>
+                        <div class="col-md-4 d-flex align-items-center justify-content-center">
+                            <h2><%= @ballpark_log.game.visitor_team.name%></h2>
                         </div>
-                        <div class="col-md-4">
-                            <span>3</span>
-                            <span>-</span>
-                            <span>7</span>
+                        <div class="col-md-4 d-flex align-items-center justify-content-center row">
+                            <span class="h1 col-4"><%= @ballpark_log.game.visitor_score%></span>
+                            <span class="h2 col-4">-</span>
+                            <span class="h1 col-4"><%= @ballpark_log.game.home_score%></span>
                         </div>
-                        <div class="col-md-4">
-                            <h2>BAYSTARS</h2>
+                        <div class="col-md-4 d-flex align-items-center justify-content-center">
+                            <h3><%= @ballpark_log.game.home_team.name%></h3>
                         </div>
                     </div>
 
