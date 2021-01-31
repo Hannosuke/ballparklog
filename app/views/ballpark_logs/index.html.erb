@@ -46,6 +46,7 @@
                   <p class="index-item"><%= ballpark_log.game.home_team.first_name%></p>
               </div>
             </div>
+            <!---入力内容--->
             <%= link_to(ballpark_log.title, ballpark_log, class:"noline black-link") %>
             <% if current_user %>
               <div class="ml-3 pb-3">
@@ -55,9 +56,25 @@
                   <% end %>
                 <% else %>
                   <%= link_to(ballpark_log_likes_path(ballpark_log.id), method: :post) do %>
-                    <i class="far fa-thumbs-up"></i>
+                    <i class="far fa-thumbs-up" id= "like_button"></i>
                   <% end %>
                 <% end %>
+                <!---jquery動作確認--->
+
+                <ul class="list-group list-group-flush">
+                  <% if ballpark_log.likes.blank? %>
+                    <li class="list-group-item">
+                      likeはありません
+                    </li>
+                  <% else %>
+                    <% ballpark_log.likes.each do |loglike| %>
+                      <li class="list-group-item">
+                        <p class="card-title"><%= loglike.user_id %></p>
+                      </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+                <!------------------>
                 <%= ballpark_log.count_likes %>
               </div>
             <% end %>
