@@ -5,10 +5,10 @@
       <%= f.label :球場 %>
       <%= f.collection_select :stadium_id, Stadium.all, :id, :name, include_blank: true, class:"custom-select" %>   
     </div>
-    <%= f.label :game%><br>
-    <%= f.collection_select :game_id, Game.all, :id, :id, include_blank: true%><br>
-    <div class="row">
+    <%= f.label :試合%><br>
+    <%= f.collection_select :game_id, Game.all, :id, :id, include_blank: true,  class:"custom-select" %><br>
     <!----
+    <div class="row">
       <div class="col-md-5 mb-3 d-flex align-items-center justify-content-center">
         <%= f.collection_select :team_id, Team.all, :id, :name, include_blank: true, class:"custom-select" %>   
       </div>
@@ -16,12 +16,11 @@
       <div class="col-md-5 d-flex align-items-center justify-content-center mb-3">
         <%= f.collection_select :team_id, Team.all, :id, :name, include_blank: true, class:"custom-select" %>   
       </div>
-      ----->
     </div>
+      ----->
 
     <div class="mb-3">
       <%= f.label :title %>
-      <span class="badge badge-danger">※必須</span>
       <div class="input-group">
         <div class="input-group-prepend">
           <span class="input-group-text">@</span>
