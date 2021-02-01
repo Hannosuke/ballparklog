@@ -41,4 +41,3 @@ $("#like_button").on("click", (e) => {
 
 //= jquery
 //= jquery_ujs
-
