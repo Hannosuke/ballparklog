@@ -8,7 +8,30 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-
+$("#like_button").on("click", (e) => {
+    e.preventDefault();
+    // TODO: user_idを取得する
+    var hoge = $("#like_user_id").val();
+    // TODO: ballpark_log_idを取得する
+    var fuga = $("#like_ballpark_log_id").val();
+    // TODO: Ajax処理を書く 参考 http://semooh.jp/jquery/api/ajax/jQuery.ajax/options/
+    $.ajax({
+      type: "POST",
+      url: `${location.pathname}/likes`,
+      data: {
+        like: {
+          user_id: hoge,
+          ballpark_log_id: fuga
+        }
+      }
+    })
+    // TODO: リクエストに成功した場合にいいねボタンに色をつけ、数字を変更する処理を書く
+    .done(function(res) {
+      $('ul').append(`<li class="list-group-item">
+        <p class="card-title">${res.user_id}</p>
+      </li>`);
+    })
+  })
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -18,4 +41,3 @@ require("channels")
 
 //= jquery
 //= jquery_ujs
-
