@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 $("#like_button").on("click", (e) => {
+    debugger;
     e.preventDefault();
     // TODO: user_idを取得する
     var hoge = $("#like_user_id").val();
