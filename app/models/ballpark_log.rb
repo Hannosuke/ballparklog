@@ -1,6 +1,7 @@
 class BallparkLog < ApplicationRecord
     validates :game_id, presence: true
     validates :stadium_id, presence: true
+    validates :result, presence: true
 
     belongs_to :user
     has_many :likes

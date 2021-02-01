@@ -24,6 +24,7 @@ ja:
         user_id: ユーザーID
         stadium_id: 球場
         team_id: チーム
+        result: 結果
       user:
         id: ID
         name: 名前

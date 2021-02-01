@@ -5,19 +5,15 @@
       <%= f.label :球場 %>
       <%= f.collection_select :stadium_id, Stadium.all, :id, :name, include_blank: true, class:"custom-select" %>   
     </div>
-    <%= f.label :試合%><br>
-    <%= f.collection_select :game_id, Game.all, :id, :id, include_blank: true,  class:"custom-select" %><br>
-    <!----
-    <div class="row">
-      <div class="col-md-5 mb-3 d-flex align-items-center justify-content-center">
-        <%= f.collection_select :team_id, Team.all, :id, :name, include_blank: true, class:"custom-select" %>   
-      </div>
-      <h2 class="col-md-2 text-center">VS</h2>
-      <div class="col-md-5 d-flex align-items-center justify-content-center mb-3">
-        <%= f.collection_select :team_id, Team.all, :id, :name, include_blank: true, class:"custom-select" %>   
-      </div>
+    <div class="mb-3">
+      <%= f.label :試合%><br>
+      <%= f.collection_select :game_id, Game.all, :id, :id, include_blank: true,  class:"custom-select" %><br>
     </div>
-      ----->
+    
+    <div class="mb-3">
+      <%= f.label :result%><br>
+      <%= f.select :result, [["WIN", "WIN"], ["LOSE", "LOSE"],["DRAW", "DRAW"]], include_blank: true, class:"custrom-select" %>
+    </div>
 
     <div class="mb-3">
       <%= f.label :title %>
