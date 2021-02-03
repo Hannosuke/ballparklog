@@ -2,7 +2,8 @@
   <div class="bg-mask text-center d-flex align-items-center">
     <div class="show-contents border d-flex align-items-center justify-content-center">
       <div>
-        <h1 class="text-white pt-4">3勝3敗  .500</h1>
+        <h1 class="text-white"></h1>
+        <h1 class="text-white pt-4"><%= @user.count_win %>勝<%= @user.count_lose %>敗  <%= @user.winning_percentage %></h1>
         <div class="form-group">
           <label>
             <select class="form-control border-0 opacity-form">
@@ -54,7 +55,7 @@
             <% @user.ballpark_logs.each do |ballpark_log| %>
               <tr>
                 <td><%= ballpark_log.game.date.strftime("%-m月%d日")%></td>
-                <td>勝敗</td>
+                <td><%= ballpark_log.result %></td>
                 <td>
                   <%= ballpark_log.game.visitor_team.first_name%>
                   <%= ballpark_log.game.visitor_score%>
