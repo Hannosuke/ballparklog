@@ -9,7 +9,6 @@ require("@rails/activestorage").start()
 require("channels")
 
 $("#like_button").on("click", (e) => {
-    debugger;
     e.preventDefault();
     // TODO: user_idを取得する
     var hoge = $("#like_user_id").val();
@@ -18,7 +17,7 @@ $("#like_button").on("click", (e) => {
     // TODO: Ajax処理を書く 参考 http://semooh.jp/jquery/api/ajax/jQuery.ajax/options/
     $.ajax({
       type: "POST",
-      url: `${location.pathname}/likes`,
+      url: `ballpark_logs/${fuga}/likes`,
       data: {
         like: {
           user_id: hoge,
