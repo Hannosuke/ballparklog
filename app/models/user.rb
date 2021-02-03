@@ -12,4 +12,17 @@ class User < ApplicationRecord
     delegate :favteam, to: :favorite_team
 
     accepts_nested_attributes_for :favorite_team
+
+
+    def count_win
+        ballpark_logs.where(result: "win").size
+    end
+
+    def count_lose
+        ballpark_logs.where(result: "lose").size
+    end
+
+    def winning_percentage
+        sprintf("%.3f", count_win / 10.to_f)
+    end
 end
