@@ -5,7 +5,8 @@
 <!--投稿一覧部分-->
 <div class="index-body">
   <div class="row mx-3">
-    <!--投稿部分-->
+  
+    <!--投稿カード部分-->
     <% @ballpark_logs.each do |ballpark_log| %>
       <div class="col-md-3 d-flex justify-content-around mt-3 no-gutters">
         <div class="card mb-4 shadow-sms">
@@ -55,12 +56,16 @@
                     <i class="fas fa-thumbs-up"></i>
                   <% end %>
                 <% else %>
+                <form>
+                  <input id="like_button" type="button" value="いいね" />
+                </form>
                   <%= link_to(ballpark_log_likes_path(ballpark_log.id), method: :post) do %>
                     <i class="far fa-thumbs-up" id= "like_button"></i>
                   <% end %>
                 <% end %>
-                <!---jquery動作確認--->
 
+
+                <!---jquery動作確認--->
                 <ul class="list-group list-group-flush">
                   <% if ballpark_log.likes.blank? %>
                     <li class="list-group-item">
@@ -75,6 +80,8 @@
                   <% end %>
                 </ul>
                 <!------------------>
+
+                
                 <%= ballpark_log.count_likes %>
               </div>
             <% end %>
