@@ -150,18 +150,28 @@ ul {
    border-radius: 100%;
 }
 
+.user-show-body {
+   opacity: 0.95;
+   height: 100%;
+   max-width: 700px;
+   padding: 30px;
+   margin: auto;
+}
+
 
 /*---投稿詳細ページ---*/
-.ballparklog-show-bg {
+.log-show-bg {
    background-image: image-url('ballpark-img.jpeg');
    height: 900px;
    width: 100%;
    background-size: cover;
 }
 
-.show-header {
+.log-show-header {
    height: 50px;
 }
+
+
 
 
 /*---投稿作成ページ---*/

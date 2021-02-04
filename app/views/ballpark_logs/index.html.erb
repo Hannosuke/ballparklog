@@ -23,6 +23,7 @@
                 <p class="card-text"><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline black-link") %></p>
               </div>
             </div>
+              <%= ballpark_log.id%>
 
           <!--投稿内容-->
           <div class="card-body">
@@ -50,35 +51,21 @@
             <!---入力内容--->
             <%= link_to(ballpark_log.title, ballpark_log, class:"noline black-link") %>
             <% if current_user %>
+
+            <!------いいねボタン--------->
               <div class="ml-3 pb-3">
                 <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
                   <%= link_to(ballpark_log_like_path(ballpark_log.id, current_user.id), method: :delete) do %>
                     <i class="fas fa-thumbs-up"></i>
                   <% end %>
                 <% else %>
-                <form>
-                  <input id="like_button" type="button" value="いいね" />
-                </form>
+                  <div>
+                    <button class="btn btn-primary" id="like_button">いいね</button>
+                  </div>
+                  <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="current-user-id" >
+                  <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="ballparklog-id" >
                 <% end %>
 
-
-                <!---jquery動作確認--->
-                <ul class="list-group list-group-flush">
-                  <% if ballpark_log.likes.blank? %>
-                    <li class="list-group-item">
-                      likeはありません
-                    </li>
-                  <% else %>
-                    <% ballpark_log.likes.each do |loglike| %>
-                      <li class="list-group-item">
-                        <p class="card-title"><%= loglike.user_id %></p>
-                      </li>
-                    <% end %>
-                  <% end %>
-                </ul>
-                <!------------------>
-
-                
                 <%= ballpark_log.count_likes %>
               </div>
             <% end %>

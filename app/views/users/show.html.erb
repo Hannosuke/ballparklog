@@ -2,7 +2,6 @@
   <div class="bg-mask text-center d-flex align-items-center">
     <div class="show-contents border d-flex align-items-center justify-content-center">
       <div>
-        <h1 class="text-white"></h1>
         <h1 class="text-white pt-4"><%= @user.count_win %>勝<%= @user.count_lose %>敗  <%= @user.winning_percentage %></h1>
         <div class="form-group">
           <label>
@@ -18,7 +17,7 @@
   </div>
 </div>
 
-<div class="container d-flex flex-column flex-md-row align-items-center p-3 px-md-2 bg-white">
+<div class="user-show-body pb-0 d-flex flex-column flex-md-row align-items-center bg-white">
   <% if @user.image.attached? %>
     <div class="rounded-circle">
       <%= image_tag @user.image, class:"show-icon mr-4" %>
@@ -26,8 +25,8 @@
   <% else %>
     <%= image_tag "no-image-icon.jpeg", class:"show-icon mr-4"%>
   <% end %>
-  <h1 class="my-0 mr-3 font-weight-normal"><%= @user.name %></h1>
-  <p class="mr-md-auto">お気に入り球団:<%= @user.favteam %></p>
+  <div class="h4 my-0 mr-3 font-weight-normal"><%= @user.name %></div>
+  <p class="mr-md-auto"><%= @user.favteam %></p>
   <nav class="my-2 my-md-0 mr-md-3">
     <% if current_user&.id == @user.id %>
         <%= link_to("設定", edit_user_path, class:"btn btn-outline-secondary")%>
@@ -35,7 +34,7 @@
   </nav>
 </div>
 
-<div class="container py-4">
+<div class="user-show-body py-4">
   <div class="mb-5 shadow-sm">
     <!--投稿・Likeタブ-->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -54,19 +53,32 @@
           <tbody>
             <% @user.ballpark_logs.each do |ballpark_log| %>
               <tr>
-                <td><%= ballpark_log.game.date.strftime("%-m月%d日")%></td>
-                <td><%= ballpark_log.result %></td>
+                <td><%= ballpark_log.game.date.strftime("%-m/%d")%></td>
                 <td>
-                  <%= ballpark_log.game.visitor_team.first_name%>
-                  <%= ballpark_log.game.visitor_score%>
-                  <span>-</span>
-                  <%= ballpark_log.game.home_score%>
-                  <%= ballpark_log.game.home_team.first_name%>
+                  <% if ballpark_log.result == "win" %>
+                    <p>○</p>
+                  <% else %>
+                    <p>●</p>
+                  <% end%>
+                </td>
+                <td class="row"> 
+                  <div class="col-md-3 d-flex justify-content-end">
+                    <%= ballpark_log.game.visitor_team.initial%>
+                  </div>
+                  <div class="col-md-6 row d-flex justify-content-center">
+                      <%= ballpark_log.game.visitor_score%>
+                      <span> - </span>
+                      <%= ballpark_log.game.home_score%>
+                  </div>
+                  <div class="col-md-3 d-flex justify-content-start">
+                    <%= ballpark_log.game.home_team.initial%>
+                  </div>
                 </td>
                 <td><%= link_to(ballpark_log.title, ballpark_log, class:"noline black-link") %></td>
                 <% if current_user == @user %>
-                  <td class="btn-group"><%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-outline-secondary") %>
-                      <%= link_to("削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" }, class:"btn btn-outline-danger") %>
+                  <td class="btn-group">
+                    <%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-outline-secondary") %>
+                    <%= link_to("削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" }, class:"btn btn-outline-danger") %>
                   </td>
                 <% end %>
               </tr>

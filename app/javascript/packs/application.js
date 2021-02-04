@@ -4,20 +4,26 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+// require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-$("#like_button").on("click", (e) => {
-    e.preventDefault();
+
+$("#like_button").on("click", (event) => {
+    debugger;
+    event.preventDefault();
     // TODO: user_idを取得する
-    var hoge = $("#like_user_id").val();
+    var hoge = $(".current-user-id").val();
     // TODO: ballpark_log_idを取得する
-    var fuga = $("#like_ballpark_log_id").val();
+    var fuga = $(".ballparklog-id").val();
+
+    console.log(hoge);
+    console.log(fuga);
+    
     // TODO: Ajax処理を書く 参考 http://semooh.jp/jquery/api/ajax/jQuery.ajax/options/
     $.ajax({
       type: "POST",
-      url: `ballpark_logs/${fuga}/likes`,
+      url: `location.pathname/likes`,
       data: {
         like: {
           user_id: hoge,
@@ -27,9 +33,11 @@ $("#like_button").on("click", (e) => {
     })
     // TODO: リクエストに成功した場合にいいねボタンに色をつけ、数字を変更する処理を書く
     .done(function(res) {
-      $('ul').append(`<li class="list-group-item">
-        <p class="card-title">${res.user_id}</p>
-      </li>`);
+      console.log(hoge);
+      console.log(fuga);
+      // $('ul').append(`<li class="list-group-item">
+        // <p class="card-title">${res.user_id}</p>
+      // </li>`);
     })
   })
   
