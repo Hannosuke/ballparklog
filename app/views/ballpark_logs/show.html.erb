@@ -1,11 +1,11 @@
-<div class="ballparklog-show-bg">
+<div class="log-show-bg">
     <div class="bg-mask">
 
         <div class="log-show-body container shadow-sm bg-white">
             <div class="mx-4">  
                 <!--ユーザー情報部分-->
                 
-                <div class="show-header d-flex flex-column flex-md-row align-items-center p-3 px-md-2 bg-white">
+                <div class="log-show-header d-flex flex-column flex-md-row align-items-center p-3 px-md-2 bg-white">
                     <% if @ballpark_log.user.image.attached? %>
                         <div class="rounded-circle">
                             <%= image_tag @ballpark_log.user.image, class:"index-icon mr-4" %>
