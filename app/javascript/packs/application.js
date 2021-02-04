@@ -17,13 +17,10 @@ $("#like_button").on("click", (event) => {
     // TODO: ballpark_log_idを取得する
     var fuga = $(".ballparklog-id").val();
 
-    console.log(hoge);
-    console.log(fuga);
-    
     // TODO: Ajax処理を書く 参考 http://semooh.jp/jquery/api/ajax/jQuery.ajax/options/
     $.ajax({
       type: "POST",
-      url: `location.pathname/likes`,
+      url: `/ballpark_logs/${fuga}/likes`,
       data: {
         like: {
           user_id: hoge,
@@ -33,11 +30,9 @@ $("#like_button").on("click", (event) => {
     })
     // TODO: リクエストに成功した場合にいいねボタンに色をつけ、数字を変更する処理を書く
     .done(function(res) {
-      console.log(hoge);
-      console.log(fuga);
-      // $('ul').append(`<li class="list-group-item">
-        // <p class="card-title">${res.user_id}</p>
-      // </li>`);
+       $('ul').append(`<li class="list-group-item">
+         <p class="card-title">${res.user_id}</p>
+      </li>`);
     })
   })
   
