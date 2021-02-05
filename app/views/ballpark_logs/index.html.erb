@@ -23,7 +23,6 @@
                 <p class="card-text"><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline black-link") %></p>
               </div>
             </div>
-              <%= ballpark_log.id%>
 
           <!--投稿内容-->
           <div class="card-body">
@@ -59,17 +58,15 @@
                     <i class="fas fa-thumbs-up"></i>
                   <% end %>
                 <% else %>
-                  <div>
-                    <button class="btn btn-primary" id="like_button">いいね</button>
-                  </div>
-                  <ul>
-                  </ul>
+                  <i id="like_button" class="far fa-thumbs-up" ></i>
                   <!----jqueryに変数を渡す--->
-                  <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="current-user-id" >
-                  <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="ballparklog-id" >
+                    <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="current-user-id" >
+                    <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="ballparklog-id" >
+                  <!------------------------>
                 <% end %>
-
-                <%= ballpark_log.count_likes %>
+                <div class="count-likes">
+                  <%= ballpark_log.count_likes %>
+                </div>
               </div>
             <% end %>
 

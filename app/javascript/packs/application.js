@@ -10,7 +10,6 @@ require("channels")
 
 
 $("#like_button").on("click", (event) => {
-    debugger;
     event.preventDefault();
     // TODO: user_idを取得する
     var hoge = $(".current-user-id").val();
@@ -30,9 +29,7 @@ $("#like_button").on("click", (event) => {
     })
     // TODO: リクエストに成功した場合にいいねボタンに色をつけ、数字を変更する処理を書く
     .done(function(res) {
-       $('ul').append(`<li class="list-group-item">
-         <p class="card-title">${res.user_id}</p>
-      </li>`);
+      $("#like_button").text("いいね済");
     })
   })
   
