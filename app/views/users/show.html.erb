@@ -77,6 +77,7 @@
                 <td><%= link_to(ballpark_log.title, ballpark_log, class:"noline black-link") %></td>
                 <% if current_user == @user %>
                   <td class="btn-group">
+                    <button type="button" class="btn btn-danger" data-toggle="popover" data-content="It's very engaging. Right?">Click</button>
                     <%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-outline-secondary") %>
                     <%= link_to("削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" }, class:"btn btn-outline-danger") %>
                   </td>
