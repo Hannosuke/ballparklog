@@ -8,6 +8,12 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
+//ポップオーバー初期化
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+
+
 
 $("#like_button").on("click", (event) => {
     event.preventDefault();
