@@ -12,5 +12,9 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ 
+  namespace :games do 
+    resources :searches, only: :index, defaults: { format: :json }
+  end
+
 end
