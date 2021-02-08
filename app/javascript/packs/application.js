@@ -21,8 +21,8 @@ $("#datepicker").datepicker({
   onSelect: function(dateText) {
   var foo = new Date (dateText);
   var year = foo.getFullYear();
-  var month = foo.getMonth() + 1;
-  var day = foo.getDate();
+  var month = ("0" + (foo.getMonth() + 1)).slice(-2);
+  var day = ("0" + (foo.getDate())).slice(-2);
   
   var piyo = `${year}-${month}-${day}`
 
