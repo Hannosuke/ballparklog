@@ -19,10 +19,29 @@ $("#datepicker").datepicker({
 
    //日付が変更された時のイベント設定
   onSelect: function(dateText) {
-  var piyo = new Date (dateText);
+  var foo = new Date (dateText);
+  var year = foo.getFullYear();
+  var month = foo.getMonth() + 1;
+  var day = foo.getDate();
+  
+  var piyo = `${year}-${month}-${day}`
+
   alert(piyo);
+  //ajax処理を記述  
+  $.ajax({
+    type: "GET",
+    url: `/games/searches`,
+    data: { date: piyo },
+    dataType:"json",
+  })
+  .done(function(res) {
+    alert(piyo);
+  })
+  .fail(function(res){
+    alert("失敗だよ");
+  })
   }
-});
+})
 
 
 
