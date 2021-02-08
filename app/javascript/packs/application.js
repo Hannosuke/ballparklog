@@ -8,7 +8,25 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
+//datepicer
+$("#datepicker").datepicker({
+  dateFormat: "yy-m-d",
+  firstDay: 1,
+  monthNames: [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],
+  showAnim: "fadeIn",
 
+   //日付が変更された時のイベント設定
+  onSelect: function(dateText) {
+  var piyo = new Date (dateText);
+  alert(piyo);
+  }
+});
+
+
+
+
+
+//いいねボタン
 $("#like_button").on("click", (event) => {
     event.preventDefault();
     // TODO: user_idを取得する
