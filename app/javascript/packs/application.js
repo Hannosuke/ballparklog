@@ -36,6 +36,7 @@ $("#datepicker").datepicker({
 
   //成功処理を記述
   .done(function(data) {
+    $(".game-select option").remove();
     $(data).each(function(i,game) {
       $(".game-select").append(
         `<option>${game.id}</option>`
