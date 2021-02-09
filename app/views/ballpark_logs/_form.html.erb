@@ -8,12 +8,12 @@
     </div>
     <div class="mb-3">
       <%= f.label :試合%><br>
-      <%= f.collection_select :game_id, Game.all, :id, :id, include_blank: true,  class:"custom-select" %><br>
+      <select name="ballpark_log[game_id]" id="ballpark_log_game_id" class="game-select"></select><br>
     </div>
     
     <div class="mb-3">
       <%= f.label :result%><br>
-      <%= f.select :result, [["WIN", "WIN"], ["LOSE", "LOSE"],["DRAW", "DRAW"]], include_blank: true, class:"custrom-select" %>
+      <%= f.select :result, [["WIN", "WIN"], ["LOSE", "LOSE"],["DRAW", "DRAW"]], include_blank: true, class:"custom-select" %>
     </div>
 
     <div class="mb-3">

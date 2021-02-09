@@ -17,7 +17,7 @@ $("#datepicker").datepicker({
   showAnim: "fadeIn",
 
 
-   //日付が変更された時のイベント設定
+  //日付が変更された時のイベント設定
   onSelect: function(dateText) {
   var foo = new Date (dateText);
   var year = foo.getFullYear();
@@ -26,7 +26,6 @@ $("#datepicker").datepicker({
   
   var piyo = `${year}-${month}-${day}`
 
-  alert(piyo);
   //ajax処理を記述  
   $.ajax({
     type: "GET",
@@ -34,10 +33,16 @@ $("#datepicker").datepicker({
     data: { date: piyo },
     dataType:"json",
   })
-  .done(function(res) {
-    alert(piyo);
+
+  //成功処理を記述
+  .done(function(data) {
+    $(data).each(function(i,game) {
+      $(".game-select").append(
+        `<option>${game.id}</option>`
+      );
+    });
   })
-  .fail(function(res){
+  .fail(function(){
     alert("失敗だよ");
   })
   }
