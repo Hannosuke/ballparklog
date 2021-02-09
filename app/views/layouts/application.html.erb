@@ -14,20 +14,28 @@
 
   <body>
     <div class="footer-fixed">
-      <div class="header d-flex flex-column flex-md-row align-items-center p-3 px-md-4">
-        <h1 class="my-0 mr-md-auto font-weight-normal"><%= link_to("BallParkLog", "/", class:"noline logo") %></h1>
-        <nav class="my-2 my-md-0 mr-md-3">
-          <% if current_user %>
-            <%= link_to("Logを投稿", new_ballpark_log_path, class:"p-2 btn btn-outline-light noline")%>
-            <%= link_to("マイページ", user_path(current_user.id), class:"p-2 text-white noline")%>
-            <%= link_to("ログアウト", logout_path, method: :delete, class:"p-2 text-white noline")%>
-          <% else %>
-            <%= link_to("新規登録", new_user_path, class:"btn btn-outline-light") %>
-            <%= link_to("ログイン", login_path, class:"btn btn-outline-light")%>
-          <% end %>
-        </nav>
-      </div>
-        
+      <nav class="header navbar navbar-expand-lg navbar-dark navbar-light px-4">
+        <h1 class="font-weight-normal"><%= link_to("BallParkLog", "/", class:"noline logo") %></h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav mr-auto"></div>
+          <div class="my-2 my-lg-0">
+            <div class="navbar-nav mr-auto">
+              <% if current_user %>
+                <%= link_to("Logを投稿", new_ballpark_log_path, class:"p-2 btn btn-outline-light noline")%>
+                <%= link_to("マイページ", user_path(current_user.id), class:"p-2 text-white noline")%>
+                <%= link_to("ログアウト", logout_path, method: :delete, class:"p-2 text-white noline")%>
+              <% else %>
+                <%= link_to("新規登録", new_user_path, class:"btn btn-outline-light mr-2") %>
+                <%= link_to("ログイン", login_path, class:"btn btn-outline-light")%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </nav>
       
       <div class="notifications">
           <% flash.each do |key, value|%>
