@@ -4,6 +4,8 @@
    height: 80px;
 }
 
+
+
 /*--全体--*/
 .logo {
    color: white;
@@ -110,6 +112,9 @@ ul {
 .index-team {
    font-size: 15px;
 }
+
+
+
 /*----新規ユーザー登録ページ----*/
 .user-new-form {
    background-color: white;
@@ -117,6 +122,9 @@ ul {
    width: 850px;
    padding: 30px;
 }
+
+
+
 /*----ログインページ----*/
 .login-form {
    background-color: white;
@@ -126,6 +134,8 @@ ul {
    padding: 30px 30px 60px 30px;
    margin-top: 80px;
 }
+
+
 
 /*---ユーザ詳細ページ---*/
 .show-top {
@@ -169,22 +179,8 @@ ul {
 }
 
 
-/*---投稿詳細ページ---*/
-.log-show-bg {
-   background-image: image-url('ballpark-img.jpeg');
-   height: 900px;
-   width: 100%;
-   background-size: cover;
-}
 
-.log-show-header {
-   height: 50px;
-}
-
-
-
-
-/*---投稿作成ページ---*/
+/*---新規投稿作成ページ---*/
 .log-form-top {
    height: 700px;
    background-size: cover;
@@ -199,8 +195,28 @@ ul {
 .log-form-body {
    background-color: white;
    opacity: 0.94;
-   height: 100%;
-   max-width: 700px;
+   width: 850px;
    padding: 30px;
-   margin: auto;
+}
+
+.log-image-btn :hover {
+   cursor: pointer;
+}
+
+.log-image-btn span {
+   color: rgb(91, 92, 100);
+}
+
+
+
+/*---投稿詳細ページ---*/
+.log-show-bg {
+   background-image: image-url('ballpark-img.jpeg');
+   height: 900px;
+   width: 100%;
+   background-size: cover;
+}
+
+.log-show-header {
+   height: 50px;
 }

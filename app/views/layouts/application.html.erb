@@ -25,7 +25,7 @@
           <div class="my-2 my-lg-0">
             <div class="navbar-nav mr-auto">
               <% if current_user %>
-                <%= link_to("Logを投稿", new_ballpark_log_path, class:"p-2 btn btn-outline-light noline")%>
+                <%= link_to("Logを登録", new_ballpark_log_path, class:"p-2 btn btn-outline-light noline")%>
                 <%= link_to("マイページ", user_path(current_user.id), class:"p-2 text-white noline")%>
                 <%= link_to("ログアウト", logout_path, method: :delete, class:"p-2 text-white noline")%>
               <% else %>
