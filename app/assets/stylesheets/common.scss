@@ -114,16 +114,17 @@ ul {
 .user-new-form {
    background-color: white;
    opacity: 0.94;
+   width: 850px;
    padding: 30px;
-   width: 750px;
 }
 /*----ログインページ----*/
 .login-form {
-   height: 650px;
-   width: 100%;
-   max-width: 600px;
-   padding: 15px;
-   margin: auto;
+   background-color: white;
+   opacity: 0.94;
+   width: 850px;
+   height: 450px;
+   padding: 30px 30px 60px 30px;
+   margin-top: 80px;
 }
 
 /*---ユーザ詳細ページ---*/
