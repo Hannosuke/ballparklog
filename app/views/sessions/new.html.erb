@@ -1,20 +1,22 @@
-<div class="container">
-    <div class="login-form">
-        <div class="text-center mb-4">
-            <h1 class="h3 font-weight-normal">SIGN IN</h1>
+<div class="log-form-top">
+    <div class="bg-mask d-flex justify-content-center">
+        <div class="login-form">
+        <div class="text-center mb-5">
+            <h1 class="h3 font-weight-normal">SIGN UP</h1>
         </div>
-
+        
+        <div class="form-group">
             <%= form_with(scope: :session, url: login_path, local: true) do |f|%>
                 <div class="form-lagel-group">
-                    <%= f.email_field :email, class:"form-control mb-3", :placeholer=> "メールアドレス"%>
+                    <%= f.email_field :email, class:"form-control mb-5", :placeholer=> "メールアドレス"%>
                 </div>
 
                 <div class="form-lagel-group">
-                    <%= f.password_field :password, class:"form-control mb-3"%>
+                    <%= f.password_field :password, class:"form-control mb-5"%>
                 </div>
-                
-                
                 <%= f.submit "ログイン", class: "mt-2 btn btn-primary btn-block"%>
             <% end %>
+            
+        </div>
     </div>
 </div>
