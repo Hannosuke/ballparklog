@@ -1,33 +1,34 @@
-<div class="container">
-  <div class="form-sign">
-    <div class="text-center mb-4">
-      <h1 class="h3 font-weight-normal">SIGN UP</h1>
-    </div>
-
-    <div class="form-group">
-        <%= form_with(model: @user, local: true) do |f| %>
+<div class="log-form-top">
+  <div class="bg-mask d-flex justify-content-center align-items-center">
+      <div class="user-new-form">
+        <div class="text-center mb-4">
+          <h1 class="h3 font-weight-normal">SIGN UP</h1>
+        </div>
+        
+        <div class="form-group">
+          <%= form_with(model: @user, local: true) do |f| %>
             <%= f.label :name%>
             <%= f.text_field :name, class:"form-control mb-3" %>
-            <%= f.label :team_id %>
+            <%= f.label :お気に入りチーム %>
             <%= f.fields_for :favorite_team do |fav|%>
-              <%= fav.collection_select :team_id, Team.all, :id, :name, include_blank: true, class:"custom-select" %>
-            <% end %>            
+              <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control mb-3"} %>
+            <% end %>          
             <%= f.label :email %>
             <%= f.email_field :email, class:"form-control mb-3" %>
             <%= f.label :パスワード%>
             <%= f.password_field :password, class:"form-control mb-3" %>
             <%= f.label :"パスワード(確認)" %>
-            <%= f.password_field :password_confirmation, class:"form-control mb-3" %>
-            <%= f.submit "登録", class:"btn btn-primary btn-block"%>
+            <%= f.password_field :password_confirmation, class:"form-control mb-4" %>
+            <%= f.submit "登録", class:"btn btn-primary btn-block mt-2"%>
 
             <% if @user.errors.any? %>
-            <ul id="error_explanation" class="alert alert-warning mt-3">
+              <ul id="error_explanation" class="alert alert-warning mt-3">
                 <% @user.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
                 <% end %>
-            </ul>
+              </ul>
+            <% end %>
           <% end %>
-    </div>
+      </div>
   </div>
-<% end %>
 </div>

@@ -1,0 +1,1 @@
+!function(){var t,e,n={190:function(t){t.exports=function(){return"my-test"}}},r={};t=function t(e){if(r[e])return r[e].exports;var o=r[e]={exports:{}};return n[e](o,o.exports,t),o.exports}(190),e=document.createTextNode(t()),document.body.appendChild(e)}();

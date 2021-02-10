@@ -1,75 +1,75 @@
-<div class="log-form-body col-md-8 border shadow-sm pt-4 px-4 mb-4">
+<div class="log-form-body pt-4 px-4 mb-4">
   
-  <input type="text" id="datepicker">
-  <%= form_with(model: ballpark_log, local: true) do |f| %>
-    <div class="mb-3">
-      <%= f.label :球場 %>
-      <%= f.collection_select :stadium_id, Stadium.all, :id, :name, include_blank: true, class:"game-date custom-select" %>   
-    </div>
-    <div class="mb-3">
-      <%= f.label :試合%><br>
-      <select name="ballpark_log[game_id]" id="ballpark_log_game_id" class="game-select"></select><br>
-    </div>
-    
-    <div class="mb-3">
-      <%= f.label :result%><br>
-      <%= f.select :result, [["WIN", "WIN"], ["LOSE", "LOSE"],["DRAW", "DRAW"]], include_blank: true, class:"custom-select" %>
-    </div>
-
-    <div class="mb-3">
-      <%= f.label :title %>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text">@</span>
+  <div class="form-group">
+    <input type="text" id="datepicker">
+    <%= form_with(model: ballpark_log, local: true) do |f| %>
+      <div class="mb-3">
+        <%= f.label :球場 %>
+        <%= f.collection_select :stadium_id, Stadium.all, :id, :name, {include_blank: true}, {class:"game-date form-control"} %>   
+      </div>
+      <div class="mb-3">
+        <%= f.label :試合%><br>
+        <select name="ballpark_log[game_id]" id="ballpark_log_game_id" class="game-select form-control"></select><br>
+      </div>
+      <div class="mb-3">
+        <%= f.label :result%><br>
+        <%= f.select :result, [["WIN", "WIN"], ["LOSE", "LOSE"],["DRAW", "DRAW"]], {}, class:"form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :title %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">@</span>
+          </div>
+          <%= f.text_field :title, class:"form-control" %>
         </div>
-        <%= f.text_field :title, class:"form-control" %>
       </div>
-    </div>
 
-    <div class="mb-3">
-      <%= f.label :description %>
-      <%= f.text_field :description, class:"form-control" %>
-    </div>
-
-    <div class="mb-3">
-      <%= f.label :image %>
-      <%= f.file_field :image, class:"form-control-file"%>
-    </div>
-
-
-
-    <!---何かに使えそう
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="same-address">
-      <label class="custom-control-label" for="same-address">何かに使えそう</label>
-    </div>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input" id="save-info">
-      <label class="custom-control-label" for="save-info">何かに使えそう</label>
-    </div>
-    <hr class="mb-4">
-    <h4 class="mb-3">何かに使えそう</h4>
-
-    <div class="d-block my-3">
-      <div class="custom-control custom-radio">
-        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-        <label class="custom-control-label" for="credit">Credit card</label>
+      <div class="mb-3">
+        <%= f.label :description %>
+        <%= f.text_field :description, class:"form-control" %>
       </div>
-      <div class="custom-control custom-radio">
-        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-        <label class="custom-control-label" for="debit">Debit card</label>
+
+      <div class="mb-3">
+        <%= f.label :image %>
+        <%= f.file_field :image, class:"form-control-file"%>
       </div>
-      <div class="custom-control custom-radio">
-        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-        <label class="custom-control-label" for="paypal">PayPal</label>
+
+
+
+      <!---何かに使えそう
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="same-address">
+        <label class="custom-control-label" for="same-address">何かに使えそう</label>
       </div>
-    </div>
-    <hr class="mb-4">
-    --->
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" id="save-info">
+        <label class="custom-control-label" for="save-info">何かに使えそう</label>
+      </div>
+      <hr class="mb-4">
+      <h4 class="mb-3">何かに使えそう</h4>
+
+      <div class="d-block my-3">
+        <div class="custom-control custom-radio">
+          <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+          <label class="custom-control-label" for="credit">Credit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+          <label class="custom-control-label" for="debit">Debit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+          <label class="custom-control-label" for="paypal">PayPal</label>
+        </div>
+      </div>
+      <hr class="mb-4">
+      --->
+      
+      <%= f.submit "完了", class:"btn btn-primary btn-block mt-3 mb-5"%>
     
-    <%= f.submit "完了", class:"btn btn-primary btn-block mt-3 mb-5"%>
-  
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 
