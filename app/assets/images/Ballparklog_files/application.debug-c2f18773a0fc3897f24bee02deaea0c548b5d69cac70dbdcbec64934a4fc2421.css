@@ -1,0 +1,259 @@
+@charset "UTF-8";
+/*--header--*/
+/* line 2, app/assets/stylesheets/common.scss */
+.header {
+  background-color: #222325;
+  height: 80px;
+}
+
+/*--全体--*/
+/* line 8, app/assets/stylesheets/common.scss */
+.logo {
+  color: white;
+}
+
+/* line 12, app/assets/stylesheets/common.scss */
+.logo:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 17, app/assets/stylesheets/common.scss */
+.noline:hover {
+  text-decoration: none;
+}
+
+/* line 21, app/assets/stylesheets/common.scss */
+.footer-fixed {
+  min-height: 100vh;
+  /* ←コンテンツの高さの最小値＝ブラウザの高さに指定 */
+  position: relative;
+  /* ←相対位置 */
+  padding-bottom: 100px;
+  /* ←フッターの高さを指定 */
+  box-sizing: border-box;
+  /* ←ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
+}
+
+/* line 28, app/assets/stylesheets/common.scss */
+footer {
+  position: absolute;
+  bottom: 0;
+  background-color: #222325;
+  height: 100px;
+  width: 100%;
+}
+
+/* line 36, app/assets/stylesheets/common.scss */
+.web-copyright {
+  color: azure;
+}
+
+/* line 40, app/assets/stylesheets/common.scss */
+.notice {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(98, 98, 221, 0.8);
+  height: 45px;
+  width: auto;
+}
+
+/* line 50, app/assets/stylesheets/common.scss */
+.alert {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightcoral;
+  height: 45px;
+  width: 100%;
+  border-radius: 0;
+}
+
+/* line 61, app/assets/stylesheets/common.scss */
+.container {
+  padding-top: 56px;
+}
+
+/* line 65, app/assets/stylesheets/common.scss */
+ul {
+  list-style: none;
+}
+
+/* line 69, app/assets/stylesheets/common.scss */
+.black-link {
+  color: black;
+}
+
+/* line 73, app/assets/stylesheets/common.scss */
+.black-link:hover {
+  color: black;
+  text-decoration: none;
+}
+
+/*----投稿一覧画面----*/
+/* line 81, app/assets/stylesheets/common.scss */
+.top-bg {
+  background-image: url(/assets/ballpark-img-9fcc278194d800c085c3ea70190c04d96f32c3db40eb4664ac5b11b611d9fea2.jpg);
+  height: 620px;
+  width: 100%;
+  background-size: cover;
+  z-index: 0;
+}
+
+/* line 89, app/assets/stylesheets/common.scss */
+.index-body {
+  background-color: #33363b;
+}
+
+/* line 93, app/assets/stylesheets/common.scss */
+.index-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+/* line 98, app/assets/stylesheets/common.scss */
+.log-card {
+  width: 95%;
+  height: 100%;
+}
+
+/* line 103, app/assets/stylesheets/common.scss */
+.card-label {
+  color: white;
+  background-color: #292a2c;
+  width: 100%;
+  height: 30px;
+}
+
+/* line 110, app/assets/stylesheets/common.scss */
+.index-team {
+  font-size: 15px;
+}
+
+/*----新規ユーザー登録ページ----*/
+/* line 114, app/assets/stylesheets/common.scss */
+.user-new-form {
+  background-color: white;
+  opacity: 0.94;
+  width: 850px;
+  padding: 30px;
+}
+
+/*----ログインページ----*/
+/* line 121, app/assets/stylesheets/common.scss */
+.login-form {
+  background-color: white;
+  opacity: 0.94;
+  width: 850px;
+  height: 450px;
+  padding: 30px 30px 60px 30px;
+  margin-top: 80px;
+}
+
+/*---ユーザ詳細ページ---*/
+/* line 131, app/assets/stylesheets/common.scss */
+.show-top {
+  height: 510px;
+  background-size: cover;
+  background-image: url(/assets/ballpark-img-9fcc278194d800c085c3ea70190c04d96f32c3db40eb4664ac5b11b611d9fea2.jpg);
+}
+
+/* line 137, app/assets/stylesheets/common.scss */
+.bg-mask {
+  height: 100%;
+  background: rgba(41, 42, 44, 0.76);
+}
+
+/* line 142, app/assets/stylesheets/common.scss */
+.show-top h1 {
+  opacity: 0.9;
+}
+
+/* line 146, app/assets/stylesheets/common.scss */
+.show-contents {
+  width: 600px;
+  height: 300px;
+  margin: auto;
+}
+
+/* line 152, app/assets/stylesheets/common.scss */
+.opacity-form {
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+/* line 157, app/assets/stylesheets/common.scss */
+.show-icon {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+}
+
+/* line 163, app/assets/stylesheets/common.scss */
+.user-show-body {
+  opacity: 0.95;
+  height: 100%;
+  max-width: 700px;
+  padding: 30px;
+  margin: auto;
+}
+
+/*---投稿詳細ページ---*/
+/* line 173, app/assets/stylesheets/common.scss */
+.log-show-bg {
+  background-image: url(/assets/ballpark-img-9fcc278194d800c085c3ea70190c04d96f32c3db40eb4664ac5b11b611d9fea2.jpg);
+  height: 900px;
+  width: 100%;
+  background-size: cover;
+}
+
+/* line 180, app/assets/stylesheets/common.scss */
+.log-show-header {
+  height: 50px;
+}
+
+/*---投稿作成ページ---*/
+/* line 188, app/assets/stylesheets/common.scss */
+.log-form-top {
+  height: 700px;
+  background-size: cover;
+  background-image: url(/assets/ballpark-img-9fcc278194d800c085c3ea70190c04d96f32c3db40eb4664ac5b11b611d9fea2.jpg);
+}
+
+/* line 194, app/assets/stylesheets/common.scss */
+.bg-mask {
+  height: 100%;
+  background: rgba(41, 42, 44, 0.76);
+}
+
+/* line 199, app/assets/stylesheets/common.scss */
+.log-form-body {
+  background-color: white;
+  opacity: 0.94;
+  height: 100%;
+  max-width: 700px;
+  padding: 30px;
+  margin: auto;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+ 
+
+/*# sourceMappingURL=application.css-075335623f05c93b0de132f42c2fb0fdbbbfac2df1200a0a23d7fd40b676da6a.map */
