@@ -18,33 +18,30 @@ $("#datepicker").datepicker({
 
 
   //日付が変更された時のイベント設定
-  onSelect: function(dateText) {
-  var foo = new Date (dateText);
-  var year = foo.getFullYear();
-  var month = ("0" + (foo.getMonth() + 1)).slice(-2);
-  var day = ("0" + (foo.getDate())).slice(-2);
+  onSelect: (dateText) => {
+  var selectDate = new Date (dateText);
+  var year = selectDate.getFullYear();
+  var month = ("0" + (selectDate.getMonth() + 1)).slice(-2);
+  var day = ("0" + (selectDate.getDate())).slice(-2);
   
-  var piyo = `${year}-${month}-${day}`
+  var gameDate = `${year}-${month}-${day}`
 
   //ajax処理を記述  
   $.ajax({
     type: "GET",
-    url: `/games/searches`,
-    data: { date: piyo },
+    url: `/api/games`,
+    data: { date: gameDate },
     dataType:"json",
   })
 
   //成功処理を記述
-  .done(function(data) {
+  .done((data) => {
     $(".game-select option").remove();
-    $(data).each(function(i,game) {
+    $(data).each((i,game) => {
       $(".game-select").append(
-        `<option>${game.id}</option>`
+        `<option value="${game.id}">${game.game_name}</option>`
       );
     });
-  })
-  .fail(function(){
-    alert("失敗だよ");
   })
   }
 })
@@ -57,23 +54,23 @@ $("#datepicker").datepicker({
 $("#like_button").on("click", (event) => {
     event.preventDefault();
     // TODO: user_idを取得する
-    var hoge = $(".current-user-id").val();
+    var likeUserId = $(".current-user-id").val();
     // TODO: ballpark_log_idを取得する
-    var fuga = $(".ballparklog-id").val();
+    var likeLogId = $(".ballparklog-id").val();
 
     // TODO: Ajax処理を書く 参考 http://semooh.jp/jquery/api/ajax/jQuery.ajax/options/
     $.ajax({
       type: "POST",
-      url: `/ballpark_logs/${fuga}/likes`,
+      url: `/ballpark_logs/${likeLogId}/likes`,
       data: {
         like: {
-          user_id: hoge,
-          ballpark_log_id: fuga
+          user_id: likeUserId,
+          ballpark_log_id: likeLogId
         }
       }
     })
     // TODO: リクエストに成功した場合にいいねボタンに色をつけ、数字を変更する処理を書く
-    .done(function(res) {
+    .done((res) => {
       $("#like_button").text("いいね済");
     })
   })

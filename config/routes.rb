@@ -13,8 +13,8 @@ Rails.application.routes.draw do
 
   resources :users
  
-  namespace :games do 
-    resources :searches, only: :index, defaults: { format: :json }
+  namespace :api, format: 'json' do
+    resources :games, only: :index
   end
 
 end

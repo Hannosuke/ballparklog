@@ -8,11 +8,11 @@
         <div class="form-group">
             <%= form_with(scope: :session, url: login_path, local: true) do |f|%>
                 <div class="form-lagel-group">
-                    <%= f.email_field :email, class:"form-control mb-5", placeholeder: "メールアドレス"%>
+                    <%= f.email_field :email, class:"form-control mb-5", placeholder: "メールアドレス"%>
                 </div>
 
                 <div class="form-lagel-group">
-                    <%= f.password_field :password, class:"form-control mb-5", placeholeder: "パスワード"%>
+                    <%= f.password_field :password, class:"form-control mb-5", placeholder: "パスワード"%>
                 </div>
                 <%= f.submit "ログイン", class: "mt-2 btn btn-primary btn-block"%>
             <% end %>

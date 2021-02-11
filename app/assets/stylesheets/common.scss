@@ -80,7 +80,7 @@ ul {
 
 
 /*----投稿一覧画面----*/
-.top-bg {
+.index-top-bg {
       background-image: image-url('ballpark-img.jpeg');
       height: 620px;
       width: 100%;
@@ -92,17 +92,18 @@ ul {
    background-color: rgb(51, 54, 59);
 }
 
+.index-card {
+   height: 350px;
+   width: 270px;
+}
+
 .index-icon {
    height: 40px;
    width: 40px;
    border-radius: 100%;
 }
-.log-card {
-   width: 95%;
-   height: 100%;
-}
 
-.card-label {
+.index-card-label {
    color: white;
    background-color: rgb(41, 42, 44);
    width: 100%;
