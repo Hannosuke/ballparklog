@@ -1,33 +1,29 @@
-<div class="container">
-  <div class="form-sign">
-    <div class="text-center mb-4">
-      <h1 class="h3 font-weight-normal">Edit</h1>
-    </div>
-
-    <div class="form-group">
-      <%= form_with(model: @user, local: true) do |f| %>
-          <div class="mb-3">
-            <%= f.label :image %>
-            <%= f.file_field :image, class:"form-control-file"%>
-          </div>
-          <%= f.label :名前%>
-          <%= f.text_field :name, class:"form-control mb-3" %>
-          <%= f.label :team_id %>
-          <%= f.fields_for :favorite_team do |fav|%>
-            <%= fav.collection_select :team_id, Team.all, :id, :name, include_blank: true, class:"custom-select" %>
-          <% end %>            
-          <%= f.label :メールアドレス %>
-          <%= f.email_field :email, class:"form-control mb-3" %>
-          <%= f.submit "Update", class:"btn btn-primary btn-block"%>
-
+<div class="log-form-top">
+  <div class="bg-mask d-flex justify-content-center align-items-center">
+      <div class="user-new-form">
+        <div class="text-center mb-4">
+          <h1 class="h3 font-weight-normal">EDIT</h1>
+        </div>
+        
+        <div class="form-group">
+          <%= form_with(model: @user, local: true) do |f| %>
+            <%= f.label :name%>
+            <%= f.text_field :name, class:"form-control mb-3" %>
+            <%= f.label :お気に入りチーム %>
+            <%= f.fields_for :favorite_team do |fav|%>
+              <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control mb-3"} %>
+            <% end %>          
+            <%= f.label :email %>
+            <%= f.email_field :email, class:"form-control mb-3" %>
+            <%= f.submit "登録", class:"btn btn-primary btn-block mt-5"%>
+          <% end %>
           <% if @user.errors.any? %>
-          <ul id="error_explanation" class="alert alert-warning mt-3">
+            <ul id="error_explanation" class="alert alert-warning mt-3">
               <% @user.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
-          </ul>
-        <% end %>
+            </ul>
+          <% end %>
       </div>
-    <% end %>
   </div>
 </div>
