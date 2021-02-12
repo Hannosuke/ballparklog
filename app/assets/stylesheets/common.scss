@@ -176,7 +176,7 @@ ul {
 
 
 /*---新規投稿作成ページ---*/
-.log-form-top {
+.log-form-bg {
    height: 700px;
    background-size: cover;
    background-image: image-url('ballpark-img.jpeg');
@@ -207,11 +207,26 @@ ul {
 /*---投稿詳細ページ---*/
 .log-show-bg {
    background-image: image-url('ballpark-img.jpeg');
-   height: 900px;
    width: 100%;
    background-size: cover;
+   background-attachment: fixed;
+}
+
+.log-show-body {
+   background-color: white;
+   width: 1000px;
+   margin-top: 60px;
+   margin-bottom: 80px;
 }
 
 .log-show-header {
    height: 50px;
+}
+
+.log-show-result {
+   font-size:4em;
+	line-height:0.95em;
+	font-weight:bold;
+	color: #FFF;
+	text-shadow: 0 0 0.1em rgba(0,0,0,1);
 }

@@ -2,15 +2,15 @@
   <div class="bg-mask"></div>
 </div>
 
-<!--投稿一覧-->
+<%# 投稿一覧 %>
 <div class="index-body container">
-  <div class="row mx-auto pt-4"> 
+  <div class="row mx-auto py-4"> 
     <% @ballpark_logs.each do |ballpark_log| %>
       <div class="col-xs-12 col-md-6 col-lg-3 mt-3">
-        <!--投稿カード-->
+        <%# 投稿カード %>
         <div class="index-card card mb-4 border-0">
           <div class="card-body p-2">
-            <!--アイコン画像とユーザ名-->
+            <%# アイコン画像とユーザー名 %>
             <div class="index-card-header row">
               <div class="col-3">
                 <% if ballpark_log.user.image.attached? %>
@@ -24,7 +24,7 @@
               </div>
             </div>
 
-            <!--画像-->
+            <%# 添付画像 %>
             <div class="index-card-image mt-1">
               <% if ballpark_log.image.attached? %>
                 <%= image_tag ballpark_log.image, class:"bd-placeholder-img card-img-top", width:"100%", height:"140" %>
@@ -32,12 +32,12 @@
                 <%= image_tag "no-image.png", width:"100%", height:"140" %>
               <% end %>
             </div>
-            <!--試合結果-->
+            <%# 試合結果 %>
             <div class="index-card-label row mt-3 mx-0">
               <div class="col-4 p-0 d-flex align-items-center justify-content-end">
                   <p class="index-team m-0"><%= ballpark_log.game.visitor_team.initial%></p>
               </div>
-              <div class="col-4 p-0 text-center d-flex align-items-center justify-content-center">
+              <div class="col-4 p-0 d-flex align-items-center justify-content-center">
                 <div>
                   <span><%= ballpark_log.game.visitor_score%></span>
                   <span>-</span>
@@ -48,12 +48,12 @@
                   <p class="index-team m-0"><%= ballpark_log.game.home_team.initial%></p>
               </div>
             </div>
-            <!---投稿タイトル--->
+            <%# 投稿タイトル %>
             <div class="index-card-content d-flex justify-content-center mt-2 px-2">
               <%= link_to(ballpark_log.title.truncate(30), ballpark_log, class:"noline black-link") %>
             </div>
 
-            <!---いいねボタン--->
+            <%# いいねボタン %>
             <div class="index-card-footer row justify-content-between mt-4">
               <div class="col-4">
                 <% if current_user %>
@@ -64,10 +64,10 @@
                       <% end %>
                     <% else %>
                       <i id="like_button" class="far fa-thumbs-up" ></i>
-                        <!----jqueryに変数を渡す--->
+                       <%# jpueryに変数を渡す %>
                         <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="current-user-id" >
                         <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="ballparklog-id" >
-                        <!------------------------>
+                        <%# -------------- %>
                     <% end %>
                     <%= ballpark_log.count_likes %>
                   </div>
