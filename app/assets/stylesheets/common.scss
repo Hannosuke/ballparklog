@@ -1,11 +1,3 @@
-/*--header--*/
-.header {
-   background-color: rgb(34, 35, 37);
-   height: 80px;
-}
-
-
-
 /*--全体--*/
 .logo {
    color: white;
@@ -76,6 +68,14 @@ ul {
 
 
 
+/*--header--*/
+.header {
+   background-color: rgb(34, 35, 37);
+   height: 80px;
+}
+
+
+
 /*----投稿一覧画面----*/
 .index-top-bg {
    background-image: image-url('ballpark-img.jpeg');
@@ -132,10 +132,11 @@ ul {
 
 
 /*---ユーザ詳細ページ---*/
-.show-top {
-   height: 510px;
-   background-size: cover;
+.user-show-bg {
    background-image: image-url('ballpark-img.jpeg');
+   background-size: cover;
+   height: 100%;
+   background-attachment: fixed;
 }
 
 .bg-mask {
@@ -143,14 +144,20 @@ ul {
    background: rgba(41, 42, 44, 0.76);
 }
 
-.show-top h1 {
+.user-show-result {
+   height: 500px;
+   margin: auto;
+   height: 600px;
+   margin-bottom: 50px;
+}
+
+.user-show-result h1 {
    opacity: 0.9;
 }
 
-.show-contents {
-   width: 600px;
-   height: 300px;
-   margin: auto;
+.user-show-result-box {
+   width: 900px;
+   height: 450px;
 }
 
 .opacity-form {
@@ -167,10 +174,13 @@ ul {
 .user-show-body {
    background-color: white;
    opacity: 0.95;
-   height: 100%;
-   max-width: 700px;
+   width: 900px;
    padding: 30px;
    margin: auto;
+}
+
+.user-show-index-item {
+   height: 70px;
 }
 
 
