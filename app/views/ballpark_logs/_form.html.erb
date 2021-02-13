@@ -1,30 +1,42 @@
 <div class="log-form-body mt-3">
   <div class="form-group">
-    <input type="text" id="datepicker" value="&#xf073;" class="form-control far mt-4 mb-4"> 
     <%= form_with(model: ballpark_log, local: true) do |f| %>
-      <div class="mb-4">
-        <%= f.collection_select :stadium_id, Stadium.all, :id, :name, {include_blank: "球場"}, {class:"game-date form-control"}%>   
+      <div class="row">
+        <div class="mb-4 col-4">
+          <label class="mb-1">観戦日</label>
+          <input type="text" id="datepicker" value="&#xf073;" class="form-control far" >
+        </div>
+          <div class="mb-4 mr-0 col-8">
+            <%= f.label :stadium_id, class:"mb-1" %>
+            <%= f.collection_select :stadium_id, Stadium.all, :id, :name, {include_blank: true}, {class:"form-control"}%>   
+          </div>
+      </div>
+      <div class="row">
+        <div class="mb-4 col-7">
+          <%= f.label :game_id, class:"mb-1"%>
+          <select name="ballpark_log[game_id]" id="ballpark_log_game_id" class="game-select form-control">
+            <option>観戦日を選択してください</option>
+          </select>
+        </div>
+        <div class="mb-4 col-5">
+          <%= f.label :result, class:"mb-1" %>
+          <%= f.select :result, [["WIN", "WIN"], ["LOSE", "LOSE"],["DRAW", "DRAW"]], {include_blank: true}, class:"form-control" %>
+        </div>
       </div>
       <div class="mb-4">
-        <select name="ballpark_log[game_id]" id="ballpark_log_game_id" class="game-select form-control">
-          <option>試合</option>
-        </select>
-      </div>
-      <div class="mb-4">
-        <%= f.select :result, [["WIN", "WIN"], ["LOSE", "LOSE"],["DRAW", "DRAW"]], {include_blank: "勝敗"}, class:"form-control" %>
-      </div>
-      <div class="mb-4">
+        <%= f.label :title, class:"mb-1"%>
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">
               <i class="fas fa-baseball-ball"></i>
             </span>
           </div>
-          <%= f.text_field :title, class:"form-control", placeholder: "タイトル" %>
+          <%= f.text_field :title, class:"form-control", placeholder: "今年初勝利！ホームランも見られて最高だった！" %>
         </div>
       </div>
       <div class="mb-4">
-        <%= f.text_area :description, class:"form-control", placeholder: "メモ" %>
+        <%= f.label :description, class:"mb-1" %> 
+        <%= f.text_area :description, class:"form-control", placeholder: "先発が抑えて、キャプテンのホームランで先制して、中押しダメ押しで試合を決める理想的な勝ちだった！あと唐揚げビールセットが美味しかった！" %>
       </div>
       <div class="log-image-btn mb-4">
         <%= f.label :image, class:"d-block" do%>
@@ -36,7 +48,7 @@
         <%# <div id="preview"></div> %>
       </div>
 
-      <%= f.submit "登録する", class:"btn btn-primary btn-block btn-lg mt-4 mb-4"%>
+      <%= f.submit "登録する", class:"btn btn-primary btn-block btn-lg mt-5 mb-4"%>
     <% end %>
     <% if @ballpark_log.errors.any? %>
       <ul id="error_explanation" class="alert alert-warning border border-0">

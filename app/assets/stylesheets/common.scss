@@ -77,16 +77,15 @@ ul {
 
 
 /*----投稿一覧画面----*/
-.index-top-bg {
+.index-bg {
    background-image: image-url('ballpark-img.jpeg');
-   height: 620px;
-   width: 100%;
    background-size: cover;
-   z-index: 0;
+   height: 100%;
+   background-attachment: fixed;
 }
 
-.index-body {
-   background-color: rgb(51, 54, 59);
+.index-top {
+   height: 620px;
 }
 
 .index-icon {
@@ -187,9 +186,10 @@ ul {
 
 /*---新規投稿作成ページ---*/
 .log-form-bg {
-   height: 700px;
-   background-size: cover;
    background-image: image-url('ballpark-img.jpeg');
+   background-size: cover;
+   height: 100%;
+   background-attachment: fixed;
 }
 
 .bg-mask {
@@ -197,11 +197,17 @@ ul {
    background: rgba(41, 42, 44, 0.76);
 }
 
+.log-form-title {
+   margin-top: 70px;
+   margin-bottom: 50px;
+}
+
 .log-form-body {
    background-color: white;
    opacity: 0.94;
    width: 850px;
    padding: 30px;
+   margin-bottom: 100px;
 }
 
 .log-image-btn :hover {
