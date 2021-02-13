@@ -16,17 +16,14 @@ $("#datepicker").datepicker({
   monthNames: [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],
   showAnim: "fadeIn",
 
-
   //日付が変更された時のイベント設定
   onSelect: (dateText) => {
   var selectDate = new Date (dateText);
   var year = selectDate.getFullYear();
   var month = ("0" + (selectDate.getMonth() + 1)).slice(-2);
-  var day = ("0" + (selectDate.getDate())).slice(-2);
-  
+  var day = ("0" + (selectDate.getDate())).slice(-2); 
   var gameDate = `${year}-${month}-${day}`
 
-  //ajax処理を記述  
   $.ajax({
     type: "GET",
     url: `/api/games`,
@@ -34,7 +31,6 @@ $("#datepicker").datepicker({
     dataType:"json",
   })
 
-  //成功処理を記述
   .done((data) => {
     $(".game-select option").remove();
     $(data).each((i,game) => {
@@ -48,6 +44,14 @@ $("#datepicker").datepicker({
 
 
 
+//画像プレビュー
+  // $("#ballpark_log_image").on("change", () => {
+  //     var fileReader = new FileReader();
+  //     fileReader.onload = ( function () {
+  //       document.getElementById("preview").src = fileReader.result;
+  //     })
+  //     console.log(fileReader);
+  //   });
 
 
 //いいねボタン
