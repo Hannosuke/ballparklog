@@ -106,6 +106,22 @@ ul {
    height: 35px;
 }
 
+.index-pagination {
+   height: 150px;
+}
+
+.pagination>li>a {    
+   background-color: rgb(34, 35, 37);      
+   border: none;
+   color: white;
+   margin-right: 8px;
+ }
+ 
+ .pagination>li>a:hover {        
+   background-color: white;
+   color: rgb(34, 35, 37);
+ }
+
 
 
 /*----新規ユーザー登録ページ----*/
