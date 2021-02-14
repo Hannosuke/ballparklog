@@ -23,7 +23,7 @@ class User < ApplicationRecord
     end
 
     def winning_percentage
-        all_games = ballpark_logs.all.size
+        all_games = (ballpark_logs.all.size) - (ballpark_logs.where(result: "draw").size)
         sprintf("%.3f", count_win / all_games.to_f)
     end
 end
