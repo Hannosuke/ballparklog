@@ -82,6 +82,10 @@
           </div>
         <% end %>
       </div>
+      <%# ページネーション %>
+      <div class="index-pagination d-flex justify-content-center">
+        <%= paginate @ballpark_logs%>
+      </div>
     </div>
   </div>
 </div>

@@ -1,7 +1,7 @@
 class BallparkLogsController < ApplicationController
 
   def index
-    @ballpark_logs = BallparkLog.all
+    @ballpark_logs = BallparkLog.all.page(params[:page]).per(16)
   end
 
   def show
