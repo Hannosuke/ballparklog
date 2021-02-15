@@ -136,6 +136,7 @@ ul {
    opacity: 0.94;
    width: 850px;
    padding: 30px;
+   margin-bottom: 80px;
 }
 
 
@@ -143,13 +144,22 @@ ul {
 
 
 /*----ログインページ----*/
+.login-form-bg {
+   background-image: image-url('ballpark-img.jpeg');
+   background-size: cover;
+   height: 100%;
+   background-attachment: fixed;
+}
+
+.login-form-wrapper {
+   padding-bottom: 100px;
+}
+
 .login-form {
    background-color: white;
    opacity: 0.94;
    width: 850px;
-   height: 450px;
-   padding: 30px 30px 60px 30px;
-   margin-top: 80px;
+   padding: 50px 30px 60px 30px;
 }
 
 
@@ -190,6 +200,10 @@ ul {
    background-color: rgba(0, 0, 0, 0);
 }
 
+.user-show-body-wrapper {
+   padding-bottom: 80px;
+}
+
 .show-icon {
    height: 70px;
    width: 70px;
@@ -226,7 +240,7 @@ ul {
 }
 
 .log-form-title {
-   margin-top: 70px;
+   margin-top: 60px;
    margin-bottom: 50px;
 }
 
