@@ -1,5 +1,6 @@
 class BallparkLogsController < ApplicationController
   before_action :authenticate_user,{only:[:new,:create,:edit,:update,:delete]}
+  before_action :ensure_correct_user,{only:[:edit,:update,:destroy]}
 
   def index
     @ballpark_logs = BallparkLog.all.page(params[:page]).per(16)
@@ -53,5 +54,13 @@ class BallparkLogsController < ApplicationController
 
     def update_ballpark_log_params
       params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :game_id, :result)
+    end
+
+    def ensure_correct_user
+      @ballpark_log = BallparkLog.find(params[:id])
+      if @ballpark_log.user_id != current_user.id
+        flash[:notice] = "権限がありません"
+        redirect_to("/")
+      end
     end
 end
