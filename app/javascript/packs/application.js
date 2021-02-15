@@ -45,13 +45,23 @@ $("#datepicker").datepicker({
 
 
 //画像プレビュー
-  // $("#ballpark_log_image").on("change", () => {
-  //     var fileReader = new FileReader();
-  //     fileReader.onload = ( function () {
-  //       document.getElementById("preview").src = fileReader.result;
-  //     })
-  //     console.log(fileReader);
-  //   });
+  $("#ballpark_log_image").on("change", (e) => {
+    var file = e.target.files[0];
+    var reader = new FileReader;
+    if(file.type.indexOf("image")<0) {
+      alert("画像ファイルを指定してください")
+      return;
+    }
+    reader.onload = (function(file){
+      return function(e){
+        $("#preview").attr("src", e.target.result);
+      };
+    })(file);
+    reader.readAsDataURL(file)
+  });
+
+
+
 
 
 //いいねボタン
