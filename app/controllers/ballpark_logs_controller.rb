@@ -1,4 +1,5 @@
 class BallparkLogsController < ApplicationController
+  before_action :authenticate_user,{only:[:new,:create,:edit,:update,:delete]}
 
   def index
     @ballpark_logs = BallparkLog.all.page(params[:page]).per(16)
