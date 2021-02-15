@@ -24,7 +24,6 @@
             <div class="row">
             <p class="col-2"><%= @ballpark_log.game.date.strftime("%Y年%-m月%d日")%></p>
             <p class="col-10 d-flex justify-content-strat"><%= @ballpark_log.stadium.name %></p>
-        
             </div>
             <div>
                 <div class="row text-center">
@@ -48,7 +47,13 @@
                         <p class="badge  badge-pill badge-dark">VISITOR</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-center justify-content-center">
-                        <p class="log-show-result mb-0 text-uppercase"><%= @ballpark_log.result %></p>
+                        <% if @ballpark_log.result == "win" %>
+                            <p class="log-show-result log-show-win mb-0 text-uppercase"><%= @ballpark_log.result %></p>
+                        <% elsif @ballpark_log.result == "lose" %>
+                            <p class="log-show-result log-show-lose mb-0 text-uppercase"><%= @ballpark_log.result %></p>
+                        <% else %>
+                            <p class="log-show-result log-show-draw mb-0 text-uppercase"><%= @ballpark_log.result %></p>
+                        <% end%>
                     </div>
                     <div class="col-md-4">
                         <p class="badge badge-pill badge-light">HOME</p>
