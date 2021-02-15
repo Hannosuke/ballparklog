@@ -131,12 +131,24 @@ ul {
 
 
 /*----新規ユーザー登録ページ----*/
-.user-new-form {
+.user-form-bg {
+   background-image: image-url('ballpark-img.jpeg');
+   background-size: cover;
+   height: 100%;
+   background-attachment: fixed;
+}
+
+.user-form {
    background-color: white;
    opacity: 0.94;
    width: 850px;
    padding: 30px;
    margin-bottom: 80px;
+}
+
+.user-form-title {
+   margin-top: 60px;
+   margin-bottom: 50px;
 }
 
 
@@ -162,6 +174,10 @@ ul {
    padding: 50px 30px 60px 30px;
 }
 
+.login-form-title {
+   margin-top: 60px;
+   margin-bottom: 50px;
+}
 
 
 
