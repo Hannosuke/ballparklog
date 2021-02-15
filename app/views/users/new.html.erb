@@ -1,10 +1,10 @@
 <div class="log-form-bg">
-  <div class="bg-mask d-flex justify-content-center align-items-center">
+  <div class="bg-mask d-flex justify-content-center">
+    <div>
+      <div class="text-center  log-form-title">
+        <h1 class="text-white">SIGN UP</h1>
+      </div>
       <div class="user-new-form">
-        <div class="text-center mb-4">
-          <h1 class="h3 font-weight-normal">SIGN UP</h1>
-        </div>
-        
         <div class="form-group">
           <%= form_with(model: @user, local: true) do |f| %>
             <%= f.label :name%>
@@ -18,8 +18,8 @@
             <%= f.label :パスワード%>
             <%= f.password_field :password, class:"form-control mb-3" %>
             <%= f.label :"パスワード(確認)" %>
-            <%= f.password_field :password_confirmation, class:"form-control mb-4" %>
-            <%= f.submit "登録", class:"btn btn-primary btn-block mt-2"%>
+            <%= f.password_field :password_confirmation, class:"form-control mb-5" %>
+            <%= f.submit "登録", class:"btn btn-primary btn-block"%>
           <% end %>
           <% if @user.errors.any? %>
             <ul id="error_explanation" class="alert alert-warning mt-3">
@@ -29,6 +29,7 @@
             </ul>
           <% end %>
         </div>
-        
+      </div>
+    </div>      
   </div>
 </div>

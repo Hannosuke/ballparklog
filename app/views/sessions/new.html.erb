@@ -1,24 +1,25 @@
-<div class="log-form-bg">
+<div class="login-form-bg">
     <div class="bg-mask d-flex justify-content-center">
-        <div class="login-form">
-        <div class="text-center mb-5">
-            <h1 class="h3 font-weight-normal">SIGN UP</h1>
-        </div>
-        
-        <div class="form-group">
-            <%= form_with(scope: :session, url: login_path, local: true) do |f|%>
-                <div class="form-lagel-group">
-                    <%= f.label :メールアドレス%>
-                    <%= f.email_field :email, class:"form-control mb-5", placeholder: "メールアドレス"%>
-                </div>
+        <div class="login-form-wrapper">
+            <div class="text-center log-form-title">
+                <h1 class="text-white">SIGN IN</h1>
+            </div>
+            <div class="login-form">
+                <div class="form-group">
+                    <%= form_with(scope: :session, url: login_path, local: true) do |f|%>
+                        <div class="form-lagel-group">
+                            <%= f.label :メールアドレス%>
+                            <%= f.email_field :email, class:"form-control mb-5", placeholder: "メールアドレス"%>
+                        </div>
 
-                <div class="form-lagel-group">
-                    <%= f.label :パスワード%>
-                    <%= f.password_field :password, class:"form-control mb-5", placeholder: "パスワード"%>
+                        <div class="form-lagel-group">
+                            <%= f.label :パスワード%>
+                            <%= f.password_field :password, class:"form-control mb-5", placeholder: "パスワード"%>
+                        </div>
+                        <%= f.submit "ログイン", class: "mt-2 btn btn-primary btn-block"%>
+                    <% end %>  
                 </div>
-                <%= f.submit "ログイン", class: "mt-2 btn btn-primary btn-block"%>
-            <% end %>
-            
+            </div>
         </div>
     </div>
 </div>
