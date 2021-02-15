@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user,{only:[:edit,:update]}
   before_action :forbid_login_user,{only:[:new,:create]}
+  before_action :ensure_correct_user,{only:[:edit,:update]}
 
   def new
     @user = User.new
@@ -36,6 +37,10 @@ class UsersController < ApplicationController
     @likes = Like.where(user_id: @user.id)
   end
 
+  
+
+
+
   private
 
   def user_params
@@ -44,5 +49,12 @@ class UsersController < ApplicationController
   
   def update_user_params
     params.require(:user).permit(:name, :email, :image, favorite_team_attributes: [:team_id, :_destroy, :id])
+  end
+
+  def ensure_correct_user
+    if current_user.id != params[:id].to_i
+      flash[:notice] = "権限がありません"
+      redirect_to("/")
+    end
   end
 end
