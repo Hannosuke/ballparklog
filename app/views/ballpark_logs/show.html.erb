@@ -21,32 +21,32 @@
             <h1 class="text-center border-bottom pt-4 pb-1"><%= @ballpark_log.title %></h1>
 
             <%# 試合結果 %>
-            <div class="row">
-            <p class="col-2"><%= @ballpark_log.game.date.strftime("%Y年%-m月%d日")%></p>
-            <p class="col-10 d-flex justify-content-strat"><%= @ballpark_log.stadium.name %></p>
+            <div class="row mb-4">
+                <p class="col-2"><%= @ballpark_log.game.date.strftime("%Y年%-m月%d日")%></p>
+                <p class="col-10 d-flex justify-content-strat"><%= @ballpark_log.stadium.name %></p>
             </div>
-            <div>
+            <div class="mb-4">
                 <div class="row text-center">
-                    <div class="col-4 d-flex align-items-center justify-content-center">
-                        <h3><%= @ballpark_log.game.visitor_team.name%></h3>
+                    <div class="col-5 p-0 d-flex align-items-center justify-content-center">
+                        <h4 class="m-0"><%= @ballpark_log.game.visitor_team.name%></h4>
                     </div>
-                    <div class="col-4 d-flex align-items-center justify-content-center">
-                        <div class="row">
-                            <span class="h1 col-4 m-0"><%= @ballpark_log.game.visitor_score%></span>
+                    <div class="col-2 d-flex align-items-center justify-content-center">
+                        <div class="row d-flex align-items-center">
+                            <span class="h2 col-4 m-0"><%= @ballpark_log.game.visitor_score%></span>
                             <span class="h2 col-4 m-0 pt-1">-</span>
-                            <span class="h1 col-4 m-0"><%= @ballpark_log.game.home_score%></span>
+                            <span class="h2 col-4 m-0"><%= @ballpark_log.game.home_score%></span>
                         </div>
                     </div>
-                    <div class="col-4 d-flex align-items-center justify-content-center">
-                        <h3><%= @ballpark_log.game.home_team.name%></h3>
+                    <div class="col-5 d-flex align-items-center justify-content-center">
+                        <h4 class="m-0"><%= @ballpark_log.game.home_team.name%></h4>
                     </div>
                 </div>
 
                 <div class="row text-center">
-                    <div class="col-md-4">
+                    <div class="col-5">
                         <p class="badge  badge-pill badge-dark">VISITOR</p>
                     </div>
-                    <div class="col-md-4 d-flex align-items-center justify-content-center">
+                    <div class="col-2 mt-2 d-flex align-items-center justify-content-center">
                         <% if @ballpark_log.result == "win" %>
                             <p class="log-show-result log-show-win mb-0 text-uppercase"><%= @ballpark_log.result %></p>
                         <% elsif @ballpark_log.result == "lose" %>
@@ -55,8 +55,8 @@
                             <p class="log-show-result log-show-draw mb-0 text-uppercase"><%= @ballpark_log.result %></p>
                         <% end%>
                     </div>
-                    <div class="col-md-4">
-                        <p class="badge badge-pill badge-light">HOME</p>
+                    <div class="col-5">
+                        <p class="badge badge-pill badge-light border border-dark">HOME</p>
                     </div>
                 </div>
             </div>

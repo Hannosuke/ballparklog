@@ -65,14 +65,12 @@ $("#datepicker").datepicker({
 
 
 //いいねボタン
-$("#like_button").on("click", (event) => {
+$(".like-btn").each( (i) => {
+  $(`.like-btn:eq(${i})`).on("click", (event) => {
     event.preventDefault();
-    // TODO: user_idを取得する
-    var likeUserId = $(".current-user-id").val();
-    // TODO: ballpark_log_idを取得する
-    var likeLogId = $(".ballparklog-id").val();
-
-    // TODO: Ajax処理を書く 参考 http://semooh.jp/jquery/api/ajax/jQuery.ajax/options/
+    var likeUserId = $(`.current-user-id:eq(${i})`).val();
+    var likeLogId = $(`.ballparklog-id:eq(${i})`).val();
+    
     $.ajax({
       type: "POST",
       url: `/ballpark_logs/${likeLogId}/likes`,
@@ -83,11 +81,12 @@ $("#like_button").on("click", (event) => {
         }
       }
     })
-    // TODO: リクエストに成功した場合にいいねボタンに色をつけ、数字を変更する処理を書く
-    .done((res) => {
-      $("#like_button").text("いいね済");
+    
+    .done(() => {
+      $(`.like-btn:eq(${i})`).text("いいね済");
     })
   })
+});
   
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
