@@ -52,41 +52,41 @@
 
             <div class="tab-content" id="myTabContent">
               <%# 自分の投稿 %>
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="tab-pane fade show active px-5" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <% @user.ballpark_logs.each do |ballpark_log| %>
                     <div class="user-show-index-item row py-2 px-4 d-flex align-items-center">
-                        <div class="col-1"><%= ballpark_log.game.date.strftime("%-m/%d")%></div>
-                        <div class="col-1">
-                          <% if ballpark_log.result == "win" %>
-                            <p class="m-0">○</p>
-                          <% elsif ballpark_log.result == "lose" %>
-                            <p class="m-0">●</p>
-                          <% else %>
-                            <p class="m-0">-</p>
-                          <% end%>
+                      <div class="col-1"><%= ballpark_log.game.date.strftime("%-m/%d")%></div>
+                      <div class="col-1">
+                        <% if ballpark_log.result == "win" %>
+                          <p class="m-0">○</p>
+                        <% elsif ballpark_log.result == "lose" %>
+                          <p class="m-0">●</p>
+                        <% else %>
+                          <p class="m-0">-</p>
+                        <% end%>
+                      </div>
+                      <div class="col-2 p-0 row"> 
+                        <div class="col-md-4 d-flex justify-content-end">
+                          <%= ballpark_log.game.visitor_team.initial%>
                         </div>
-                        <div class="col-3 row"> 
-                          <div class="col-md-4 d-flex justify-content-end">
-                            <%= ballpark_log.game.visitor_team.initial%>
-                          </div>
-                          <div class="col-md-4 row d-flex justify-content-center p-0">
-                              <%= ballpark_log.game.visitor_score%>
-                              <span> - </span>
-                              <%= ballpark_log.game.home_score%>
-                          </div>
-                          <div class="col-md-5 d-flex justify-content-start">
-                            <%= ballpark_log.game.home_team.initial%>
-                          </div>
+                        <div class="col-md-4 row d-flex justify-content-center p-0">
+                            <%= ballpark_log.game.visitor_score%>
+                            <span> - </span>
+                            <%= ballpark_log.game.home_score%>
                         </div>
-                        <div class="col-5 text-left">
-                          <%= link_to(ballpark_log.title.truncate(36), ballpark_log, class:"noline black-link") %>
+                        <div class="col-md-5 d-flex justify-content-start">
+                          <%= ballpark_log.game.home_team.initial%>
                         </div>
-                        <% if current_user == @user %>
-                          <div class="col-2 btn-group">
-                            <%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-outline-secondary btn-sm") %>
-                            <%= link_to("削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" }, class:"btn btn-outline-danger btn-sm") %>
-                          </div>
-                        <% end %>
+                      </div>
+                      <div class="col-6 text-left">
+                        <%= link_to(ballpark_log.title.truncate(36), ballpark_log, class:"noline black-link") %>
+                      </div>
+                      <% if current_user == @user %>
+                        <div class="col-2 btn-group">
+                          <%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-outline-secondary btn-sm") %>
+                          <%= link_to("削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" }, class:"btn btn-outline-danger btn-sm") %>
+                        </div>
+                      <% end %>
                     </div>
                     <% end %>
               </div>

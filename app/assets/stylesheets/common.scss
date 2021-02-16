@@ -12,6 +12,11 @@
    text-decoration: none;
 }
 
+.bg-mask {
+   height:100%;
+   background-color: rgba(41, 42, 44, 0.76);
+}
+
 .footer-fixed{
    min-height: 100vh; /* コンテンツの高さの最小値＝ブラウザの高さに指定 */
    position: relative;
@@ -110,6 +115,10 @@ ul {
    height: 35px;
 }
 
+.fa-thumbs-up {
+   cursor: pointer;
+}
+
 .index-pagination {
    height: 150px;
 }
@@ -190,10 +199,7 @@ ul {
    background-attachment: fixed;
 }
 
-.bg-mask {
-   height:100%;
-   background: rgba(41, 42, 44, 0.76);
-}
+
 
 .user-show-result {
    height: 500px;
@@ -248,11 +254,6 @@ ul {
    background-size: cover;
    height: 100%;
    background-attachment: fixed;
-}
-
-.bg-mask {
-   height:100%;
-   background: rgba(41, 42, 44, 0.76);
 }
 
 .log-form-title {
