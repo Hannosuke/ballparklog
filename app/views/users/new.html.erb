@@ -1,17 +1,17 @@
 <div class="user-form-bg">
   <div class="bg-mask d-flex justify-content-center">
-    <div>
+    <div class="text-dark">
       <div class="text-center  user-form-title">
-        <h1 class="text-white">SIGN UP</h1>
+        <h1 class="text-white bolder">SIGN UP</h1>
       </div>
-      <div class="user-form">
+      <div class="user-form bolder">
         <div class="form-group">
           <%= form_with(model: @user, local: true) do |f| %>
             <%= f.label :name%>
             <%= f.text_field :name, class:"form-control mb-3" %>
             <%= f.label :お気に入りチーム %>
             <%= f.fields_for :favorite_team do |fav|%>
-              <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control mb-3"} %>
+              <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control mb-3 pl-2"} %>
             <% end %>          
             <%= f.label :email %>
             <%= f.email_field :email, class:"form-control mb-3" %>
@@ -19,7 +19,7 @@
             <%= f.password_field :password, class:"form-control mb-3" %>
             <%= f.label :"パスワード(確認)" %>
             <%= f.password_field :password_confirmation, class:"form-control mb-5" %>
-            <%= f.submit "登録", class:"btn btn-primary btn-block"%>
+            <%= f.submit "登録", class:"btn btn-primary btn-block bolder"%>
           <% end %>
           <% if @user.errors.any? %>
             <ul id="error_explanation" class="alert alert-warning mt-3">

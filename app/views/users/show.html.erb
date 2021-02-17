@@ -4,10 +4,10 @@
       <%# 観戦成績 %>
       <div class="border user-show-result-box d-flex align-items-center justify-content-center">
         <div>
-          <h1 class="text-white pt-4"><%= @user.count_win %>勝<%= @user.count_lose %>敗  <%= @user.winning_percentage %></h1>
+          <h1 class="text-white pt-4 bolder"><%= @user.count_win %>勝<%= @user.count_lose %>敗  <%= @user.winning_percentage %></h1>
           <div class="form-group">
             <label>
-              <select class="form-control border-0 opacity-form">
+              <select class="form-control border-0 opacity-form bolder">
                 <option value="">2020年〜</option>
                 <option value="">2019年〜2020年</option>
                 <option value="">ALL</option>
@@ -29,11 +29,11 @@
           <% else %>
             <%= image_tag "no-image-icon.jpeg", class:"show-icon mr-4"%>
           <% end %>
-          <div class="h4 my-0 mr-3 font-weight-normal"><%= @user.name %></div>
-          <p class="mr-md-auto"><%= @user.favteam %></p>
+          <div class="h4 my-0 mr-3 bolder"><%= @user.name %></div>
+          <p class="mr-md-auto bolder"><%= @user.favteam %></p>
           <nav class="my-2 my-md-0 mr-md-3">
             <% if current_user&.id == @user.id %>
-                <%= link_to("設定", edit_user_path, class:"btn btn-outline-secondary")%>
+                <%= link_to("設定", edit_user_path, class:"btn btn-outline-secondary bolder")%>
             <% end %>
           </nav>
         </div>
@@ -41,7 +41,7 @@
         <div class="user-show-body-index mt-5">
           <div class="mb-5 shadow-sm">
             <%# 投稿・Likeタブ %>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs bolder" id="myTab" role="tablist">
               <li class="nav-item w-50">
                 <a class="nav-link rounded-0 text-center active black-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Log</a>
               </li>
@@ -55,8 +55,8 @@
               <div class="tab-pane fade show active px-5" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <% @user.ballpark_logs.each do |ballpark_log| %>
                     <div class="user-show-index-item row py-2 px-4 d-flex align-items-center">
-                      <div class="col-1"><%= ballpark_log.game.date.strftime("%-m/%d")%></div>
-                      <div class="col-1">
+                      <div class="col-1 bolder"><%= ballpark_log.game.date.strftime("%-m/%d")%></div>
+                      <div class="col-1 bolder">
                         <% if ballpark_log.result == "win" %>
                           <p class="m-0">○</p>
                         <% elsif ballpark_log.result == "lose" %>
@@ -65,7 +65,7 @@
                           <p class="m-0">-</p>
                         <% end%>
                       </div>
-                      <div class="col-2 p-0 row"> 
+                      <div class="col-2 p-0 row bolder"> 
                         <div class="col-md-4 d-flex justify-content-end">
                           <%= ballpark_log.game.visitor_team.initial%>
                         </div>
@@ -106,7 +106,7 @@
                             <%= image_tag "no-image-icon.jpeg", class:"index-icon mr-4"%>
                           <% end %>
                         </td>
-                        <td><%= link_to(like_ballpark_log.user.name, user_path(like_ballpark_log.user_id), class:"noline black-link") %></td>
+                        <td><%= link_to(like_ballpark_log.user.name, user_path(like_ballpark_log.user_id), class:"noline black-link bolder") %></td>
                         <td><%= link_to(like_ballpark_log.title, like_ballpark_log, class:"noline black-link") %></td>
                       </tr>
                     <% end %>
