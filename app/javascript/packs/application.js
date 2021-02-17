@@ -88,7 +88,7 @@ $(".like-btn").each( (i) => {
     })
     
     .done(() => {
-      $(`.like-btn:eq(${i})`).text("いいね済");
+      $(`.like-btn:eq(${i})`).replaceWith('<i class="fas fa-thumbs-up text-primary"></i>');
     })
   })
 });
