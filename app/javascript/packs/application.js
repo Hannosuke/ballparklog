@@ -88,11 +88,42 @@ $(".like-btn").each( (i) => {
     })
     
     .done(() => {
-      $(`.like-btn:eq(${i})`).text("いいね済");
+      $(`.like-btn:eq(${i})`).replaceWith('<i class="dislike-btn fas fa-thumbs-up text-primary"></i>');
     })
   })
 });
-  
+
+
+
+//いいね取り消しボタン
+$(".dislike-btn").each( (i) => {
+  $(`.dislike-btn:eq(${i})`).on("click", (event) => {
+    event.preventDefault();
+    var likeUserId = $(`.current-user-id:eq(${i})`).val();
+    var likeLogId = $(`.ballparklog-id:eq(${i})`).val();
+    
+    $.ajax({
+      type: "DELETE",
+      url: `/ballpark_logs/${likeLogId}/likes/${likeUserId}`,
+      data: {
+        like: {
+          user_id: likeUserId,
+          ballpark_log_id: likeLogId,
+          "_method": "DELETE"
+        }
+      }
+    })
+    
+    .done(() => {
+      $(`.dislike-btn:eq(${i})`).replaceWith('<i class="like-btn fas fa-thumbs-up text-primary"></i>');
+    })
+  })
+});
+
+
+
+
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
