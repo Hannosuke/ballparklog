@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ballparklog</title>
+    <title>BallparkLog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,7 +15,7 @@
   <body>
     <div class="footer-fixed">
       <nav class="header navbar navbar-expand-lg navbar-dark navbar-light px-4">
-        <h1 class="font-weight-normal"><%= link_to("BallParkLog", "/", class:"noline logo") %></h1>
+        <h1><%= link_to("BallParkLog", "/", class:"noline logo bolder") %></h1>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,19 +25,19 @@
           <div class="my-2 my-lg-0">
             <div class="navbar-nav mr-auto">
               <% if current_user %>
-                <%= link_to("Logを登録", new_ballpark_log_path, class:"p-2 btn btn-outline-light noline")%>
-                <%= link_to("マイページ", user_path(current_user.id), class:"p-2 text-white noline")%>
-                <%= link_to("ログアウト", logout_path, method: :delete, class:"p-2 text-white noline")%>
+                <%= link_to("Logを登録", new_ballpark_log_path, class:"p-2 btn btn-outline-light noline bolder")%>
+                <%= link_to("マイページ", user_path(current_user.id), class:"p-2 text-white noline bolder")%>
+                <%= link_to("ログアウト", logout_path, method: :delete, class:"p-2 text-white noline bolder")%>
               <% else %>
-                <%= link_to("新規登録", new_user_path, class:"btn btn-outline-light mr-2") %>
-                <%= link_to("ログイン", login_path, class:"btn btn-outline-light")%>
+                <%= link_to("新規登録", new_user_path, class:"btn btn-outline-light mr-2 bolder") %>
+                <%= link_to("ログイン", login_path, class:"btn btn-outline-light bolder")%>
               <% end %>
             </div>
           </div>
         </div>
       </nav>
       
-      <div class="notifications">
+      <div class="notifications bolder">
           <% flash.each do |key, value|%>
             <%= content_tag(:div, value, class: key)%>
           <% end %>

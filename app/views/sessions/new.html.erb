@@ -2,9 +2,9 @@
     <div class="bg-mask d-flex justify-content-center">
         <div class="login-form-wrapper">
             <div class="text-center login-form-title">
-                <h1 class="text-white">SIGN IN</h1>
+                <h1 class="text-white bolder">SIGN IN</h1>
             </div>
-            <div class="login-form">
+            <div class="login-form bolder">
                 <div class="form-group">
                     <%= form_with(scope: :session, url: login_path, local: true) do |f|%>
                         <div class="form-lagel-group">
@@ -16,7 +16,7 @@
                             <%= f.label :パスワード%>
                             <%= f.password_field :password, class:"form-control mb-5", placeholder: "パスワード"%>
                         </div>
-                        <%= f.submit "ログイン", class: "mt-2 btn btn-primary btn-block"%>
+                        <%= f.submit "ログイン", class: "mt-2 btn btn-primary btn-block bolder"%>
                     <% end %>  
                 </div>
             </div>

@@ -1,4 +1,4 @@
-<div class="log-form-body mt-3">
+<div class="log-form-body mt-3 bolder">
   <div class="form-group">
     <%= form_with(model: ballpark_log, local: true) do |f| %>
       <div class="row">
@@ -48,7 +48,7 @@
         <img id="preview"/>
       </div>
 
-      <%= f.submit "登録する", class:"btn btn-primary btn-block btn-lg mt-5 mb-4"%>
+      <%= f.submit "登録する", class:"btn btn-primary btn-block btn-lg mt-5 mb-4 bolder"%>
     <% end %>
     <% if @ballpark_log.errors.any? %>
       <ul id="error_explanation" class="alert alert-warning border border-0">

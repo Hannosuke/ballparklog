@@ -19,7 +19,7 @@
                     <% end %>
                   </div>
                   <div class="col-9 d-flex align-items-center justify-content-start pl-0">
-                    <p class="card-text"><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline black-link") %></p>
+                    <p class="card-text bolder"><%= link_to(ballpark_log.user.name,user_path(ballpark_log.user_id), class:"noline black-link") %></p>
                   </div>
                 </div>
 
@@ -32,7 +32,7 @@
                   <% end %>
                 </div>
                 <%# 試合結果 %>
-                <div class="index-card-label row mt-3 mx-0">
+                <div class="index-card-label row mt-3 mx-0 bolder">
                   <div class="col-4 p-0 d-flex align-items-center justify-content-end">
                       <p class="index-team m-0"><%= ballpark_log.game.visitor_team.initial%></p>
                   </div>
@@ -54,9 +54,9 @@
 
                 <%# いいねボタン %>
                 <div class="index-card-footer row justify-content-between mt-4">
-                  <div class="col-4">
+                  <div class="col-5">
                     <% if current_user %>
-                      <div class="ml-3">
+                      <div class="ml-3 bolder">
                         <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
                           <%= link_to(ballpark_log_like_path(ballpark_log.id, current_user.id), method: :delete) do %>
                             <i class="fas fa-thumbs-up"></i>
@@ -66,13 +66,13 @@
                           <%# jpueryに変数を渡す %>
                             <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="current-user-id" >
                             <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="ballparklog-id" >
-                            <%# -------------- %>
+                          <%# -------------- %>
                         <% end %>
                         <%= ballpark_log.count_likes %>
                       </div>
                     <% end %>
                   </div>
-                  <div class="col-8 d-flex justify-content-end">
+                  <div class="col-7 d-flex justify-content-end bolder">
                     <%= ballpark_log.game.date.strftime("%-m月%d日")%>
                   </div>
                 </div>
@@ -83,7 +83,7 @@
         <% end %>
       </div>
       <%# ページネーション %>
-      <div class="index-pagination d-flex justify-content-center">
+      <div class="index-pagination d-flex justify-content-center bolder">
         <%= paginate @ballpark_logs%>
       </div>
     </div>
