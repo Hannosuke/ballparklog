@@ -9,6 +9,9 @@ require("@rails/activestorage").start()
 require("channels")
 
 
+
+
+
 //datepicer
 $("#datepicker").datepicker({
   dateFormat: "yy-m-d",
@@ -41,6 +44,8 @@ $("#datepicker").datepicker({
   })
   }
 })
+
+
 
 
 
