@@ -72,8 +72,9 @@ $("#datepicker").datepicker({
 //いいねボタン
 $(".like-btn").each( (i) => {
   $(`.like-btn:eq(${i})`).on("click", (event) => {
+    debugger
     event.preventDefault();
-    var likeUserId = $(`.current-user-id:eq(${i})`).val();
+    var likeUserId = $(`.current-user-id`).val();
     var likeLogId = $(`.ballparklog-id:eq(${i})`).val();
     
     $.ajax({

@@ -58,16 +58,12 @@
                     <% if current_user %>
                       <div class="ml-3 bolder">
                         <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
-                          <i class="dislike-btn fas fa-thumbs-up text-primary"></i>
-                          <%# jpueryに変数を渡す %>
-                            <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="current-user-id" >
-                            <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="ballparklog-id" >
-                          <%# -------------- %>
+                            <i class="dislike-btn fas fa-thumbs-up text-primary"></i>
                         <% else %>
                           <i class="like-btn far fa-thumbs-up" ></i>
                           <%# jpueryに変数を渡す %>
-                            <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="current-user-id" >
                             <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="ballparklog-id" >
+                            <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="current-user-id" >
                           <%# -------------- %>
                         <% end %>
                         <span class="count-likes">
