@@ -70,7 +70,9 @@
                             <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="ballparklog-id" >
                           <%# -------------- %>
                         <% end %>
-                        <%= ballpark_log.count_likes %>
+                        <span class="count-likes">
+                          <%= ballpark_log.count_likes %>
+                        </span>
                       </div>
                     <% end %>
                   </div>
