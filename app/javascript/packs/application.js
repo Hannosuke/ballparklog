@@ -89,6 +89,10 @@ $(".like-btn").each( (i) => {
     
     .done(() => {
       $(`.like-btn:eq(${i})`).replaceWith('<i class="dislike-btn fas fa-thumbs-up text-primary"></i>');
+      var likecount = $(`.count-likes:eq(${i+3})`).text();
+      var likenum = Number( likecount );
+      var likedcount = ( likenum + 1 );
+      $(`.count-likes:eq(${i+3})`).html(`<span class="count-likes">${likedcount}</span>`)
     })
   })
 });
@@ -96,29 +100,29 @@ $(".like-btn").each( (i) => {
 
 
 //いいね取り消しボタン
-$(".dislike-btn").each( (i) => {
-  $(`.dislike-btn:eq(${i})`).on("click", (event) => {
-    event.preventDefault();
-    var likeUserId = $(`.current-user-id:eq(${i})`).val();
-    var likeLogId = $(`.ballparklog-id:eq(${i})`).val();
+// $(".dislike-btn").each( (i) => {
+//   $(`.dislike-btn:eq(${i})`).on("click", (event) => {
+//     event.preventDefault();
+//     var likeUserId = $(`.current-user-id:eq(${i})`).val();
+//     var likeLogId = $(`.ballparklog-id:eq(${i})`).val();
     
-    $.ajax({
-      type: "DELETE",
-      url: `/ballpark_logs/${likeLogId}/likes/${likeUserId}`,
-      data: {
-        like: {
-          user_id: likeUserId,
-          ballpark_log_id: likeLogId,
-          "_method": "DELETE"
-        }
-      }
-    })
+//     $.ajax({
+//       type: "DELETE",
+//       url: `/ballpark_logs/${likeLogId}/likes/${likeUserId}`,
+//       data: {
+//         like: {
+//           user_id: likeUserId,
+//           ballpark_log_id: likeLogId,
+//           "_method": "DELETE"
+//         }
+//       }
+//     })
     
-    .done(() => {
-      $(`.dislike-btn:eq(${i})`).replaceWith('<i class="like-btn fas fa-thumbs-up text-primary"></i>');
-    })
-  })
-});
+//     .done(() => {
+//       $(`.dislike-btn:eq(${i})`).replaceWith('<i class="like-btn fas fa-thumbs-up text-primary"></i>');
+//     })
+//   })
+// });
 
 
 
