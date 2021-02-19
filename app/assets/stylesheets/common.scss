@@ -3,10 +3,6 @@
    font-weight: bolder;
 }
 
-.logo {
-   color: white;
-}
-
 .logo:hover {
    color: white;
    text-decoration: none;
@@ -16,17 +12,12 @@
    text-decoration: none;
 }
 
-.bg-mask {
-   height:100%;
-   background-color: rgba(41, 42, 44, 0.76);
-}
-
 .footer-fixed{
    min-height: 100vh; /* コンテンツの高さの最小値＝ブラウザの高さに指定 */
    position: relative;
    padding-bottom: 100px; /* フッターの高さ */
    box-sizing: border-box;/* ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように指定 */
-   background-color: rgb(51, 54, 59);
+   background-color: #f8f9fa;
 }
 
 footer{
@@ -67,11 +58,11 @@ ul {
 }
 
 .black-link {
-   color: black;
+   color: #343a40;
 }
 
 .black-link:hover {
-   color: black;
+   color: #343a40;
    text-decoration: none;
 }
 
@@ -80,23 +71,7 @@ ul {
 
 
 /*--header--*/
-.header {
-   background-color: rgb(34, 35, 37);
-   height: 80px;
-}
 
-.navbar {
-   background-color: rgb(34, 35, 37);
- }
-
- .navbar-toggler {
-   border-color: #f8f9fa;
-   background-color: rgb(34, 35, 37);
- }
- 
- .navbar-toggler-icon {
-   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
- }
 
 
 
@@ -104,14 +79,17 @@ ul {
 
 /*----投稿一覧画面----*/
 .index-bg {
-   background-image: image-url('ballpark-img.jpeg');
    background-size: cover;
    height: 100%;
-   background-attachment: fixed;
 }
 
 .index-top {
    height: 620px;
+   background-image: image-url('ballpark-img.jpeg');
+}
+
+.index-card {
+   border-radius: 15px;
 }
 
 .index-icon {
