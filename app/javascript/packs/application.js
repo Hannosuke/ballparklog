@@ -87,10 +87,10 @@ $(".like-btn").each( (i) => {
     
     .done(() => {
       $(`.like-btn:eq(${i})`).replaceWith('<i class="dislike-btn fas fa-thumbs-up text-primary"></i>');
-      var likecount = $(`.count-likes:eq(${i+3})`).text();
+      var likecount = $(`.count-likes:eq(${i})`).text();
       var likenum = Number( likecount );
       var likedcount = ( likenum + 1 );
-      $(`.count-likes:eq(${i+2})`).html(`<span class="count-likes">${likedcount}</span>`)
+      $(`.count-likes:eq(${i})`).replaceWith(`<span class="count-likes">${likedcount}</span>`)
     })
   })
 });
@@ -124,9 +124,16 @@ $(".dislike-btn").each( (i) => {
 
 
 
+
+// フラッシュ一定時間で消滅
 $(function(){
   setTimeout("$('.time-limit').fadeOut('slow')",1500)
 })
+
+
+
+
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
