@@ -1,18 +1,35 @@
-<div class="user-show-bg">
-  <div class="bg-mask text-center">
-    <div class="user-show-result d-flex align-items-center justify-content-center">
+<div class="user-show-bg text-dark">
+    <div class="user-show-top-wrapper d-flex align-items-center justify-content-center">
       <%# 観戦成績 %>
-      <div class="border user-show-result-box d-flex align-items-center justify-content-center">
-        <div>
-          <h1 class="text-white pt-4 bolder"><%= @user.count_win %>勝<%= @user.count_lose %>敗  <%= @user.winning_percentage %></h1>
-          <div class="form-group">
-            <label>
-              <select class="form-control border-0 opacity-form bolder">
-                <option value="">2020年〜</option>
-                <option value="">2019年〜2020年</option>
-                <option value="">ALL</option>
-              </select>
-            </label>
+      <div class="user-show-top border border-dark">
+        <div class="user-show-top-header d-flex flex-column flex-md-row align-items-center p-3">
+          <% if @user.image.attached? %>
+            <div class="rounded-circle">
+              <%= image_tag @user.image, class:"show-icon mx-4" %>
+            </div>
+          <% else %>
+            <%= image_tag "no-image-icon.jpeg", class:"show-icon mx-4"%>
+          <% end %>
+          <div class="h4 my-0 mr-3 bolder"><%= @user.name %></div>
+          <p class="my-auto mr-auto bolder"><%= @user.favteam %></p>
+          <nav class="my-2 my-md-0 mr-md-3">
+            <% if current_user&.id == @user.id %>
+                <%= link_to("設定", edit_user_path, class:"btn btn-outline-secondary bolder")%>
+            <% end %>
+          </nav>
+        </div>      
+        <div class="user-show-top-resutl d-flex align-items-center justify-content-center">
+          <div>
+            <h1 class="text-dark pt-4 bolder"><%= @user.count_win %>勝<%= @user.count_lose %>敗  <%= @user.winning_percentage %></h1>
+            <div class="form-group text-center">
+              <label>
+                <select class="form-control border-0 opacity-form bolder">
+                  <option value="">2020年〜</option>
+                  <option value="">2019年〜2020年</option>
+                  <option value="">ALL</option>
+                </select>
+              </label>
+            </div>
           </div>
         </div>
       </div>
@@ -21,36 +38,18 @@
     <%# 投稿一覧 %>
     <div class="user-show-body-wrapper">
       <div class="user-show-body">
-        <div class="user-show-body-header pb-0 d-flex flex-column flex-md-row align-items-center bg-white">
-          <% if @user.image.attached? %>
-            <div class="rounded-circle">
-              <%= image_tag @user.image, class:"show-icon mr-4" %>
-            </div>
-          <% else %>
-            <%= image_tag "no-image-icon.jpeg", class:"show-icon mr-4"%>
-          <% end %>
-          <div class="h4 my-0 mr-3 bolder"><%= @user.name %></div>
-          <p class="mr-md-auto bolder"><%= @user.favteam %></p>
-          <nav class="my-2 my-md-0 mr-md-3">
-            <% if current_user&.id == @user.id %>
-                <%= link_to("設定", edit_user_path, class:"btn btn-outline-secondary bolder")%>
-            <% end %>
-          </nav>
-        </div>
-
         <div class="user-show-body-index mt-5">
-          <div class="mb-5 shadow-sm">
             <%# 投稿・Likeタブ %>
             <ul class="nav nav-tabs bolder" id="myTab" role="tablist">
-              <li class="nav-item w-50">
-                <a class="nav-link rounded-0 text-center active black-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Log</a>
+              <li class="user-show-nav-item nav-item w-50">
+                <a class="nav-link text-center black-link bg-light active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Log</a>
               </li>
-              <li class="nav-item w-50">
-                <a class="nav-link rounded-0 text-center black-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">いいね</a>
+              <li class="user-show-nav-item nav-item w-50">
+                <a class="nav-link text-center black-link bg-light" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">いいね</a>
               </li>
             </ul>
 
-            <div class="tab-content" id="myTabContent">
+            <div class="user-show-tab-content border border-dark border-top-0 tab-content" id="myTabContent">
               <%# 自分の投稿 %>
               <div class="tab-pane fade show active px-5" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <% @user.ballpark_logs.each do |ballpark_log| %>
@@ -93,7 +92,7 @@
               
               <%# いいねした投稿 %>
               <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <table class="table table-borderless mt-3">
+                <table class="table table-borderless">
                   <tbody>
                     <% @user.like_ballpark_logs.each do |like_ballpark_log| %>
                       <tr>
@@ -115,9 +114,7 @@
               </div>
 
             </div>   
-          </div> 
         </div>
       </div>
     </div>
-  </div>
 </div>
