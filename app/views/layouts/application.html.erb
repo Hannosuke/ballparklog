@@ -15,29 +15,36 @@
 
   <body>
     <div class="footer-fixed">
-      <nav class="navbar navbar-expand-lg px-4 navbar-light bg-light border-bottom">
-        <h1><%= link_to("BallParkLog", "/", class:"noline bolder black-link") %></h1>
+      <nav class="header navbar navbar-expand-lg px-4 navbar-light bg-light">
+        <% if current_user %>
+          <h1><%= link_to("BallParkLog", user_path(id: current_user.id), class:"noline bolder black-link") %></h1>
+        <% else %>
+          <h1><%= link_to("BallParkLog", "/", class:"noline bolder black-link") %></h1>
+        <% end %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto p-2">
               <% if current_user %>
+                <li class="nav-item d-flex align-items-center">
+                  <%= link_to("みんなのLog", ballpark_logs_path, class:"p-2 black-link noline bolder")%>
+                </li>
                 <li class="nav-item">
-                <%= link_to("Logを登録", new_ballpark_log_path, class:"p-2 btn btn-outline-dark bolder")%>
+                  <%= link_to("Logを登録", new_ballpark_log_path, class:"p-2 btn btn-outline-dark bolder")%>
                 </li>
                 <li class="nav-item d-flex align-items-center">
-                <%= link_to("マイページ", user_path(current_user.id), class:"p-2 black-link noline bolder")%>
+                  <%= link_to("マイページ", user_path(current_user.id), class:"p-2 black-link noline bolder")%>
                 </li>
                 <li class="nav-item d-flex align-items-center">
-                <%= link_to("ログアウト", logout_path, method: :delete, class:"p-2 black-link noline bolder")%>
+                  <%= link_to("ログアウト", logout_path, method: :delete, class:"p-2 black-link noline bolder")%>
                 </li>
               <% else %>
                 <li class="nav-item mt-2">
-                <%= link_to("新規登録", new_user_path, class:"btn btn-outline-dark mr-2 bolder") %>
+                  <%= link_to("新規登録", new_user_path, class:"btn btn-outline-dark mr-2 bolder") %>
                 </li>
                 <li class="nav-item mt-2">
-                <%= link_to("ログイン", login_path, class:"btn btn-outline-dark bolder")%>
+                  <%= link_to("ログイン", login_path, class:"btn btn-outline-dark bolder")%>
                 </li>
               <% end %>
             </ul>

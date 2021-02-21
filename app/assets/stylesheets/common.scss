@@ -70,6 +70,15 @@ ul {
 
 
 
+/*----header---*/
+.header {
+   border-bottom: solid 4px #343a40;
+}
+
+
+
+
+
 /*----投稿一覧画面----*/
 .index-bg {
    background-size: cover;
@@ -225,16 +234,19 @@ ul {
    background-color: #f8f9fa;
    width: 900px;
    margin: auto;
+   border-radius: 15px;
 }
 
 .nav-tabs .nav-link.active, .nav-tabs .show > .nav-link {
    border: solid 1px;
    border-bottom: solid 1px #f8f9fa;
+   border-radius: 15px 15px 0 0;
 }
 
 .user-show-nav-item :not(:active) {
    border: solid 1px rgba(53, 60, 68, 0.5);
    border-bottom: solid 1px;
+   border-radius: 15px 15px 0 0;
 }
 
 .user-show-tab-content {
@@ -282,22 +294,27 @@ ul {
 
 
 /*---投稿詳細ページ---*/
-.log-show-bg {
-   background-image: image-url('ballpark-img.jpeg');
-   width: 100%;
-   background-size: cover;
-   background-attachment: fixed;
-}
-
 .log-show-body {
    background-color: #f8f9fa;
    width: 1000px;
    margin-top: 60px;
    margin-bottom: 80px;
+   border-radius: 15px;
 }
 
 .log-show-header {
    height: 50px;
+}
+
+.log-show-icon {
+   height: 40px;
+   width: 40px;
+   border-radius: 100%;
+   border: solid 4px rgb(53, 60, 68);
+}
+
+.log-show-title {
+   border-bottom: solid 4px #343a40;
 }
 
 
