@@ -62,8 +62,23 @@ $("#datepicker").datepicker({
     })(file);
     reader.readAsDataURL(file)
   });
-
-
+  
+  
+//プロフィール画像プレビュー
+  $("#image").on("change", (e) => {
+    var file = e.target.files[0];
+    var reader = new FileReader;
+    if(file.type.indexOf("image")<0) {
+      alert("画像ファイルを指定してください")
+      return;
+    }
+    reader.onload = (function(file){
+      return function(e){
+        $("#icon_preview").attr("src", e.target.result);
+      };
+    })(file);
+    reader.readAsDataURL(file)
+  });
 
 
 

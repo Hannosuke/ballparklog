@@ -14,12 +14,20 @@ class User < ApplicationRecord
     accepts_nested_attributes_for :favorite_team
 
 
+    def count_game
+        ballpark_logs.size
+    end
+
     def count_win
         ballpark_logs.where(result: "win").size
     end
 
     def count_lose
         ballpark_logs.where(result: "lose").size
+    end
+
+    def count_draw
+        ballpark_logs.where(result: "draw").size
     end
 
     def winning_percentage

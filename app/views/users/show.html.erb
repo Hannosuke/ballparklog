@@ -1,38 +1,80 @@
 <div class="user-show-bg text-dark">
-    <div class="user-show-top-wrapper d-flex align-items-center justify-content-center">
-      <%# 観戦成績 %>
-      <div class="user-show-top border border-dark">
-        <div class="user-show-top-header d-flex flex-column flex-md-row align-items-center p-3">
+  <div class="user-show-top-wrapper d-flex align-items-center justify-content-center">
+    <%# トップ %>
+    <div class="user-show-top border border-dark">
+      <%# ユーザー情報 %>
+      <div class="user-show-top-header d-flex flex-column flex-md-row align-items-center p-3"> 
+        <%# プロフィール画像 %>
+        <div data-toggle="tooltip" title="プロフィール画像を編集" data-delay="500">
           <% if @user.image.attached? %>
-            <div class="rounded-circle">
-              <%= image_tag @user.image, class:"show-icon mx-4" %>
-            </div>
+            <span class="icon-edit-link" data-toggle="modal" data-target="#exampleModalCenter">
+              <%= image_tag @user.image, class:"user-show-icon mx-4" %>
+            </span>
           <% else %>
-            <%= image_tag "no-image-icon.jpeg", class:"show-icon mx-4"%>
+            <span data-toggle="modal" data-target="#exampleModalCenter">
+              <%= image_tag "no-image-icon.jpeg", class:"user-show-icon mx-4"%>
+            </span>
           <% end %>
-          <div class="h4 my-0 mr-3 bolder"><%= @user.name %></div>
-          <p class="my-auto mr-auto bolder"><%= @user.favteam %></p>
-          <nav class="my-2 my-md-0 mr-md-3">
-            <% if current_user&.id == @user.id %>
-                <%= link_to(edit_user_path(@user.id)) do%>
-                  <span class="fas fa-ellipsis-h text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-animation="true"></span>
-                <% end %>
-            <% end %>
-          </nav>
-        </div>      
-        <div class="user-show-top-resutl d-flex align-items-center justify-content-center">
-          <div>
-            <h1 class="text-dark pt-4 bolder"><%= @user.count_win %>勝<%= @user.count_lose %>敗  <%= @user.winning_percentage %></h1>
-            <div class="form-group text-center">
-              <label>
-                <select class="form-control border-0 opacity-form bolder">
-                  <option value="">2020年〜</option>
-                  <option value="">2019年〜2020年</option>
-                  <option value="">ALL</option>
-                </select>
-              </label>
+        </div>
+        <%# プロフィール画像編集モーダル %>
+        <div class="user-icon-modal modal fade border border-dark" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title bolder tet-dark" id="exampleModalCenterTitle">プロフィール画像編集</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <%= form_with(url: user_path(@user), local: true, method: :PATCH) do |f| %>
+                <div class="modal-body">
+                  <div class="log-image-btn mb-4">
+                    <%= f.label :image, class:"d-block" do%>
+                      <span class="text-dark pl-2">  
+                        <i class="far fa-image fa-lg fa-fw"></i>画像を選択
+                      </span>
+                    <% end %>
+                    <%= f.file_field :image, class:"d-none form-control-file"%>
+                    <img class="icon-preview" id="icon_preview"/>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <%= f.submit "設定", class:"btn btn-primary bolder"%>
+                </div>
+              <% end %>
             </div>
           </div>
+        </div>
+
+        <div class="h2 my-0 mr-4 bolder"><%= @user.name %></div>
+        <div class="mr-auto">
+          <span class="badge badge-pill badge-dark">お気に入り球団</span>
+          <p class="my-auto mr-auto bolder"><%= @user.favteam %></p>
+        </div>
+        <nav class="my-2 my-md-0 mr-md-3">
+          <% if current_user&.id == @user.id %>
+              <%= link_to(edit_user_path(@user.id)) do%>
+                <i class="fas fa-ellipsis-h text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
+              <% end %>
+          <% end %>
+        </nav>
+      </div>  
+
+      <div class="user-show-top-result d-flex align-items-center justify-content-center">
+        <div>
+          <h1 class="text-dark pt-5 bolder">
+            <%= @user.count_game %>試合 <%= @user.count_win %>勝<%= @user.count_lose %>敗<% if @user.count_draw != 0%><%= @user.count_draw %>分<% end %> <%= @user.winning_percentage %>
+          </h1>
+          <div class="form-group text-center">
+            <label>
+              <select class="form-control border-0 opacity-form bolder">
+                <option value="">2020年〜</option>
+                <option value="">2019年〜2020年</option>
+                <option value="">ALL</option>
+              </select>
+            </label>
+          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -54,19 +96,19 @@
             <div class="user-show-tab-content border border-dark border-top-0 tab-content" id="myTabContent">
               <%# 自分の投稿 %>
               <div class="tab-pane fade show active px-5" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <% @user.ballpark_logs.each do |ballpark_log| %>
+                  <% @user.ballpark_logs.each do |ballpark_log| %>
                     <div class="user-show-index-item row py-2 px-4 d-flex align-items-center">
                       <div class="col-1 bolder"><%= ballpark_log.game.date.strftime("%-m/%d")%></div>
                       <div class="col-1 bolder">
                         <% if ballpark_log.result == "win" %>
-                          <p class="m-0">○</p>
+                          <p class="text-center m-0">○</p>
                         <% elsif ballpark_log.result == "lose" %>
-                          <p class="m-0">●</p>
+                          <p class="text-center m-0">●</p>
                         <% else %>
-                          <p class="m-0">-</p>
+                          <p class="text-center m-0">-</p>
                         <% end%>
                       </div>
-                      <div class="col-2 p-0 row bolder"> 
+                      <div class="col-3 p-0 row bolder"> 
                         <div class="col-md-4 d-flex justify-content-end">
                           <%= ballpark_log.game.visitor_team.initial%>
                         </div>
@@ -83,13 +125,14 @@
                         <%= link_to(ballpark_log.title.truncate(36), ballpark_log, class:"noline black-link") %>
                       </div>
                       <% if current_user == @user %>
-                        <div class="col-2 btn-group">
-                          <%= link_to("編集", edit_ballpark_log_path(ballpark_log), class:"btn btn-outline-secondary btn-sm") %>
-                          <%= link_to("削除", ballpark_log, method: :delete, data: { confirm: "「#{ballpark_log.title}」を削除します。よろしいですか？" }, class:"btn btn-outline-danger btn-sm") %>
+                        <div class="col-1 btn-group">
+                          <%= link_to(edit_ballpark_log_path(ballpark_log)) do %>
+                            <span class="fas fa-ellipsis-h text-dark fa-lg" data-toggle="tooltip" title="Logを編集" data-animation="true"></span>
+                          <% end %>
                         </div>
                       <% end %>
                     </div>
-                    <% end %>
+                  <% end %>
               </div>
               
               <%# いいねした投稿 %>
@@ -118,5 +161,5 @@
             </div>   
         </div>
       </div>
-    </div>
+  </div>
 </div>
