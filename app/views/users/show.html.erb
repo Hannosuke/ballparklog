@@ -86,10 +86,10 @@
             <%# 投稿・Likeタブ %>
             <ul class="nav nav-tabs bolder" id="myTab" role="tablist">
               <li class="user-show-nav-item nav-item w-50">
-                <a class="nav-link text-center black-link bg-light active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Log</a>
+                <a class="nav-link text-center black-link bg-light active d-flex justify-content-center align-items-center" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Log</a>
               </li>
               <li class="user-show-nav-item nav-item w-50">
-                <a class="nav-link text-center black-link bg-light" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">いいね</a>
+                <a class="nav-link text-center black-link bg-light d-flex justify-content-center align-items-center" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">いいね</a>
               </li>
             </ul>
 
@@ -127,7 +127,7 @@
                       <% if current_user == @user %>
                         <div class="col-1 btn-group">
                           <%= link_to(edit_ballpark_log_path(ballpark_log)) do %>
-                            <span class="fas fa-ellipsis-h text-dark fa-lg" data-toggle="tooltip" title="Logを編集" data-animation="true"></span>
+                            <span class="fas fa-ellipsis-h text-dark fa-lg" data-toggle="tooltip" title="Logを編集" data-delay="500"></span>
                           <% end %>
                         </div>
                       <% end %>
