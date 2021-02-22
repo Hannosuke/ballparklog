@@ -48,7 +48,7 @@ class UsersController < ApplicationController
   end
   
   def update_user_params
-    params.require(:user).permit(:name, :email, :image, favorite_team_attributes: [:team_id, :_destroy, :id])
+    params.permit(:name, :email, :image, favorite_team_attributes: [:team_id, :_destroy, :id])
   end
 
   def ensure_correct_user
