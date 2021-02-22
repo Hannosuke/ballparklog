@@ -3,11 +3,6 @@
    font-weight: bolder;
 }
 
-.logo:hover {
-   color: #f8f9fa;
-   text-decoration: none;
-}
-
 .noline:hover {
    text-decoration: none;
 }
@@ -29,7 +24,7 @@ footer{
 }
 
 .web-copyright {
-    color: azure;
+   color: azure;
 }
 
 .notice {
@@ -39,7 +34,9 @@ footer{
    align-items: center;
    background-color: rgba(98, 98, 221, 0.8);
    height: 45px;
-   width: auto;
+   width: 100%;
+   position: fixed;
+   top: 78px;
 }
 
 .alert {
@@ -95,6 +92,7 @@ ul {
 
 .index-card {
    border-radius: 15px;
+   width: 250px;
 }
 
 .index-icon {
