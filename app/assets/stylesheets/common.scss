@@ -139,7 +139,6 @@ ul {
 
 /*----新規ユーザー登録ページ----*/
 .user-form-bg {
-   background-image: image-url('ballpark-img.jpeg');
    background-size: cover;
    height: 100%;
    background-attachment: fixed;
@@ -147,7 +146,7 @@ ul {
 
 .user-form {
    background-color: #f8f9fa;
-   opacity: 0.94;
+   border-radius: 15px;
    width: 850px;
    padding: 30px;
    margin-bottom: 80px;
@@ -164,7 +163,6 @@ ul {
 
 /*----ログインページ----*/
 .login-form-bg {
-   background-image: image-url('ballpark-img.jpeg');
    background-size: cover;
    height: 100%;
    background-attachment: fixed;
@@ -175,8 +173,7 @@ ul {
 }
 
 .login-form {
-   background-color: #f8f9fa;
-   opacity: 0.94;
+   border-radius: 15px;
    width: 850px;
    padding: 50px 30px 60px 30px;
 }
