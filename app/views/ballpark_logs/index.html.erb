@@ -31,7 +31,7 @@
                 <% end %>
               </div>
               <%# 試合結果 %>
-              <div class="index-card-label row mt-3 mx-0 bolder">
+              <div class="index-card-label bg-dark text-light row mt-3 mx-0 bolder">
                 <div class="col-4 p-0 d-flex align-items-center justify-content-end">
                     <p class="index-team m-0"><%= ballpark_log.game.visitor_team.initial%></p>
                 </div>
@@ -48,7 +48,7 @@
               </div>
               <%# 投稿タイトル %>
               <div class="index-card-content d-flex justify-content-center mt-2 px-2">
-                <%= link_to(ballpark_log.title.truncate(28), ballpark_log, class:"noline black-link") %>
+                <%= link_to(ballpark_log.title.truncate(28), ballpark_log, class:"noline black-link stretched-link") %>
               </div>
 
               <%# いいねボタン %>
@@ -63,7 +63,7 @@
                             <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="dislike-ballparklog-id" >
                             <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="dislike-current-user-id" >
                             <%# -------------- %>
-                          <span class="dis-count-likes">
+                          <span>
                             <%= ballpark_log.count_likes %>
                           </span>
                         </div>
@@ -74,7 +74,7 @@
                             <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="like-ballparklog-id" >
                             <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="like-current-user-id" >
                           <%# -------------- %>
-                          <span class="count-likes">
+                          <span>
                             <%= ballpark_log.count_likes %>
                           </span>
                         </div>
