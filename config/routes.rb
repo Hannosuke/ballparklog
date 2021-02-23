@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     resources :games, only: :index
   end
 
+  get '/users/:id/mail' => 'users#run'
+
 end

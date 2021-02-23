@@ -18,7 +18,7 @@ class BallparkLogsController < ApplicationController
     @ballpark_log = current_user.ballpark_logs.new(ballpark_log_params)
     if @ballpark_log&.save
       flash[:notice] = "「#{@ballpark_log.title}」を投稿しました"
-      redirect_to("/")
+      redirect_to(user_path(current_user.id))
     else
       render :new
     end

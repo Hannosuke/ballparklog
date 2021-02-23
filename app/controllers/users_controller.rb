@@ -38,6 +38,13 @@ class UsersController < ApplicationController
     @likes = Like.where(user_id: @user.id)
   end
 
+  def run
+    @user = User.find(params[:id])
+    UserMailer.with(@user).reset_password_email.deliver_now
+    redirect_to(user_path(@user.id))
+  end
+
+
   
 
 
