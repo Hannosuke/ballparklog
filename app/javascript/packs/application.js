@@ -101,11 +101,11 @@ $(".like-btn").each( (i) => {
     })
     
     .done(() => {
-      $(`.like-btn:eq(${i})`).replaceWith('<i class="dislike-btn fas fa-thumbs-up text-primary"></i>');
-      var likecount = $(`.count-likes:eq(${i})`).text();
+      $(`.like-btn:eq(${i})`).children("i").replaceWith('<i class="dislike-btn fas fa-thumbs-up text-primary"></i>');
+      var likecount = $(`.like-btn:eq(${i})`).children("span").text();
       var likenum = Number( likecount );
       var likedcount = ( likenum + 1 );
-      $(`.count-likes:eq(${i})`).replaceWith(`<span class="count-likes">${likedcount}</span>`)
+      $(`.like-btn:eq(${i})`).children("span").replaceWith(`<span class="count-likes">${likedcount}</span>`)
     })
   })
 });
@@ -131,7 +131,11 @@ $(".dislike-btn").each( (i) => {
     })
     
     .done(() => {
-      $(`.dislike-btn:eq(${i})`).replaceWith('<i class="like-btn far fa-thumbs-up"></i>');
+      $(`.dislike-btn:eq(${i})`).children("i").replaceWith('<i class="like-btn far fa-thumbs-up"></i>');
+      var likecount = $(`.dislike-btn:eq(${i})`).children("span").text();
+      var likenum = Number( likecount );
+      var likedcount = ( likenum - 1 );
+      $(`.dislike-btn:eq(${i})`).children("span").replaceWith(`<span class="count-likes">${likedcount}</span>`)
     })
   })
 });
@@ -148,10 +152,14 @@ $(function(){
 
 
 
+
 // ツールチップを初期化
 $(() => {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
