@@ -104,23 +104,40 @@
                 </div>
             </div>
         </div>
-        <div class="log-show-comment px-5">
-            <div class="log-show-comment-title bolder">
-                <p>コメント</p>
+        <div class="log-show-comment pb-5">
+            <div class="log-show-comment-title bolder pl-5">
+                <p>－コメント－</p>
             </div>
-            <ul class="list-group list-group-flush">
+            <div class="log-comment-list px-5">
                 <% if @ballpark_log.comments.blank? %>
-                    <li class="list-group-item border border-dark">
+                    <div class="bg-light text-center mb-4">
                         まだコメントはありません
-                    </li>
+                    </div>
                 <% else %>
                     <% @ballpark_log.comments.each do |comment| %>
-                        <li class="list-group-item border border-dark">
-                            <%= simple_format(comment.content, class: "card-text") %>
-                        </li>
+                        <div class="log-comment-item border-dark shadow-sm px-4 py-3 mb-4">
+                            <div>
+                                <% if comment.user.image.attached? %>
+                                    <span>
+                                        <%= image_tag comment.user.image, class:"index-icon mx-2" %>
+                                    </span>
+                                <% else %>
+                                    <span>
+                                        <%= image_tag "no-image-icon.jpeg", class:"index-icon mx-4"%>
+                                    </span>
+                                <% end %>
+                                <span class="my-0 mr-3 bolder">
+                                    <%= comment.user.name %>
+                                </span>
+                                <span class="text-secondary"><%= comment.created_at%></span>
+                            </div>
+                            <div class="mt-2 px-5">
+                                <%= simple_format(comment.content, class: "card-text") %>
+                            </div>
+                        </div>
                     <% end %>
                 <% end %>
-            </ul>
+            </div>
             <div class="form-group">
                 <%= form_with(url: ballpark_log_comments_path(@ballpark_log), local: true) do |f| %>
                     <div class="px-5 mb-4">
