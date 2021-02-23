@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_005600) do
+ActiveRecord::Schema.define(version: 2021_02_23_072647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 2021_02_15_005600) do
     t.index ["stadium_id"], name: "index_ballpark_logs_on_stadium_id"
     t.index ["team_id"], name: "index_ballpark_logs_on_team_id"
     t.index ["user_id"], name: "index_ballpark_logs_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "ballpark_log_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ballpark_log_id"], name: "index_comments_on_ballpark_log_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorite_teams", force: :cascade do |t|
@@ -107,6 +117,8 @@ ActiveRecord::Schema.define(version: 2021_02_15_005600) do
   add_foreign_key "ballpark_logs", "games"
   add_foreign_key "ballpark_logs", "stadia"
   add_foreign_key "ballpark_logs", "teams"
+  add_foreign_key "comments", "ballpark_logs"
+  add_foreign_key "comments", "users"
   add_foreign_key "favorite_teams", "teams"
   add_foreign_key "favorite_teams", "users"
   add_foreign_key "games", "teams", column: "home_team_id"
