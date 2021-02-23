@@ -8,6 +8,7 @@ class BallparkLog < ApplicationRecord
     has_one_attached :image
     belongs_to :stadium
     belongs_to :game 
+    has_many :comments
 
     def count_likes
         likes.size

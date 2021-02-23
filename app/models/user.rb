@@ -8,6 +8,7 @@ class User < ApplicationRecord
     has_many :likes
     has_many :like_ballpark_logs, through: :likes, source: :ballpark_log
     has_one :favorite_team
+    has_many :comments
     
     delegate :favteam, to: :favorite_team
 

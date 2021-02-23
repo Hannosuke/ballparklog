@@ -8,6 +8,8 @@ class BallparkLogsController < ApplicationController
 
   def show
     @ballpark_log = BallparkLog.find(params[:id])
+    @comments = @ballpark_log.comments
+    @comment = Comment.new
   end
 
   def new
