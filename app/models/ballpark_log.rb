@@ -13,4 +13,8 @@ class BallparkLog < ApplicationRecord
     def count_likes
         likes.size
     end
+
+    def count_comments
+        comments.size
+    end
 end
