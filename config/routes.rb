@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :ballpark_logs do
     resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
   post '/ballpark_logs/:ballpark_log_id/like/:id' => 'likes#destroy'
 

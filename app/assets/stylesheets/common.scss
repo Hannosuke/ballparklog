@@ -299,7 +299,7 @@ ul {
    background-color: #f8f9fa;
    width: 1000px;
    margin-top: 60px;
-   margin-bottom: 80px;
+   margin-bottom: 40px;
    border-radius: 15px;
 }
 
@@ -338,4 +338,8 @@ ul {
 .log-show-draw {
 	color: rgb(231, 231, 231);
 	text-shadow: 0 0 0.1em black;
+}
+
+.log-show-comment {
+   margin-bottom: 80px;
 }
