@@ -45,7 +45,7 @@
             </div>
           </div>
         </div>
-
+        <%# 名前・お気に入り球団・設定ボタン等 %>
         <div class="h2 my-0 mr-4 bolder"><%= @user.name %></div>
         <div class="mr-auto">
           <span class="badge badge-pill badge-dark">お気に入り球団</span>
@@ -59,7 +59,7 @@
           <% end %>
         </nav>
       </div>  
-
+      <%# 戦績 %>
       <div class="user-show-top-result d-flex align-items-center justify-content-center">
         <div>
           <h1 class="text-dark pt-5 bolder">
@@ -95,9 +95,10 @@
 
             <div class="user-show-tab-content border border-dark border-top-0 tab-content" id="myTabContent">
               <%# 自分の投稿 %>
-              <div class="tab-pane fade show active px-5" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="tab-pane fade show active pt-3 pb-5 px-5" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <% @user.ballpark_logs.each do |ballpark_log| %>
-                    <div class="user-show-index-item row py-2 px-4 d-flex align-items-center">
+                    <%# 各投稿 %>
+                    <div class="user-show-index-item row py-2 px-4 d-flex align-items-center border-bottom">
                       <div class="col-1 bolder"><%= ballpark_log.game.date.strftime("%-m/%d")%></div>
                       <div class="col-1 bolder">
                         <% if ballpark_log.result == "win" %>
@@ -113,9 +114,9 @@
                           <%= ballpark_log.game.visitor_team.initial%>
                         </div>
                         <div class="col-md-4 row d-flex justify-content-center p-0">
-                            <%= ballpark_log.game.visitor_score%>
-                            <span> - </span>
-                            <%= ballpark_log.game.home_score%>
+                          <%= ballpark_log.game.visitor_score%>
+                          <span> - </span>
+                          <%= ballpark_log.game.home_score%>
                         </div>
                         <div class="col-md-5 d-flex justify-content-start">
                           <%= ballpark_log.game.home_team.initial%>
@@ -136,26 +137,39 @@
               </div>
               
               <%# いいねした投稿 %>
-              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <table class="table table-borderless">
-                  <tbody>
-                    <% @user.like_ballpark_logs.each do |like_ballpark_log| %>
-                      <tr>
-                        <td>
-                          <% if like_ballpark_log.user.image.attached? %>
-                            <div class="rounded-circle">
-                              <%= image_tag like_ballpark_log.user.image, class:"index-icon mr-4" %>
-                            </div>
-                          <% else %>
-                            <%= image_tag "no-image-icon.jpeg", class:"index-icon mr-4"%>
-                          <% end %>
-                        </td>
-                        <td><%= link_to(like_ballpark_log.user.name, user_path(like_ballpark_log.user_id), class:"noline black-link bolder") %></td>
-                        <td><%= link_to(like_ballpark_log.title, like_ballpark_log, class:"noline black-link") %></td>
-                      </tr>
-                    <% end %>
-                  </tbody>
-                </table>
+              <div class="tab-pane fade pt-3 pb-5 px-5" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <% @user.like_ballpark_logs.each do |like_ballpark_log| %>
+                  <%# 各投稿 %>
+                  <div class="user-show-index-item row py-2 px-4 d-flex align-items-center border-bottom">
+                    <div class="col-1">
+                      <% if like_ballpark_log.user.image.attached? %>
+                        <div class="rounded-circle">
+                          <%= image_tag like_ballpark_log.user.image, class:"index-icon mr-4" %>
+                        </div>
+                      <% else %>
+                        <%= image_tag "no-image-icon.jpeg", class:"index-icon mr-4"%>
+                      <% end %>
+                    </div>
+                    <div class="col-2"><%= link_to(like_ballpark_log.user.name, user_path(like_ballpark_log.user_id), class:"noline black-link bolder") %></div>
+                    <div class="col-1 bolder"><%= like_ballpark_log.game.date.strftime("%-m/%d")%></div>
+                    <div class="col-3 p-0 row bolder"> 
+                      <div class="col-md-4 d-flex justify-content-end">
+                        <%= like_ballpark_log.game.visitor_team.initial%>
+                      </div>
+                      <div class="col-md-4 row d-flex justify-content-center p-0">
+                        <%= like_ballpark_log.game.visitor_score%>
+                        <span> - </span>
+                        <%= like_ballpark_log.game.home_score%>
+                      </div>
+                      <div class="col-md-5 d-flex justify-content-start">
+                        <%= like_ballpark_log.game.home_team.initial%>
+                      </div>
+                    </div>
+                    <div class="col-5 text-left">
+                      <%= link_to(like_ballpark_log.title.truncate(30), like_ballpark_log, class:"noline black-link") %>
+                    </div>
+                  </div>
+                <% end %>
               </div>
 
             </div>   
