@@ -104,8 +104,7 @@ $(".like-btn").each( (i) => {
       $(`.like-btn:eq(${i})`).children("i").replaceWith('<i class="dislike-btn fas fa-thumbs-up text-primary"></i>');
       var likecount = $(`.like-btn:eq(${i})`).children("span").text();
       var likenum = Number( likecount );
-      var likedcount = ( likenum + 1 );
-      $(`.like-btn:eq(${i})`).children("span").replaceWith(`<span class="count-likes">${likedcount}</span>`)
+      $(`.like-btn:eq(${i})`).children("span").replaceWith(`<span>${likenum + 1}</span>`)
     })
   })
 });
@@ -135,7 +134,7 @@ $(".dislike-btn").each( (i) => {
       var likecount = $(`.dislike-btn:eq(${i})`).children("span").text();
       var likenum = Number( likecount );
       var likedcount = ( likenum - 1 );
-      $(`.dislike-btn:eq(${i})`).children("span").replaceWith(`<span class="count-likes">${likedcount}</span>`)
+      $(`.dislike-btn:eq(${i})`).children("span").replaceWith(`<span>${likedcount}</span>`)
     })
   })
 });
