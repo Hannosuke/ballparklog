@@ -1,8 +1,8 @@
 class UserMailer < ApplicationMailer
     default from: "notification@example.com"
     
-    def reset_password_email
+    def send_mail
         @user = User.find(params[:id])
-        mail(to: @user.email, subject: "私の素敵なサイトへようこそ")
+        mail to: @user.email, subject: "パスワード再設定はこちら"
     end
 end
