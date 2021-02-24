@@ -8,11 +8,11 @@
         <div data-toggle="tooltip" title="プロフィール画像を編集" data-delay="500">
           <% if @user.image.attached? %>
             <span class="icon-edit-link" data-toggle="modal" data-target="#exampleModalCenter">
-              <%= image_tag @user.image, class:"user-show-icon mx-4" %>
+              <%= image_tag @user.image, class:"user-show-icon mx-4 pointer" %>
             </span>
           <% else %>
             <span data-toggle="modal" data-target="#exampleModalCenter">
-              <%= image_tag "no-image-icon.jpeg", class:"user-show-icon mx-4"%>
+              <%= image_tag "no-image-icon.jpeg", class:"user-show-icon mx-4 pointer"%>
             </span>
           <% end %>
         </div>
@@ -28,7 +28,7 @@
               </div>
               <%= form_with(url: user_path(@user), local: true, method: :PATCH) do |f| %>
                 <div class="modal-body">
-                  <div class="log-image-btn my-4">
+                  <div class="log-image-btn my-4 pointer">
                     <%= f.label :image, class:"d-block" do%>
                       <span class="h5 text-dark pl-2">  
                         <i class="far fa-image fa-lg fa-fw"></i>画像を選択
@@ -54,7 +54,7 @@
         <nav class="my-2 my-md-0 mr-md-3">
           <% if current_user&.id == @user.id %>
               <%= link_to(edit_user_path(@user.id)) do%>
-                <i class="fas fa-ellipsis-h text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
+                <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
               <% end %>
           <% end %>
         </nav>
