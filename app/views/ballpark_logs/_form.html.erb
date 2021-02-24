@@ -2,23 +2,23 @@
   <div class="form-group">
     <%= form_with(model: ballpark_log, local: true) do |f| %>
       <div class="row">
-        <div class="mb-4 col-4">
+        <div class="mb-4 col-xs-12 col-sm-4">
           <label class="mb-1">観戦日</label>
           <input type="text" id="datepicker" value="&#xf073;" class="form-control far" >
         </div>
-          <div class="mb-4 mr-0 col-8">
-            <%= f.label :stadium_id, class:"mb-1" %>
-            <%= f.collection_select :stadium_id, Stadium.all, :id, :name, {include_blank: true}, {class:"form-control"}%>   
-          </div>
+        <div class="mb-4 mr-0 col-xs-12 col-sm-8">
+          <%= f.label :stadium_id, class:"mb-1" %>
+          <%= f.collection_select :stadium_id, Stadium.all, :id, :name, {include_blank: true}, {class:"form-control"}%>   
+        </div>
       </div>
       <div class="row">
-        <div class="mb-4 col-7">
+        <div class="mb-4 col-xs-12 col-sm-7">
           <%= f.label :game_id, class:"mb-1"%>
           <select name="ballpark_log[game_id]" id="ballpark_log_game_id" class="game-select form-control">
             <option>観戦日を選択してください</option>
           </select>
         </div>
-        <div class="mb-4 col-5">
+        <div class="mb-4 col-xs-12 col-sm-5">
           <%= f.label :result, class:"mb-1" %>
           <%= f.select :result, [["WIN", "win"], ["LOSE", "lose"],["DRAW", "draw"]], {include_blank: true}, class:"form-control" %>
         </div>

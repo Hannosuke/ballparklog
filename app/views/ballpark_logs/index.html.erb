@@ -1,10 +1,10 @@
 <div class="index-bg">
-  <div class="index-top"></div>
+  <div class="index-top image-fluid"></div>
   <%# 投稿一覧 %>
   <div class="index-body container">
-    <div class="row mx-auto py-4"> 
+    <div class="row no-gutters py-4"> 
       <% @ballpark_logs.each do |ballpark_log| %>
-        <div class="col-xs-12 col-md-6 col-lg-3 mt-3">
+        <div class="col-xs-12 col-sm-6 col-lg-3 mt-3 d-flex justify-content-center wrap">
           <%# 投稿カード %>
           <div class="index-card card mb-4 bg-light border border-secondary shadow">
             <div class="card-body px-3 py-2">
