@@ -25,7 +25,7 @@
             <%# 投稿内容 %>
             <div class="log-show-content">
                 <%# タイトル %>
-                <h1 class="log-show-title text-center pt-4 pb-1"><%= @ballpark_log.title %></h1>
+                <h1 class="log-show-title text-center bolder pt-4 pb-1"><%= @ballpark_log.title %></h1>
                 <%# 試合結果 %>
                 <div class="row mb-4">
                     <p class="col-2"><%= @ballpark_log.game.date.strftime("%Y年%-m月%d日")%></p>
@@ -34,17 +34,17 @@
                 <div class="mb-4">
                     <div class="row text-center">
                         <div class="col-5 p-0 d-flex align-items-center justify-content-center">
-                            <h4 class="m-0"><%= @ballpark_log.game.visitor_team.name%></h4>
+                            <h4 class="bolder m-0"><%= @ballpark_log.game.visitor_team.name%></h4>
                         </div>
                         <div class="col-2 d-flex align-items-center justify-content-center">
                             <div class="row d-flex align-items-center">
-                                <span class="h2 col-4 m-0"><%= @ballpark_log.game.visitor_score%></span>
-                                <span class="h2 col-4 m-0 pt-1">-</span>
-                                <span class="h2 col-4 m-0"><%= @ballpark_log.game.home_score%></span>
+                                <span class="col-4 h2 bolder m-0"><%= @ballpark_log.game.visitor_score%></span>
+                                <span class="col-4 h2 bolder m-0 pt-1">-</span>
+                                <span class="col-4 h2 bolder m-0"><%= @ballpark_log.game.home_score%></span>
                             </div>
                         </div>
                         <div class="col-5 d-flex align-items-center justify-content-center">
-                            <h4 class="m-0"><%= @ballpark_log.game.home_team.name%></h4>
+                            <h4 class="bolder m-0"><%= @ballpark_log.game.home_team.name%></h4>
                         </div>
                     </div>
                     <div class="row text-center">

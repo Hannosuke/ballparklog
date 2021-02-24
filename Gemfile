@@ -48,6 +48,9 @@ group :development do
   gem 'capistrano-rbenv'
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
+
+  gem 'letter_opener'
+  gem 'letter_opener_web' 
 end
 
 group :test do
@@ -67,4 +70,4 @@ gem 'pry-doc'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-gem 'kaminari'
+gem 'kaminari' 
