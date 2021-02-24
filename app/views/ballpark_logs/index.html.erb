@@ -80,6 +80,15 @@
                         </div>
                       <% end %>
                     </div>
+                  <% else %>
+                    <div class="ml-3 bolder">
+                      <div>
+                        <i class="far fa-thumbs-up" ></i>
+                        <span>
+                          <%= ballpark_log.count_likes %>
+                        </span>
+                      </div>
+                    </div>
                   <% end %>
                 </div>
                 <div class="comment-icon bolder col-3 p-0">
