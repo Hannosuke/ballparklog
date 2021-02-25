@@ -142,7 +142,6 @@ ul {
 .user-form {
    background-color: #f8f9fa;
    border-radius: 15px;
-   width: 850px;
    padding: 30px;
    margin-bottom: 80px;
 }
@@ -158,9 +157,7 @@ ul {
 
 /*----ログインページ----*/
 .login-form-bg {
-   background-size: cover;
-   height: 100%;
-   background-attachment: fixed;
+   width: 100%;
 }
 
 .login-form-wrapper {
@@ -168,8 +165,9 @@ ul {
 }
 
 .login-form {
+   width: 100%;
+   max-width: 800px;
    border-radius: 15px;
-   width: 850px;
    padding: 50px 30px 60px 30px;
 }
 
@@ -182,11 +180,6 @@ ul {
 
 
 /*---ユーザ詳細ページ---*/
-.user-show-bg {
-   background-size: cover;
-   height: 100%;
-}
-
 .user-show-top-wrapper {
    margin: auto;
    height: 600px;
@@ -288,7 +281,6 @@ ul {
 /*---投稿詳細ページ---*/
 .log-show-body {
    background-color: #f8f9fa;
-   width: 1000px;
    margin-top: 60px;
    margin-bottom: 40px;
    border-radius: 15px;
