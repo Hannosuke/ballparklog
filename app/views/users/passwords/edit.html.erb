@@ -5,7 +5,7 @@
         </div>
         <div class="login-form border border-dark shadow m-0">
             <div class="form-group mt-5 bolder">
-                <%= form_with(model: @user, local: true, method: :PATCH) do |f|%>
+                <%= form_with(url: users_password_path(@user), local: true, method: :PATCH) do |f|%>
                     <div class="form-lagel-group">
                         <%= f.label :"パスワード" %>
                         <%= f.password_field :password, class:"form-control mb-3" %>
@@ -14,6 +14,8 @@
                         <%= f.submit "パスワードを変更", class: "mt-2 btn btn-primary btn-block bolder"%>
                     </div>
                 <% end %>  
+                <p><%= @user.id%><%= @user.name%></p>
+                <p><%= @user.email%></p>
             </div>
         </div>
     </div>

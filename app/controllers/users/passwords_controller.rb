@@ -4,8 +4,9 @@ class Users::PasswordsController < ApplicationController
 
     def create
         @user = User.find_by(email: params[:email])
-        if @user.present? && @user.update(password_reset_token: SecureRandom.urlsafe_base64)
-            UserMailer.send_mail.deliver_now
+        if @user.present?
+            @user.update(password_reset_token: SecureRandom.urlsafe_base64)
+            UserMailer.with(user: @user).send_mail.deliver_now
             flash[:notice] = "パスワード再設定のメールを送信しました"
             redirect_to(login_path)
         else
@@ -36,6 +37,6 @@ class Users::PasswordsController < ApplicationController
     private
 
     def password_params
-        params.require(:user).permit(:password, :password_confirmation)
+        params.require(:@user).permit(:password, :password_confirmation,)
     end
 end
