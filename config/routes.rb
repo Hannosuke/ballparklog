@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   get 'users/:id/likes' => 'users#likes'
 
+  namespace :users do
+    resources :passwords, only: [:new, :create, :edit, :update]
+  end
+
   resources :ballpark_logs do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
@@ -19,7 +23,6 @@ Rails.application.routes.draw do
     resources :games, only: :index
   end
 
-  get '/users/:id/mail' => 'users#run'
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: '/letter_opener'

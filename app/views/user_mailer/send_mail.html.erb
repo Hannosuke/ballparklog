@@ -4,7 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= @user.name %>様、example.comへようこそ。</h1>
-    <p>ご入会ありがとうございます。どうぞお楽しみくださいませ。</p>
+    <p>こんにちは<%= @user.email %>さん！</p>
+    <p>以下のリンクからパスワードの再設定ができます。</p>
+
+    
+    <p>このメールに心当たりがない場合は無視してください。</p>
+    <p>上記リンクよりパスワード変更を行うまで、パスワードの再設定はなされません。</p>
   </body>
 </html>
