@@ -19,8 +19,9 @@ class Users::PasswordsController < ApplicationController
     end
 
     def update
+        @user = User.find_by(password_reset_token: params[:password_reset_token])
         if @user = User.update(password_params)
-            flash[:notice]
+            flash[:notice] = "パスワードの再設定が完了しました"
             redirect_to(login_path)
         else
             render :edit
@@ -35,6 +36,6 @@ class Users::PasswordsController < ApplicationController
     private
 
     def password_params
-        parms.require(:user).permit(:password)
+        params.require(:user).permit(:password, :password_confirmation)
     end
 end
