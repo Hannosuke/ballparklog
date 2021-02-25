@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'users/:id/likes' => 'users#likes'
 
   namespace :users do
-    resources :passwords, only: [:new, :create, :edit, :update]
+    resources :passwords, only: [:new, :create, :edit, :update], param: :password_reset_token
   end
 
   resources :ballpark_logs do
