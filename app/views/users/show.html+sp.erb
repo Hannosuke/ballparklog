@@ -1,1 +1,191 @@
-<p>スマホ用だよ</p>
+<div class="user-show-bg-sp text-dark">
+  <div class="user-show-top-wrapper-sp d-flex align-items-center justify-content-center">
+    <%# トップ %>
+    <div class="user-show-top-sp border border-dark mx-2">
+      <%# ユーザー情報 %>
+      <div class="user-show-top-header-sp row px-3 pt-2"> 
+        <%# プロフィール画像 %>
+        <div class="col-3 d-flex align-items-center"data-toggle="tooltip" title="プロフィール画像を編集" data-delay="500">
+          <% if @user.image.attached? %>
+            <span class="icon-edit-link" data-toggle="modal" data-target="#exampleModalCenter">
+              <%= image_tag @user.image, class:"user-show-icon-sp pointer" %>
+            </span>
+          <% else %>
+            <span data-toggle="modal" data-target="#exampleModalCenter">
+              <%= image_tag "no-image-icon.jpeg", class:"user-show-icon-sp pointer"%>
+            </span>
+          <% end %>
+        </div>
+        <%# プロフィール画像編集モーダル %>
+        <div class="user-icon-modal-sp modal fade border border-dark" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title bolder tet-dark" id="exampleModalCenterTitle">プロフィール画像編集</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <%= form_with(url: user_path(@user), local: true, method: :PATCH) do |f| %>
+                <div class="modal-body">
+                  <div class="log-image-btn my-4 pointer">
+                    <%= f.label :image, class:"d-block" do%>
+                      <span class="h5 text-dark pl-2">  
+                        <i class="far fa-image fa-lg fa-fw"></i>画像を選択
+                      </span>
+                    <% end %>
+                    <%= f.file_field :image, class:"d-none form-control-file"%>
+                    <img class="icon-preview" id="icon_preview"/>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <%= f.submit "設定", class:"btn btn-primary bolder"%>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <%# 名前・お気に入り球団・設定ボタン等 %>
+        <div class="col-9 my-0 pl-1 pr-0 row">
+          <span class="col-11 h3 bolder px-0 m-0 d-flex align-items-center"><%= @user.name %></span>
+          <nav class="col-1 p-0 d-flex align-items-center">
+            <% if current_user&.id == @user.id %>
+                <%= link_to(edit_user_path(@user.id)) do%>
+                  <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
+                <% end %>
+            <% end %>
+          </nav>
+        </div>
+      </div>  
+      <div class="pl-0 row">
+        <div class="col-9 offset-3 pl-0">
+          <span class="badge badge-pill badge-dark">お気に入り球団</span>
+          <p class="my-auto mr-auto bolder"><%= @user.favteam %></p>
+        </div>
+      </div>
+      <%# 戦績 %>
+      <div class="user-show-top-result-sp d-flex align-items-center justify-content-center">
+        <div>
+          <div class="h3 text-dark bolder pt-4">
+            <%= @user.count_game %>試合 <%= @user.count_win %>勝<%= @user.count_lose %>敗<% if @user.count_draw != 0%><%= @user.count_draw %>分<% end %> <%= @user.winning_percentage %>
+          </div>
+          <div class="form-group text-center">
+            <label>
+              <select class="form-control border-0 opacity-form bolder">
+                <option value="">2020年〜</option>
+                <option value="">2019年〜2020年</option>
+                <option value="">ALL</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%# 投稿一覧 %>
+  <div class="user-show-body-wrapper-sp">
+    <div class="user-show-body-sp shadow mx-2">
+      <div class="user-show-body-index-sp mt-5">
+        <%# 投稿・Likeタブ %>
+        <ul class="nav nav-tabs bolder" id="myTab" role="tablist">
+          <li class="user-show-nav-item-sp nav-item w-50">
+            <a class="nav-link text-center black-link bg-light active d-flex justify-content-center align-items-center" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Log</a>
+          </li>
+          <li class="user-show-nav-item-sp nav-item w-50">
+            <a class="nav-link text-center black-link bg-light d-flex justify-content-center align-items-center" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">いいね</a>
+          </li>
+        </ul>
+
+        <%# タブ・ボディ部分 %>
+        <div class="user-show-tab-content-sp border border-dark border-top-0 tab-content" id="myTabContent">
+          <%# 自分の投稿 %>
+          <div class="tab-pane fade show active pt-3 pb-5 px-3" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <% @user.ballpark_logs.each do |ballpark_log| %>
+              <%# 各投稿 %>
+              <div class="user-show-index-item-sp row d-flex align-items-center border-bottom py-2">
+                <div class="col-12 row px-0">
+                  <div class="col-2 bolder p-0"><%= ballpark_log.game.date.strftime("%-m/%d")%></div>
+                  <div class="col-1 bolder p-0">
+                    <% if ballpark_log.result == "win" %>
+                      <p class="text-center m-0">○</p>
+                    <% elsif ballpark_log.result == "lose" %>
+                      <p class="text-center m-0">●</p>
+                    <% else %>
+                      <p class="text-center m-0">-</p>
+                    <% end%>
+                  </div>
+                  <div class="col-6 p-0 row bolder"> 
+                    <div class="col-4 d-flex justify-content-end">
+                      <%= ballpark_log.game.visitor_team.initial%>
+                    </div>
+                    <div class="col-4 row d-flex justify-content-center p-0">
+                      <%= ballpark_log.game.visitor_score%>
+                      <span> - </span>
+                      <%= ballpark_log.game.home_score%>
+                    </div>
+                    <div class="col-4 d-flex justify-content-start">
+                      <%= ballpark_log.game.home_team.initial%>
+                    </div>
+                  </div>
+                  <div class="col-3 p-0 text-right">
+                    <% if current_user == @user %>
+                      <%= link_to(edit_ballpark_log_path(ballpark_log)) do %>
+                        <span class="fas fa-ellipsis-h text-dark fa-lg" data-toggle="tooltip" title="Logを編集" data-delay="500"></span>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="col-12 px-0">
+                  <div class="text-left">
+                    <%= link_to(ballpark_log.title.truncate(36), ballpark_log, class:"noline black-link") %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          
+          <%# いいねした投稿 %>
+          <div class="tab-pane fade pt-3 pb-5 px-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <% @user.like_ballpark_logs.each do |like_ballpark_log| %>
+              <%# 各投稿 %>
+              <div class="user-show-index-item-sp py-2 border-bottom">
+                <div class="row">
+                  <div class="col-2 pr-0">
+                    <% if like_ballpark_log.user.image.attached? %>
+                      <div class="rounded-circle">
+                        <%= image_tag like_ballpark_log.user.image, class:"index-icon mr-2" %>
+                      </div>
+                    <% else %>
+                      <%= image_tag "no-image-icon.jpeg", class:"index-icon mr-2"%>
+                    <% end %>
+                  </div>
+                  <div class="col-4 pl-0 d-flex align-items-center">
+                    <%= link_to(like_ballpark_log.user.name, user_path(like_ballpark_log.user_id), class:"noline black-link bolder") %>
+                  </div>
+                  <div class="col-2 bolder p-0 d-flex align-items-center"><%= like_ballpark_log.game.date.strftime("%-m/%d")%></div>
+                  <div class="col-4 p-0 row bolder d-flex align-items-center"> 
+                    <div class="col-4 d-flex justify-content-end">
+                      <%= like_ballpark_log.game.visitor_team.initial%>
+                    </div>
+                    <div class="col-4 row d-flex justify-content-center p-0">
+                      <%= like_ballpark_log.game.visitor_score%>
+                      <span> - </span>
+                      <%= like_ballpark_log.game.home_score%>
+                    </div>
+                    <div class="col-4 d-flex justify-content-start">
+                      <%= like_ballpark_log.game.home_team.initial%>
+                    </div>
+                  </div>
+                </div>
+                <div class="pt-3 pl-2">
+                  <%= link_to(like_ballpark_log.title.truncate(30), like_ballpark_log, class:"noline black-link") %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+      </div>   
+    </div>
+  </div>
+</div>
