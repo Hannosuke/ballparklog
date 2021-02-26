@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+    before_action do
+        request.variant = :sp if request.user_agent =~ /iPhone|Android/
+    end
+
     helper_method :current_user
 
     private
