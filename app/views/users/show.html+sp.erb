@@ -104,20 +104,18 @@
           <div class="tab-pane fade show active pt-3 pb-5 px-3" id="home" role="tabpanel" aria-labelledby="home-tab">
             <% @user.ballpark_logs.each do |ballpark_log| %>
               <%# 各投稿 %>
-              <div class="user-show-index-item-sp row d-flex align-items-center border-bottom py-2">
-                <div class="col-12 row px-0">
-                  <div class="col-2 bolder p-0"><%= ballpark_log.game.date.strftime("%-m/%d")%></div>
-                  <div class="col-1 bolder p-0">
+              <div class="user-show-index-item-sp border-bottom py-3">
+                <div class="row">
+                  <div class="col-3 bolder pr-0 pl-4"><%= ballpark_log.game.date.strftime("%-m/%d")%></div>
                     <% if ballpark_log.result == "win" %>
-                      <p class="text-center m-0">○</p>
+                      <p class="col-1 bolder text-center m-0 p-0">○</p>
                     <% elsif ballpark_log.result == "lose" %>
-                      <p class="text-center m-0">●</p>
+                      <p class="col-1 bolder text-center m-0">●</p>
                     <% else %>
-                      <p class="text-center m-0">-</p>
+                      <p class="col-1 bolder text-center m-0">-</p>
                     <% end%>
-                  </div>
                   <div class="col-6 p-0 row bolder"> 
-                    <div class="col-4 d-flex justify-content-end">
+                    <div class="col-4 d-flex justify-content-end pl-0">
                       <%= ballpark_log.game.visitor_team.initial%>
                     </div>
                     <div class="col-4 row d-flex justify-content-center p-0">
@@ -129,7 +127,7 @@
                       <%= ballpark_log.game.home_team.initial%>
                     </div>
                   </div>
-                  <div class="col-3 p-0 text-right">
+                  <div class="col-2 p-0 text-right">
                     <% if current_user == @user %>
                       <%= link_to(edit_ballpark_log_path(ballpark_log)) do %>
                         <span class="fas fa-ellipsis-h text-dark fa-lg" data-toggle="tooltip" title="Logを編集" data-delay="500"></span>
@@ -137,8 +135,8 @@
                     <% end %>
                   </div>
                 </div>
-                <div class="col-12 px-0">
-                  <div class="text-left">
+                <div class="px-0">
+                  <div class="pt-3 pl-2">
                     <%= link_to(ballpark_log.title.truncate(36), ballpark_log, class:"noline black-link") %>
                   </div>
                 </div>
