@@ -1,6 +1,6 @@
 <div class="log-show-bg d-flex justify-content-center">
     <div class="log-show-wrapper">
-        <div class="log-show-body border border-dark shadow px-5 pb-4">
+        <div class="log-show-body border border-dark shadow px-5 pb-4 mx-3">
             <%# ユーザー情報 %>
             <div class="log-show-header d-flex flex-md-row align-items-center px-3 mt-3">
                 <% if @ballpark_log.user.image.attached? %>
@@ -136,7 +136,7 @@
                                 <span class="my-0 mr-3 bolder">
                                     <%= comment.user.name %>
                                 </span>
-                                <span class="text-secondary"><%= comment.created_at%></span>
+                                <span class="text-secondary"><%= comment.created_at.strftime("%Y/%m/%d") %></span>
                             </div>
                             <div class="mt-2 px-5">
                                 <%= simple_format(comment.content, class: "card-text") %>
