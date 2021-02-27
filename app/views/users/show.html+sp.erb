@@ -5,7 +5,7 @@
       <%# ユーザー情報 %>
       <div class="user-show-top-header-sp row px-3 pt-2"> 
         <%# プロフィール画像 %>
-        <div class="col-3 d-flex align-items-center"data-toggle="tooltip" title="プロフィール画像を編集" data-delay="500">
+        <div class="col-3 d-flex align-items-center">
           <% if @user.image.attached? %>
             <span class="icon-edit-link" data-toggle="modal" data-target="#exampleModalCenter">
               <%= image_tag @user.image, class:"user-show-icon-sp pointer" %>
@@ -51,7 +51,7 @@
           <nav class="col-1 p-0 d-flex align-items-center">
             <% if current_user&.id == @user.id %>
                 <%= link_to(edit_user_path(@user.id)) do%>
-                  <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
+                  <i class="fas fa-cog text-dark fa-lg"></i>
                 <% end %>
             <% end %>
           </nav>
@@ -130,7 +130,7 @@
                   <div class="col-2 p-0 text-right">
                     <% if current_user == @user %>
                       <%= link_to(edit_ballpark_log_path(ballpark_log)) do %>
-                        <span class="fas fa-ellipsis-h text-dark fa-lg" data-toggle="tooltip" title="Logを編集" data-delay="500"></span>
+                        <span class="fas fa-ellipsis-h text-dark fa-lg"></span>
                       <% end %>
                     <% end %>
                   </div>
