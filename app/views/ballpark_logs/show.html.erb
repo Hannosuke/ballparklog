@@ -8,7 +8,7 @@
                         <%= image_tag @ballpark_log.user.image, class:"log-show-icon mr-4" %>
                     </div>
                 <% else %>
-                    <%= image_tag "no-image-icon.jpeg", class:"log-show-icon mr-4"%>
+                    <%= image_tag "/assets/images/no-image-icon.jpeg", class:"log-show-icon mr-4"%>
                 <% end %>
                 <div class="my-0 mr-md-auto bolder"><%= link_to(@ballpark_log.user.name,user_path(@ballpark_log.user_id), class:"noline black-link") %></div>
                 <nav class="my-2 my-md-0 mr-md-3">
@@ -130,7 +130,7 @@
                                     </span>
                                 <% else %>
                                     <span>
-                                        <%= image_tag "no-image-icon.jpeg", class:"index-icon mx-4"%>
+                                        <%= image_tag "/assets/images/no-image-icon.jpeg", class:"index-icon mx-4"%>
                                     </span>
                                 <% end %>
                                 <span class="my-0 mr-3 bolder">

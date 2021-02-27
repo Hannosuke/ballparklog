@@ -12,7 +12,7 @@
             </span>
           <% else %>
             <span data-toggle="modal" data-target="#exampleModalCenter">
-              <%= image_tag "no-image-icon.jpeg", class:"user-show-icon mx-4 pointer"%>
+              <%= image_tag "/assets/images/no-image-icon.jpeg", class:"user-show-icon mx-4 pointer"%>
             </span>
           <% end %>
         </div>
@@ -147,7 +147,7 @@
                           <%= image_tag like_ballpark_log.user.image, class:"index-icon mr-4" %>
                         </div>
                       <% else %>
-                        <%= image_tag "no-image-icon.jpeg", class:"index-icon mr-4"%>
+                        <%= image_tag "/assets/images/no-image-icon.jpeg", class:"index-icon mr-4"%>
                       <% end %>
                     </div>
                     <div class="col-2"><%= link_to(like_ballpark_log.user.name, user_path(like_ballpark_log.user_id), class:"noline black-link bolder") %></div>
