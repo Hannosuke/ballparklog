@@ -35,7 +35,7 @@ footer{
    background-color: rgba(98, 98, 221, 0.8);
    height: 45px;
    width: 100%;
-   position: fixed;
+   position: sticky;
    top: 78px;
 }
 
@@ -329,10 +329,13 @@ ul {
 
 
 /*---投稿詳細ページ---*/
+.log-show-bg {
+   padding-top: 60px;
+}
+
 .log-show-body {
    background-color: #f8f9fa;
-   margin-top: 60px;
-   max-width: 1000px;
+   width: 900px;
    margin-bottom: 40px;
    border-radius: 15px;
 }
@@ -374,9 +377,15 @@ ul {
 	text-shadow: 0 0 0.1em black;
 }
 
+.log-show-comment-wrapper {
+   padding-top: 100px;
+   padding-bottom: 80px;
+   margin: auto;
+}
+
 .log-show-comment {
-   margin-top: 100px;
-   margin-bottom: 80px;
+   width: 900px;
+   margin: auto;
 }
 
 .log-comment-item {

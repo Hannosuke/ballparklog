@@ -3,7 +3,7 @@ class BallparkLogsController < ApplicationController
   before_action :ensure_correct_user, only:[:edit,:update,:destroy]
 
   def index
-    @ballpark_logs = BallparkLog.all.page(params[:page]).per(16)
+    @ballpark_logs = BallparkLog.includes(:game).order("games.date DESC").page(params[:page]).per(16)
   end
 
   def show
@@ -43,8 +43,8 @@ class BallparkLogsController < ApplicationController
   def destroy
     @ballpark_log = BallparkLog.find(params[:id])
     @ballpark_log.destroy
-    flash[:notice] = "削除しました"
-    redirect_to("/")
+    flash[:notice] = "Logを削除しました"
+    redirect_to(user_path(current_user.id))
   end
 
   private
