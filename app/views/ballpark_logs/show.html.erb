@@ -1,6 +1,6 @@
-<div class="log-show-bg d-flex justify-content-center">
-    <div class="log-show-wrapper">
-        <div class="log-show-body border border-dark shadow px-5 pb-4 mx-3">
+<div class="log-show-bg px-2">
+    <div class="log-show-content-wrapper d-flex justify-content-center">
+        <div class="log-show-body border border-dark shadow px-5 pb-4">
             <%# ユーザー情報 %>
             <div class="log-show-header d-flex flex-md-row align-items-center px-3 mt-3">
                 <% if @ballpark_log.user.image.attached? %>
@@ -111,6 +111,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="log-show-comment-wrapper d-flex justify-content-center">
+        <%# コメント %>
         <div class="log-show-comment pb-5">
             <div class="log-show-comment-title bolder pl-5">
                 <p>－コメント－</p>

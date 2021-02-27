@@ -43,8 +43,8 @@ class BallparkLogsController < ApplicationController
   def destroy
     @ballpark_log = BallparkLog.find(params[:id])
     @ballpark_log.destroy
-    flash[:notice] = "削除しました"
-    redirect_to("/")
+    flash[:notice] = "Logを削除しました"
+    redirect_to(user_path(current_user.id))
   end
 
   private
