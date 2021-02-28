@@ -1,8 +1,8 @@
 namespace :game_result do
     desc "試合結果を取得する"
     task fetch: :environment do
-        start_date = Date.parse("2020-08-31")
-        end_date = Date.parse("2020-09-02")
+        start_date = Date.parse("2020-06-19")
+        end_date = Date.parse("2020-11-25")
         game_month = []
         (start_date..end_date).each do |months|
             months = months.strftime("%m")
@@ -10,7 +10,7 @@ namespace :game_result do
         end
         game_month = game_month.uniq
         game_month.each do |read_month|
-            url =  "https://npb.jp/games/2020/schedule_#{read_month}_detail.html"
+            puts "https://npb.jp/games/2020/schedule_#{read_month}_detail.html"
             
             charset = nil
             html = URI.open(url) do |f|
@@ -19,7 +19,7 @@ namespace :game_result do
             end
 
             doc = Nokogiri::HTML.parse(html, nil, charset)
-            (start_day..end_day).each do |game_date|
+            (start_date..end_date).each do |game_date|
                 game_day = game_date.strftime("%m%d")
                 unless doc.css("#date#{game_day}").css(".team1").present?
                     next
@@ -36,10 +36,6 @@ namespace :game_result do
                     home_score = node.css(".score1").first.content
                     visitor_score = node.css(".score2").first.content
 
-                    # p home_team
-                    # p home_score
-                    # p visitor_score
-                    # p visitor_team
 
                     visitor_team = Team.find_by(first_name: visitor_team)
                     home_team = Team.find_by(first_name: home_team)
