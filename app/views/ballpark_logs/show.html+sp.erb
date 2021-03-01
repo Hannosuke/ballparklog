@@ -1,17 +1,17 @@
 <div class="log-show-bg px-2">
     <div class="log-show-content-wrapper d-flex justify-content-center">
-        <div class="log-show-body border border-dark shadow px-5 pb-4">
+        <div class="log-show-body border border-dark shadow px-3 pt-3 pb-4">
             <%# ユーザー情報 %>
-            <div class="log-show-header d-flex flex-md-row align-items-center px-3 mt-3">
+            <div class="log-show-header d-flex flex-md-row align-items-center">
                 <% if @ballpark_log.user.image.attached? %>
                     <div class="rounded-circle">
-                        <%= image_tag @ballpark_log.user.image, class:"log-show-icon mr-4" %>
+                        <%= image_tag @ballpark_log.user.image, class:"log-show-icon mr-2" %>
                     </div>
                 <% else %>
                     <%= image_tag "/assets/images/no-image-icon.jpeg", class:"log-show-icon mr-4"%>
                 <% end %>
-                <div class="my-0 mr-md-auto bolder"><%= link_to(@ballpark_log.user.name,user_path(@ballpark_log.user_id), class:"noline black-link") %></div>
-                <nav class="my-2 my-md-0 mr-md-3">
+                <div class="my-0 mr-auto bolder"><%= link_to(@ballpark_log.user.name,user_path(@ballpark_log.user_id), class:"noline black-link") %></div>
+                <nav class="my-2 my-md-0">
                     <% if current_user && current_user.id == @ballpark_log.user_id %>
                         <%= link_to(edit_ballpark_log_path(@ballpark_log)) do %>
                             <i class="fas fa-ellipsis-h text-dark fa-lg noline" data-toggle="tooltip" title="Logを編集" data-animation="true"></i>
@@ -25,26 +25,26 @@
             <%# 投稿内容 %>
             <div class="log-show-content">
                 <%# タイトル %>
-                <h1 class="log-show-title text-center bolder pt-4 pb-1"><%= @ballpark_log.title %></h1>
+                <p class="log-show-title text-center h3 bolder pt-4 pb-1"><%= @ballpark_log.title %></p>
                 <%# 試合情報 %>
-                <div class="row mb-4">
-                    <p class="col-2 pr-0 mb-0"><%= @ballpark_log.game.date.strftime("%Y年%-m月%d日")%></p>
-                    <p class="col-10 d-flex justify-content-start"><%= @ballpark_log.stadium.name %></p>
+                <div class="row mb-3">
+                    <p class="col-12 mb-0"><%= @ballpark_log.game.date.strftime("%Y年%-m月%d日")%></p>
+                    <p class="col-12"><%= @ballpark_log.stadium.name %></p>
                 </div>
                 <div class="mb-4">
                     <div class="row text-center">
                         <div class="col-5 p-0 d-flex align-items-center justify-content-center">
-                            <h4 class="bolder m-0"><%= @ballpark_log.game.visitor_team.name%></h4>
+                            <p class="h5 bolder m-0"><%= @ballpark_log.game.visitor_team.first_name%></p>
                         </div>
-                        <div class="col-2 d-flex align-items-center justify-content-center">
+                        <div class="col-2 d-flex align-items-center justify-content-center p-0">
                             <div class="row d-flex align-items-center">
-                                <span class="col-4 h2 bolder m-0"><%= @ballpark_log.game.visitor_score%></span>
-                                <span class="col-4 h2 bolder m-0 pt-1">-</span>
-                                <span class="col-4 h2 bolder m-0"><%= @ballpark_log.game.home_score%></span>
+                                <span class="col-4 h5 bolder m-0 p-0 text-center"><%= @ballpark_log.game.visitor_score%></span>
+                                <span class="col-4 h5 bolder m-0 px-1 py-0 text-center">-</span>
+                                <span class="col-4 h5 bolder m-0 p-0 text-center"><%= @ballpark_log.game.home_score%></span>
                             </div>
                         </div>
-                        <div class="col-5 d-flex align-items-center justify-content-center">
-                            <h4 class="bolder m-0"><%= @ballpark_log.game.home_team.name%></h4>
+                        <div class="col-5 p-0 d-flex align-items-center justify-content-center">
+                            <p class="h5 bolder m-0"><%= @ballpark_log.game.home_team.first_name%></p>
                         </div>
                     </div>
                     <div class="row text-center">
@@ -53,11 +53,11 @@
                         </div>
                         <div class="col-2 mt-2 d-flex align-items-center justify-content-center">
                             <% if @ballpark_log.result == "win" %>
-                                <p class="log-show-result log-show-win mb-0 text-uppercase"><%= @ballpark_log.result %></p>
+                                <p class="log-show-result-sp log-show-win mb-0 text-uppercase"><%= @ballpark_log.result %></p>
                             <% elsif @ballpark_log.result == "lose" %>
-                                <p class="log-show-result log-show-lose mb-0 text-uppercase"><%= @ballpark_log.result %></p>
+                                <p class="log-show-result-sp log-show-lose mb-0 text-uppercase"><%= @ballpark_log.result %></p>
                             <% else %>
-                                <p class="log-show-result log-show-draw mb-0 text-uppercase"><%= @ballpark_log.result %></p>
+                                <p class="log-show-result-sp log-show-draw mb-0 text-uppercase"><%= @ballpark_log.result %></p>
                             <% end%>
                         </div>
                         <div class="col-5">
@@ -67,7 +67,7 @@
                 </div>
                 <%# 文章 %>
                 <div class="row">
-                    <p class="pt-3 col-8 offset-2"><%= @ballpark_log.description %></p>
+                    <p class="pt-3 px-0 col-10 offset-1"><%= @ballpark_log.description %></p>
                 </div>
                 <div class="text-center pb-3">
                     <%= image_tag @ballpark_log.image, width:"60%", height:"60%" if @ballpark_log.image.attached? %>
@@ -112,10 +112,10 @@
             </div>
         </div>
     </div>
-    <div class="log-show-comment-wrapper d-flex justify-content-center">
+    <div class="log-show-comment-wrapper-sp d-flex justify-content-center">
         <%# コメント %>
         <div class="log-show-comment pb-5">
-            <div class="log-show-comment-title bolder pl-5">
+            <div class="log-show-comment-title bolder text-center">
                 <p>－コメント－</p>
             </div>
             <div class="log-comment-list px-5">
