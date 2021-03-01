@@ -10,7 +10,7 @@ namespace :game_result do
         end
         game_month = game_month.uniq
         game_month.each do |read_month|
-            puts "https://npb.jp/games/2020/schedule_#{read_month}_detail.html"
+            url =  "https://npb.jp/games/2020/schedule_#{read_month}_detail.html"
             
             charset = nil
             html = URI.open(url) do |f|
