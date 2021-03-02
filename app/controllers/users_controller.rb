@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @likes = Like.where(user_id: @user.id)
+    @ballpark_logs = BallparkLog.where(user_id: @user.id)
   end
 
 
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   end
   
   def update_user_params
-    params.permit(:name, :email, :image, favorite_team_attributes: [:team_id, :_destroy, :id])
+    params.require(:user).permit(:name, :email, :image, favorite_team_attributes: [:team_id, :_destroy, :id])
   end
 
   def ensure_correct_user

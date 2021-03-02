@@ -14,7 +14,7 @@
                   <% if ballpark_log.user.image.attached? %>
                       <%= image_tag ballpark_log.user.image, class:"index-icon mr-1" %>
                   <% else %>
-                    <%= image_tag "/assets/images/no-image-icon.jpeg", class:"index-icon mr-1"%>
+                    <%= image_tag "no-image-icon.png", class:"index-icon mr-1"%>
                   <% end %>
                 </div>
                 <div class="col-9 d-flex align-items-center justify-content-start pl-0">
@@ -23,11 +23,11 @@
               </div>
 
               <%# 添付画像 %>
-              <div class="index-card-image mt-3">
+              <div class="index-card-image text-center mt-3">
                 <% if ballpark_log.image.attached? %>
-                  <%= image_tag ballpark_log.image, class:"bd-placeholder-img card-img-top", width:"100%", height:"140" %>
+                  <%= image_tag ballpark_log.image, class:"index-card-img" %>
                 <% else %>
-                  <%= image_tag "no-image.png", width:"100%", height:"140" %>
+                  <%= image_tag "no-image.png", class:"index-card-img" %>
                 <% end %>
               </div>
               <%# 試合結果 %>
@@ -97,7 +97,7 @@
                     <%= ballpark_log.count_comments %>
                   </span>
                 </div>
-                <div class="col-5 d-flex justify-content-end bolder">
+                <div class="col-5 d-flex justify-content-end bolder pl-0 text-right">
                   <%= ballpark_log.game.date.strftime("%-m月%d日")%>
                 </div>
               </div>
