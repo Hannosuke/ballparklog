@@ -91,6 +91,12 @@ ul {
    width: 250px;
 }
 
+.index-card-img {
+   object-fit: contain;
+   height: 140px;
+   max-width: 100%;
+}
+
 .index-icon {
    height: 35px;
    width: 35px;
