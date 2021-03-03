@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user, only:[:edit,:update]
   before_action :forbid_login_user, only:[:new,:create]
   before_action :ensure_correct_user, only:[:edit,:update]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -20,11 +21,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
   
   def update
-    @user = User.find(params[:id])
     if @user.update(update_user_params)
       flash[:notice] = "ユーザー情報を更新しました"
       redirect_to(user_path)
@@ -34,8 +33,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @ballpark_logs = BallparkLog.where(user_id: @user.id)
+    @ballpark_logs = BallparkLog.where(user_id: @user.id).includes(:game).order("games.date DESC").page(params[:page])
   end
 
 
@@ -44,6 +42,10 @@ class UsersController < ApplicationController
 
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :image, :password, :password_confirmation, favorite_team_attributes: [:team_id])
