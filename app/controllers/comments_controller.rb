@@ -9,6 +9,12 @@ class CommentsController < ApplicationController
     redirect_to(ballpark_log_path(@comment.ballpark_log_id))
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to(ballpark_log_path(@comment.ballpark_log_id))
+  end
+
   private
 
   def comment_params
