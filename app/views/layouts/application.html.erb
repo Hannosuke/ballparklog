@@ -60,7 +60,35 @@
       <%= yield %>
 
       <footer class="mt-4">
-        <div class="text-center pt-4 web-copyright">
+        <div class="w-50 row mr-0 ml-auto">
+          <div class="col-xs-12 col-sm-6">
+             <% if current_user %>
+                <li class="d-flex align-items-center">
+                  <%= link_to("〉Logを登録", new_ballpark_log_path, class:"p-2 text-light noline bolder")%>
+                </li>
+                <li class="d-flex align-items-center">
+                  <%= link_to("〉みんなのLog", ballpark_logs_path, class:"p-2 text-light noline bolder")%>
+                </li>
+                <li class="d-flex align-items-center">
+                  <%= link_to("〉マイページ", user_path(current_user.id), class:"p-2 text-light noline bolder")%>
+                </li>
+                <li class="d-flex align-items-center">
+                  <%= link_to("〉ログアウト", logout_path, method: :delete, class:"p-2 text-light noline bolder")%>
+                </li>
+              <% else %>
+                <li class="d-flex align-items-center">
+                  <%= link_to("〉新規登録", new_user_path, class:"btn btn-outline-dark mr-2 bolder") %>
+                </li>
+                <li class="d-flex align-items-center">
+                  <%= link_to("〉ログイン", login_path, class:"btn btn-outline-dark bolder")%>
+                </li>
+              <% end %>
+          </div>
+          <div class="col-xs-12 col-sm-6 text-left p-2">
+            <a href="https://twitter.com/Hnnsk_prgrm"><i class="fab fa-twitter text-light bolder"> Twitter</i></a>
+          </div>
+        </div>
+        <div class="text-center web-copyright mt-4">
           Copyrights ©︎ 2021 BallParkLog.All Rights Reserved.
         </div>
       </footer>
