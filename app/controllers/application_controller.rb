@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authenticate_user
-        redirect "/login", notice: "ログインが必要です" if current_user.blank?
+        redirect_to "/login", notice: "ログインが必要です" if current_user.blank?
     end
 
     def forbid_login_user
