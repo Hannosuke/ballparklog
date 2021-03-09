@@ -1,3 +1,3 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: credentials[:GMAIL_ADDRESS]
+  default from: Rails.application.credentials[:GMAIL_ADDRESS]
 end
