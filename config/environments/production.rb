@@ -111,7 +111,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
   # deviseによる認証用URLなどの生成に必要
-  config.action_mailer.default_url_options = {  :host => 'https://balllparklog.work' }
+  config.action_mailer.default_url_options = {  :host => 'https://ballparklog.work' }
   # 送信方法を指定
   config.action_mailer.delivery_method = :smtp
   # ログにエラーを表示するために`true`を設定
