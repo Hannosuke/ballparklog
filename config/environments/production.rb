@@ -119,13 +119,14 @@ Rails.application.configure do
   # 送信方法として:smtpを指定した場合は、このconfigを使って送信詳細の設定を行います
   config.action_mailer.smtp_settings = {
     # gmail利用時はaddress,domain,portは下記で固定
+    enable_starttls_auto: true,
     address:"smtp.gmail.com",
     domain: 'gmail.com',
     port: 587,
     # gmailのユーザアカウント（xxxx@gmail.com)
-    user_name: Rails.application.credentials["GMAIL_ADDRESS"],
+    user_name: Rails.application.credentials[:GMAIL_ADDRESS],
     # gmail２段階認証回避のためにアプリケーションでの利用パスワードを取得
-    password: Rails.application.credentials["GMAIL_2FACTOR_PASSWORD"],
+    password: Rails.application.credentials[:GMAIL_2FACTOR_PASSWORD],
     # パスワードをBase64でエンコード
     authentication: :login
   }
