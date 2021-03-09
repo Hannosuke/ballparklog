@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-    default from: credentials[:GMAIL_ADDRESS]
+    default from: Rails.application.credentials[:GMAIL_ADDRESS]
     
     def send_mail
         @user = params[:user]
