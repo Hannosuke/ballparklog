@@ -123,9 +123,9 @@ Rails.application.configure do
     domain: 'gmail.com',
     port: 587,
     # gmailのユーザアカウント（xxxx@gmail.com)
-    user_name: ENV["GMAIL_ADDRESS"],
+    user_name: Rails.application.credentials["GMAIL_ADDRESS"],
     # gmail２段階認証回避のためにアプリケーションでの利用パスワードを取得
-    password: ENV["GMAIL_2FACTOR_PASSWORD"],
+    password: Rails.application.credentials["GMAIL_2FACTOR_PASSWORD"],
     # パスワードをBase64でエンコード
     authentication: :login
   }
