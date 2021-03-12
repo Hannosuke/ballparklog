@@ -49,6 +49,7 @@ $("#datepicker").datepicker({
 
 //画像プレビュー
   $("#ballpark_log_image").on("change", (e) => {
+    
     var file = e.target.files[0];
     var reader = new FileReader;
     if(file.type.indexOf("image")<0) {
@@ -57,6 +58,7 @@ $("#datepicker").datepicker({
     }
     reader.onload = (function(file){
       return function(e){
+        $('.edit-img').remove();
         $("#preview").attr("src", e.target.result);
       };
     })(file);

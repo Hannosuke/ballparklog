@@ -48,6 +48,10 @@
           </span>
         <% end %>
         <%= f.file_field :image, class:"d-none form-control-file"%>
+        <% if @ballpark_log.image.attached? %>
+          <%= image_tag ballpark_log.image, class:"edit-img" %>
+          <a href="#" class="noline text-secondary d-flex align-items-end" id="image-delete">画像を削除</a>
+        <% end %>
         <img class="preview" id="preview"　/>
       </div>
 
