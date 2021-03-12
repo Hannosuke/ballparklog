@@ -33,7 +33,7 @@ class BallparkLogsController < ApplicationController
   def update
     if @ballpark_log.update(update_ballpark_log_params)
       flash[:notice] = "「#{@ballpark_log.title}」を更新しました"
-      redirect_to(user_path(current_user.id))
+      redirect_to(ballpark_log_path(@ballpark_log))
     else
       render :edit
     end

@@ -6,17 +6,23 @@
     <div class="user-form bolder border border-dark shadow">
       <div class="form-group">
         <%= form_with(model: @user, local: true) do |f| %>
-          <%= f.label :name%>
-          <%= f.text_field :name, class:"form-control mb-3" %>
-          <%= f.label :お気に入りチーム %>
+          <%= f.label :name, class:"mb-1"%>
+          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
+          <%= f.text_field :name, class:"form-control mb-4" %>
+          <%= f.label :お気に入りチーム, class:"mb-1" %>
+          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
           <%= f.fields_for :favorite_team do |fav|%>
-            <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control mb-3 pl-2"} %>
+            <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control mb-4 pl-2"} %>
           <% end %>          
-          <%= f.label :email %>
-          <%= f.email_field :email, class:"form-control mb-3" %>
-          <%= f.label :パスワード%>
-          <%= f.password_field :password, class:"form-control mb-3" %>
-          <%= f.label :"パスワード(確認)" %>
+          <%= f.label :email, class:"mb-1" %>
+          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
+          <%= f.email_field :email, class:"form-control mb-4" %>
+          <%= f.label :password, class:"mb-1"%>
+          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
+          <%= f.password_field :password, class:"form-control" %>
+          <p class="text-secondary small mb-3">* パスワードは英数8文字以上で入力してください</p>
+          <%= f.label :"password_confirmation", class:"mb-1"%>
+          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
           <%= f.password_field :password_confirmation, class:"form-control mb-5" %>
           <% if @user.errors.any? %>
             <ul id="error_explanation" class="alert alert-warning mt-3">
