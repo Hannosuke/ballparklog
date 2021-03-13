@@ -23,16 +23,16 @@ stadiums = Stadium.create([
 ])
 
 teams = Team.create([
-    {name: "福岡ソフトバンクホークス", first_name: "ソフトバンク"},
-    {name: "千葉ロッテマリーンズ", first_name: "ロッテ"},
-    {name: "埼玉西武ライオンズ", first_name: "西武"},
-    {name: "東北楽天ゴールデンイーグルス", first_name: "楽天"},
-    {name: "北海道日本ハムファイターズ", first_name: "日本ハム"},
-    {name: "オリックスバファローズ", first_name: "オリックス"},
-    {name: "読売ジャイアンツ", first_name: "巨人"},
-    {name: "阪神タイガース", first_name: "阪神"},
-    {name: "中日ドラゴンズ", first_name: "中日"},
-    {name: "横浜DeNAベイスターズ", first_name: "DeNA"},
-    {name: "広島東洋カープ", first_name: "広島"} ,
-    {name: "東京ヤクルトスワローズ", first_name: "ヤクルト"},
+    {name: "福岡ソフトバンクホークス", first_name: "ソフトバンク", initial: "ソ"},
+    {name: "千葉ロッテマリーンズ", first_name: "ロッテ", initial: "ロ"},
+    {name: "埼玉西武ライオンズ", first_name: "西武", initial: "西"},
+    {name: "東北楽天ゴールデンイーグルス", first_name: "楽天", initial: "楽"},
+    {name: "北海道日本ハムファイターズ", first_name: "日本ハム", initial: "日"},
+    {name: "オリックスバファローズ", first_name: "オリックス", initial: "オ"},
+    {name: "読売ジャイアンツ", first_name: "巨人", initial: "巨"},
+    {name: "阪神タイガース", first_name: "阪神", initial: "神"},
+    {name: "中日ドラゴンズ", first_name: "中日", initial: "中"},
+    {name: "横浜DeNAベイスターズ", first_name: "DeNA", initial: "De"},
+    {name: "広島東洋カープ", first_name: "広島", initial: "広" },
+    {name: "東京ヤクルトスワローズ", first_name: "ヤクルト", initial: "ヤ"}
 ])
