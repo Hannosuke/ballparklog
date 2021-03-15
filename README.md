@@ -1,11 +1,11 @@
 # BallparkLog
  プロ野球観戦記録投稿サイトです。<br >
- プロ野球の試合結果。 <br >
+ リアルな思い出を記録し、またそれを共有した交流ができます。 <br >
  レスポンシブ対応しているので、スマートフォンからもご確認いただけます。
 <img width="1435" alt="スクリーンショット 2021-03-15 11 06 36" src="https://user-images.githubusercontent.com/70847530/111094377-85143680-857e-11eb-8bd4-96cb69a614bb.png">
 
 # URL
-
+https://ballparklog.work
 
 # 使用技術
 - Ruby 2.7.0
