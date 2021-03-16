@@ -137,7 +137,7 @@
                 </div>
                 <div class="px-0">
                   <div class="pt-3 pl-2">
-                    <%= link_to(ballpark_log.title.truncate(36), ballpark_log, class:"noline black-link") %>
+                    <%= link_to(ballpark_log.user_show_title, ballpark_log, class:"noline black-link") %>
                   </div>
                 </div>
               </div>
@@ -178,11 +178,11 @@
                   </div>
                 </div>
                 <div class="pt-3 pl-2">
-                  <%= link_to(like_ballpark_log.title.truncate(30), like_ballpark_log, class:"noline black-link") %>
+                  <%= link_to(like_ballpark_log.likes_title, like_ballpark_log, class:"noline black-link") %>
                 </div>
               </div>
             <% end %>
-          </div>
+        </div>
       </div>   
     </div>
   </div>

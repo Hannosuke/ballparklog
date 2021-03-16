@@ -24,10 +24,12 @@
 
               <%# 添付画像 %>
               <div class="index-card-image text-center mt-3">
-                <% if ballpark_log.image.attached? %>
-                  <%= image_tag ballpark_log.image, class:"index-card-img" %>
-                <% else %>
-                  <%= image_tag "no-image.png", class:"index-card-img" %>
+                <%= link_to(ballpark_log) do %>
+                  <% if ballpark_log.image.attached? %>
+                    <%= image_tag ballpark_log.image, class:"index-card-img" %>
+                  <% else %>
+                    <%= image_tag "no-image.png", class:"index-card-img" %>
+                  <% end %>
                 <% end %>
               </div>
               <%# 試合結果 %>
@@ -48,7 +50,7 @@
               </div>
               <%# 投稿タイトル %>
               <div class="index-card-content d-flex justify-content-center mt-2 px-2">
-                <%= link_to(ballpark_log.title.truncate(28), ballpark_log, class:"noline black-link") %>
+                <%= link_to(ballpark_log.index_title, ballpark_log, class:"noline black-link") %>
               </div>
 
               <div class="index-card-footer row justify-content-between mt-4">
@@ -58,7 +60,7 @@
                     <div class="ml-3 bolder">
                       <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
                         <div class="dislike-btn">
-                          <i class="fas fa-thumbs-up text-primary"></i>
+                          <i class="fas fa-thumbs-up text-primary pointer"></i>
                             <%# jpueryに変数を渡す %>
                             <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="dislike-ballparklog-id" >
                             <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="dislike-current-user-id" >
@@ -69,7 +71,7 @@
                         </div>
                       <% else %>
                         <div class="like-btn">
-                          <i class="far fa-thumbs-up" ></i>
+                          <i class="far fa-thumbs-up pointer" ></i>
                           <%# jpueryに変数を渡す %>
                             <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="like-ballparklog-id" >
                             <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="like-current-user-id" >

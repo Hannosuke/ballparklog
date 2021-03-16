@@ -134,7 +134,7 @@
                         </div>
                       </div>
                       <div class="col-6 text-left">
-                        <%= link_to(ballpark_log.title.truncate(36), ballpark_log, class:"noline black-link") %>
+                        <%= link_to(ballpark_log.user_show_title, ballpark_log, class:"noline black-link") %>
                       </div>
                       <% if current_user == @user %>
                         <div class="col-1 btn-group">
@@ -183,7 +183,7 @@
                         </div>
                       </div>
                       <div class="col-5 text-left">
-                        <%= link_to(like_ballpark_log.title.truncate(30), like_ballpark_log, class:"noline black-link") %>
+                        <%= link_to(like_ballpark_log.likes_title, like_ballpark_log, class:"noline black-link") %>
                       </div>
                     </div>
                   <% end %>
