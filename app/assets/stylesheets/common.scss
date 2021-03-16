@@ -98,6 +98,16 @@ ul {
    max-width: 100%;
 }
 
+.index-card-img img {
+   display: block;
+   transition-duration: 0.3s;
+}
+
+.index-card-img:hover {
+   transform: scale(1.1);
+   transition-duration: 0.3s;
+}
+
 .index-icon {
    height: 35px;
    width: 35px;
@@ -116,7 +126,7 @@ ul {
    height: 35px;
 }
 
-.pointer {
+.pointer:hover {
    cursor: pointer;
 }
 
@@ -332,8 +342,8 @@ ul {
    cursor: pointer;
 }
 
-.preview {
-   max-width: 450px;
+.form-preview {
+   max-width: 280px;
    max-height: 300px;
 }
 

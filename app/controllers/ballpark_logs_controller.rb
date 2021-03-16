@@ -3,8 +3,11 @@ class BallparkLogsController < ApplicationController
   before_action :ensure_correct_user, only:[:edit,:update,:destroy]
   before_action :set_ballpark_log, only: [:show, :edit, :update, :destroy]
 
+  INDEX_PER_PAGE = 16
+
+
   def index
-    @ballpark_logs = BallparkLog.includes(:game).order("games.date DESC").page(params[:page]).per(16)
+    @ballpark_logs = BallparkLog.includes(:game).order("games.date DESC").page(params[:page]).per(INDEX_PER_PAGE)
   end
 
   def show
