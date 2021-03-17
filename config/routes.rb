@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'ballpark_logs#index'
   
+  post '/guest' => 'guest_sessions#create'
   get  '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'

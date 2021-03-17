@@ -36,3 +36,7 @@ teams = Team.create([
     {name: "広島東洋カープ", first_name: "広島", initial: "広" },
     {name: "東京ヤクルトスワローズ", first_name: "ヤクルト", initial: "ヤ"}
 ])
+
+users = User.create(
+    {name: "ゲストユーザー", email: "guest_user@example.com", password: "password"}
+)
