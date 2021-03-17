@@ -6,7 +6,7 @@
       <% @ballpark_logs.each do |ballpark_log| %>
         <div class="col-xs-12 col-sm-6 col-lg-3 mt-3 d-flex justify-content-center wrap">
           <%# 投稿カード %>
-          <div class="index-card card mb-4 bg-light border border-secondary shadow">
+          <div class="index-card card mb-4 bg-light border border-secondary ">
             <div class="card-body px-3 py-2">
               <%# アイコン画像とユーザー名 %>
               <div class="index-card-header row">
@@ -23,35 +23,37 @@
               </div>
 
               <%# 添付画像 %>
-              <div class="index-card-image text-center mt-3">
-                <%= link_to(ballpark_log) do %>
-                  <% if ballpark_log.image.attached? %>
-                    <%= image_tag ballpark_log.image, class:"index-card-img" %>
-                  <% else %>
-                    <%= image_tag "no-image.png", class:"index-card-img" %>
-                  <% end %>
-                <% end %>
-              </div>
-              <%# 試合結果 %>
-              <div class="index-card-label bg-dark text-light row mt-3 mx-0 bolder">
-                <div class="col-4 p-0 d-flex align-items-center justify-content-end">
-                    <p class="index-team m-0"><%= ballpark_log.game.visitor_team.initial%></p>
-                </div>
-                <div class="col-4 p-0 d-flex align-items-center justify-content-center">
-                  <div>
-                    <span><%= ballpark_log.game.visitor_score%></span>
-                    <span>-</span>
-                    <span><%= ballpark_log.game.home_score%></span>
+                <div class="index-card-body">
+                  <div class="index-card-image text-center mt-3">
+                    <%= link_to(ballpark_log) do %>
+                      <% if ballpark_log.image.attached? %>
+                        <%= image_tag ballpark_log.image, class:"index-card-img" %>
+                      <% else %>
+                        <%= image_tag "no-image.png", class:"index-card-img" %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <%# 試合結果 %>
+                  <div class="index-card-label bg-dark text-light row mt-3 mx-0 bolder">
+                    <div class="col-4 p-0 d-flex align-items-center justify-content-end">
+                        <p class="index-team m-0"><%= ballpark_log.game.visitor_team.initial%></p>
+                    </div>
+                    <div class="col-4 p-0 d-flex align-items-center justify-content-center">
+                      <div>
+                        <span><%= ballpark_log.game.visitor_score%></span>
+                        <span>-</span>
+                        <span><%= ballpark_log.game.home_score%></span>
+                      </div>
+                    </div>
+                    <div class="col-4 p-0 d-flex align-items-center justify-content-start">
+                        <p class="index-team m-0"><%= ballpark_log.game.home_team.initial%></p>
+                    </div>
+                  </div>
+                  <%# 投稿タイトル %>
+                  <div class="index-card-content d-flex justify-content-center mt-2 px-2">
+                    <%= link_to(ballpark_log.index_title, ballpark_log, class:"noline black-link") %>
                   </div>
                 </div>
-                <div class="col-4 p-0 d-flex align-items-center justify-content-start">
-                    <p class="index-team m-0"><%= ballpark_log.game.home_team.initial%></p>
-                </div>
-              </div>
-              <%# 投稿タイトル %>
-              <div class="index-card-content d-flex justify-content-center mt-2 px-2">
-                <%= link_to(ballpark_log.index_title, ballpark_log, class:"noline black-link") %>
-              </div>
 
               <div class="index-card-footer row justify-content-between mt-4">
                 <%# いいねボタン %>
