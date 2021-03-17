@@ -83,12 +83,11 @@ ul {
    height: 620px;
    border-bottom: solid 4px #343a40;
    background-image: image-url('ballpark-img2.jpeg');
+   background-attachment: fixed;
    background-size: cover;
    background-repeat: no-repeat;
-   background-position:center center
+   background-position:center center;
 }
-
-
 
 .index-card {
    border-radius: 15px;
