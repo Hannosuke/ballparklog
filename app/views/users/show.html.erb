@@ -8,11 +8,11 @@
         <div data-toggle="tooltip" title="プロフィール画像を編集" data-delay="500">
           <% if @user.image.attached? %>
             <span class="icon-edit-link" data-toggle="modal" data-target="#exampleModalCenter">
-              <%= image_tag @user.image, class:"user-show-icon mx-4 pointer" %>
+              <%= image_tag @user.image, class:"user-show-icon mx-4" %>
             </span>
           <% else %>
             <span data-toggle="modal" data-target="#exampleModalCenter">
-              <%= image_tag "no-image-icon.png", class:"user-show-icon mx-4 pointer"%>
+              <%= image_tag "no-image-icon.png", class:"user-show-icon mx-4"%>
             </span>
           <% end %>
         </div>
@@ -39,7 +39,12 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <%= f.submit "設定", class:"btn btn-primary bolder"%>
+                  <% if guest_user %>
+                    <p>ユーザー登録すると自由にプロフィール画像を設定できます。</p>
+                    <button type="button" class="btn btn-primary bolder">設定</button>
+                  <% else %>
+                    <%= f.submit "設定", class:"btn btn-primary bolder"%>
+                  <% end %>
                 </div>
               <% end %>
             </div>
@@ -49,13 +54,23 @@
         <div class="h2 my-0 mr-4 bolder"><%= @user.name %></div>
         <div class="mr-auto">
           <span class="badge badge-pill badge-dark">お気に入り球団</span>
-          <p class="my-auto mr-auto bolder"><%= @user.favteam %></p>
+          <% if guest_user %>
+            <p class="my-auto mr-auto bolder">ゲストチーム</p>
+          <% else %>
+            <p class="my-auto mr-auto bolder"><%= @user.favteam %></p>
+          <% end %>
         </div>
         <nav class="my-2 my-md-0 mr-md-3">
-          <% if current_user&.id == @user.id %>
+          <% if current_user.id == @user.id %>
+            <% if guest_user%>
+              <%= link_to("#") do%>
+                <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
+              <% end %>
+            <% else %>
               <%= link_to(edit_user_path(@user.id)) do%>
                 <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
               <% end %>
+            <% end %>
           <% end %>
         </nav>
       </div>  

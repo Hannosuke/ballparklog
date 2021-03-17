@@ -5,6 +5,9 @@ require 'capistrano/rails'
 require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/puma'
+
+require 'capistrano/safe_deploy_to'
+
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Daemon
 install_plugin Capistrano::SCM::Git

@@ -3,6 +3,7 @@ class BallparkLogsController < ApplicationController
   before_action :ensure_correct_user, only:[:edit,:update,:destroy]
   before_action :set_ballpark_log, only: [:show, :edit, :update, :destroy]
 
+
   INDEX_PER_PAGE = 16
 
 
