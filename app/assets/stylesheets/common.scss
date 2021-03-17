@@ -81,11 +81,14 @@ ul {
 
 .index-top {
    height: 620px;
-   background-image: image-url('ballpark-illust.jpeg');
-   background-size: contain;
+   border-bottom: solid 4px #343a40;
+   background-image: image-url('ballpark-img2.jpeg');
+   background-size: cover;
    background-repeat: no-repeat;
    background-position:center center
 }
+
+
 
 .index-card {
    border-radius: 15px;
@@ -126,7 +129,7 @@ ul {
    height: 35px;
 }
 
-.pointer:hover {
+.pointer:hove {
    cursor: pointer;
 }
 
