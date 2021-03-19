@@ -10,10 +10,8 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-
     "@types/jquery": "^3.5.5",
     "@types/lodash": "^4.14.168",
-
     "webpack-dev-server": "^3.11.0"
   },
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
