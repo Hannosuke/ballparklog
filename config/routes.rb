@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get  '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
+  get  'users/login' => 'users#login_form'
+  post 'users/login' => 'users#login'
+  delete 'users/logout' => 'users#logout'
 
   get 'users/:id/likes' => 'users#likes'
 

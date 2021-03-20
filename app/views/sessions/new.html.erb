@@ -5,10 +5,10 @@
         </div>
         <div class="login-form bolder border border-dark shadow m-0">
             <div class="form-group">
-                <%= form_with(scope: :session, url: login_path, local: true) do |f|%>
+                <%= form_with(scope: :session, url: login_path, model: @user, local: true) do |f|%>
                     <div class="form-lagel-group">
                         <%= f.label :メールアドレス%>
-                        <%= f.email_field :email, class:"form-control mb-5", placeholder: "メールアドレス"%>
+                        <%= f.email_field :email, value: @email ,class:"form-control mb-5", placeholder: "メールアドレス"%>
                     </div>
 
                     <div class="form-lagel-group">
