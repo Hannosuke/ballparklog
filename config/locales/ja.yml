@@ -18,6 +18,7 @@ ja:
     models:
       ballpark_log: 参戦歴
       favorite_team: お気に入り球団
+      team: 球団
       game: 試合
       stadium: 球場
       user: ユーザー
@@ -41,11 +42,14 @@ ja:
         password: パスワード
         password_confirmation: パスワード(確認)
         image: アイコン画像
+        favorite_team: お気に入り球団
       favorite_team:
         user_id: ユーザー
         team_id: お気に入り球団
       stadium:
         name: 球場
+      team: 
+        name: 球団
       game:
         visitor_team_id: ビジターチーム
         home_team_id: ホームチーム
