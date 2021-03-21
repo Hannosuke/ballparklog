@@ -6,32 +6,58 @@
     <div class="user-form bolder border border-dark shadow">
       <div class="form-group">
         <%= form_with(model: @user, local: true) do |f| %>
-          <%= f.label :name, class:"mb-1"%>
-          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
-          <%= f.text_field :name, class:"form-control mb-4" %>
-          <%= f.label :お気に入りチーム, class:"mb-1" %>
-          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
-          <%= f.fields_for :favorite_team do |fav|%>
-            <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control mb-4 pl-2"} %>
-          <% end %>          
-          <%= f.label :email, class:"mb-1" %>
-          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
-          <%= f.email_field :email, class:"form-control mb-4" %>
-          <%= f.label :password, class:"mb-1"%>
-          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
-          <%= f.password_field :password, class:"form-control" %>
-          <p class="text-secondary small mb-3">* パスワードは英数8文字以上で入力してください</p>
-          <%= f.label :"password_confirmation", class:"mb-1"%>
-          <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
-          <%= f.password_field :password_confirmation, class:"form-control mb-5" %>
-          <% if @user.errors.any? %>
-            <ul id="error_explanation" class="alert alert-warning mt-3">
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          <% end %>
+
+          <div class="mb-4">
+            <%= f.label :name, class:"mb-1"%>
+            <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
+            <%= f.text_field :name, class:"form-control", required: true %>
+          </div>
+
+          <div class="mb-4">
+            <%= f.label :お気に入りチーム, class:"mb-1" %>
+            <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
+            <%= f.fields_for :favorite_team do |fav|%>
+              <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control pl-2", required: true} %>
+            <% end %>          
+          </div>
+
+          <div class="mb-4">
+            <%= f.label :email, class:"mb-1" %>
+            <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
+            <%= f.email_field :email, class:"form-control #{ "is-invalid" if @user.errors.include?(:email) } ", required: true %>
+            <% if @user.errors.include?(:email) %>
+              <span class="form-error-message">
+                <strong><%= @user.errors.full_messages_for(:email).first %></strong>
+              </span>
+            <% end %>
+          </div>
+
+          <div class="mb-3">
+            <%= f.label :password, class:"mb-1"%>
+            <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
+            <%= f.password_field :password, class:"form-control #{ "is-invalid" if @user.errors.include?(:password) }", required: true %>
+            <p class="text-secondary small m-0">* パスワードは英数8文字以上で入力してください</p>
+            <% if @user.errors.include?(:password) %>
+              <span class="form-error-message">
+                <strong><%= @user.errors.full_messages_for(:password).first %></strong>
+              </span>
+            <% end %>
+          </div>
+
+          <div class="mb-5">
+            <%= f.label :"password_confirmation", class:"mb-1"%>
+            <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
+            <%= f.password_field :password_confirmation, class:"form-control #{ "is-invalid" if @user.errors.include?(:password_confirmation) }", required: true %>
+            <% if @user.errors.include?(:password_confirmation) %>
+              <span class="form-error-message">
+                <strong><%= @user.errors.full_messages_for(:password_confirmation).first %></strong>
+              </span>
+            <% end %>
+          </div>
+          
+
           <%= f.submit "登録", class:"btn btn-primary btn-block bolder"%>
+
         <% end %>
       </div>
     </div>
