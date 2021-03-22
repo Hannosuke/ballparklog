@@ -61,7 +61,7 @@
           <% end %>
         </div>
         <nav class="my-2 my-md-0 mr-md-3">
-          <% if current_user.id == @user.id %>
+          <% if current_user %>
             <% if guest_user%>
               <%= link_to("#") do%>
                 <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>

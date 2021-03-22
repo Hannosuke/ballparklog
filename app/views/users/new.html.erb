@@ -14,7 +14,7 @@
           </div>
 
           <div class="mb-4">
-            <%= f.label :お気に入りチーム, class:"mb-1" %>
+            <%= f.label :お気に入り球団, class:"mb-1" %>
             <span class="badge badge-pill badge-info mb-1 ml-1">必須</span>
             <%= f.fields_for :favorite_team do |fav|%>
               <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control pl-2", required: true} %>
