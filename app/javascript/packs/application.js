@@ -86,12 +86,6 @@ $("#datepicker").datepicker({
 
 
 
-
-
-
-
-
-
 //いいねボタン
 $(".like-btn").each( (i) => {
   $(`.like-btn:eq(${i})`).on("click", (event) => {
@@ -118,7 +112,6 @@ $(".like-btn").each( (i) => {
     })
   })
 });
-
 
 
 //いいね取り消しボタン
@@ -166,6 +159,13 @@ $(function(){
 $(() => {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+
+
+
+
+
+
 
 
 
