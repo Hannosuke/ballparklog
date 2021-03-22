@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
     end
 
     def guest_user
-        current_user.email == "guest_user@example.com"
+        if current_user
+            current_user.email == "guest_user@example.com"
+        end
     end
 
     def ensrure_guest_user
