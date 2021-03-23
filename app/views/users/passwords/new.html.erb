@@ -1,26 +1,33 @@
-<div class="login-form-bg d-flex justify-content-center">
-    <div class="login-form-wrapper">
-        <div class="text-center login-form-title">
-            <h1 class="text-dark bolder">パスワード再設定</h1>
-        </div>
-        <div class="login-form border border-dark shadow m-0">
-            <p>下記よりご登録のメールアドレスを入力して下さい。<br>
-            パスワード再設定用リンクを送信いたします。</p>
-            <div class="form-group mt-5 bolder">
-                <%= form_with(url: users_passwords_path, local: true) do |f|%>
-                    <div class="form-lagel-group">
-                        <%= f.label :メールアドレス%>
-                        <%= f.email_field :email, class:"form-control mb-5", placeholder: "メールアドレス"%>
-                    </div>
-                    <%= f.submit "メール送信", class: "mt-2 btn btn-primary btn-block bolder"%>
-                <% end %>  
+<div class="login-form-bg">
+    <div class="login-form-wrapper d-flex justify-content-center">
+        <div class="login-form-content">
+            <div class="text-center login-form-title">
+                <h1 class="text-primary bolder">パスワード再設定</h1>
             </div>
-            <span class="d-flex justify-content-center mt-2">
-                <%= link_to("新規登録", new_user_path)%>
-            </span>
-            <span class="d-flex justify-content-center mt-2">
-                <%= link_to("ログイン", login_path)%>
-            </span>
+            <div class="login-form border bg-light shadow m-0">
+                <p>下記よりご登録のメールアドレスを入力して下さい。<br>
+                パスワード再設定用リンクを送信いたします。</p>
+                <div class="form-group mt-5 bolder">
+                    <%= form_with(url: users_passwords_path, local: true) do |f|%>
+                        <div class="form-lagel-group mb-5">
+                            <%= f.label :メールアドレス%>
+                            <%= f.email_field :email, class:"form-control #{ "is-invalid" if @error.present? } ", placeholder: "メールアドレス"%>
+                            <% if @error.present?%>
+                                <span class="form-error-message">
+                                <strong><%= @error %></strong>
+                                </span>
+                            <% end %>
+                        </div>
+                        <%= f.submit "メール送信", class: "mt-2 btn btn-primary btn-block bolder"%>
+                    <% end %>  
+                </div>
+                <span class="d-flex justify-content-center mt-2">
+                    <%= link_to("新規登録", new_user_path)%>
+                </span>
+                <span class="d-flex justify-content-center mt-2">
+                    <%= link_to("ログイン", login_path)%>
+                </span>
+            </div>
         </div>
     </div>
 </div>
