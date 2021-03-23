@@ -1,28 +1,30 @@
-<div class="user-form-bg d-flex justify-content-center">
-  <div class="user-form-wrapper">
-    <div class="text-center user-form-title">
-      <h1 class="text-dark bolder">EDIT</h1>
-    </div>
-    <div class="user-form bolder border border-dark shadow">
-      <div class="form-group">
-        <%= form_with(model: @user, local: true) do |f| %>
-          <%= f.label :name%>
-          <%= f.text_field :name, class:"form-control mb-3" %>
-          <%= f.label :お気に入りチーム %>
-          <%= f.fields_for :favorite_team do |fav|%>
-            <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control mb-3"} %>
-          <% end %>          
-          <%= f.label :email %>
-          <%= f.email_field :email, class:"form-control mb-3" %>
-          <%= f.submit "登録", class:"btn btn-primary btn-block mt-5"%>
-        <% end %>
-        <% if @user.errors.any? %>
-          <ul id="error_explanation" class="alert alert-warning mt-3">
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        <% end %>
+<div class="user-form-bg">
+  <div class="user-form-wrapper d-flex justify-content-center">
+    <div class="user-form-content">
+      <div class="user-form-title text-center">
+        <h1 class="text-primary bolder">EDIT</h1>
+      </div>
+      <div class="user-form bolder shadow">
+        <div class="form-group">
+          <%= form_with(model: @user, local: true) do |f| %>
+            <%= f.label :name%>
+            <%= f.text_field :name, class:"form-control mb-3" %>
+            <%= f.label :お気に入りチーム %>
+            <%= f.fields_for :favorite_team do |fav|%>
+              <%= fav.collection_select :team_id, Team.all.order(:id), :id, :name, {include_blank: true}, {class:"form-control mb-3"} %>
+            <% end %>          
+            <%= f.label :email %>
+            <%= f.email_field :email, class:"form-control mb-3" %>
+            <%= f.submit "登録", class:"btn btn-primary btn-block mt-5"%>
+          <% end %>
+          <% if @user.errors.any? %>
+            <ul id="error_explanation" class="alert alert-warning mt-3">
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+      </div>
     </div>
   </div>
 </div>

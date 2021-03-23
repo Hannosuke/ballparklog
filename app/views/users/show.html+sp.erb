@@ -1,103 +1,107 @@
 <div class="user-show-bg-sp text-dark">
-  <div class="user-show-top-wrapper-sp d-flex align-items-center justify-content-center">
+  
     <%# トップ %>
-    <div class="user-show-top-sp border border-dark mx-2">
-      <%# ユーザー情報 %>
-      <div class="user-show-top-header-sp row px-3 pt-2"> 
-        <%# プロフィール画像 %>
-        <div class="col-3 d-flex align-items-center">
-          <% if @user.image.attached? %>
-            <span class="icon-edit-link" data-toggle="modal" data-target="#exampleModalCenter">
-              <%= image_tag @user.image, class:"user-show-icon-sp" %>
-            </span>
-          <% else %>
-            <span data-toggle="modal" data-target="#exampleModalCenter">
-              <%= image_tag "no-image-icon.png", class:"user-show-icon-sp"%>
-            </span>
-          <% end %>
-        </div>
-        <%# プロフィール画像編集モーダル %>
-        <div class="user-icon-modal-sp modal fade border border-dark" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title bolder tet-dark" id="exampleModalCenterTitle">プロフィール画像編集</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <%= form_with(url: user_path(@user), model:@user, local: true, method: :PATCH) do |f| %>
-                <div class="modal-body">
-                  <div class="log-image-btn my-4">
-                    <%= f.label :image, class:"d-block" do%>
-                      <span class="h5 text-dark pl-2">  
-                        <i class="far fa-image fa-lg fa-fw"></i>画像を選択
-                      </span>
-                    <% end %>
-                    <%= f.file_field :image, class:"d-none form-control-file"%>
-                    <img class="icon-preview" id="icon_preview"/>
+    <%# Masthead %>
+    <header class="masthead masthead-show">
+      <div class="d-flex justify-content-center">
+        <div class="user-show-top-sp bg-light mx-2">
+          <%# ユーザー情報 %>
+          <div class="user-show-top-header-sp row px-3 pt-2"> 
+            <%# プロフィール画像 %>
+            <div class="col-3 d-flex align-items-center">
+              <% if @user.image.attached? %>
+                <span class="icon-edit-link" data-toggle="modal" data-target="#exampleModalCenter">
+                  <%= image_tag @user.image, class:"user-show-icon-sp" %>
+                </span>
+              <% else %>
+                <span data-toggle="modal" data-target="#exampleModalCenter">
+                  <%= image_tag "no-image-icon.png", class:"user-show-icon-sp"%>
+                </span>
+              <% end %>
+            </div>
+            <%# プロフィール画像編集モーダル %>
+            <div class="user-icon-modal-sp modal fade border border-dark" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title bolder tet-dark" id="exampleModalCenterTitle">プロフィール画像編集</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <% if guest_user %>
-                    <p>ユーザー登録すると自由にプロフィール画像を設定できます。</p>
-                    <button type="button" class="btn btn-primary bolder">設定</button>
-                  <% else %>
-                    <%= f.submit "設定", class:"btn btn-primary bolder"%>
+                  <%= form_with(url: user_path(@user), model:@user, local: true, method: :PATCH) do |f| %>
+                    <div class="modal-body">
+                      <div class="log-image-btn my-4">
+                        <%= f.label :image, class:"d-block" do%>
+                          <span class="h5 text-dark pl-2">  
+                            <i class="far fa-image fa-lg fa-fw"></i>画像を選択
+                          </span>
+                        <% end %>
+                        <%= f.file_field :image, class:"d-none form-control-file"%>
+                        <img class="icon-preview" id="icon_preview"/>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <% if guest_user %>
+                        <p>ユーザー登録すると自由にプロフィール画像を設定できます。</p>
+                        <button type="button" class="btn btn-primary bolder">設定</button>
+                      <% else %>
+                        <%= f.submit "設定", class:"btn btn-primary bolder"%>
+                      <% end %>
+                    </div>
                   <% end %>
                 </div>
+              </div>
+            </div>
+            <%# 名前・お気に入り球団・設定ボタン等 %>
+            <div class="col-9 my-0 pl-1 pr-0 row">
+              <span class="col-11 h3 bolder px-0 m-0 d-flex align-items-center text-dark"><%= @user.name %></span>
+              <nav class="col-1 p-0 d-flex align-items-center">
+                <% if current_user.id == @user.id %>
+                  <% if guest_user%>
+                    <%= link_to("#") do%>
+                      <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to(edit_user_path(@user.id)) do%>
+                      <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
+                    <% end %>
+                  <% end %>
+              <% end %>
+              </nav>
+            </div>
+          </div>  
+          <div class="pl-0 row">
+            <div class="col-9 offset-3 pl-0">
+              <span class="badge badge-pill badge-dark">お気に入り球団</span>
+              <% if guest_user %>
+                <p class="text-dark my-auto mr-auto bolder">ゲストチーム</p>
+              <% else %>
+                <p class="text-dark my-auto mr-auto bolder"><%= @user.favteam %></p>
               <% end %>
             </div>
           </div>
-        </div>
-        <%# 名前・お気に入り球団・設定ボタン等 %>
-        <div class="col-9 my-0 pl-1 pr-0 row">
-          <span class="col-11 h3 bolder px-0 m-0 d-flex align-items-center"><%= @user.name %></span>
-          <nav class="col-1 p-0 d-flex align-items-center">
-            <% if current_user.id == @user.id %>
-              <% if guest_user%>
-                <%= link_to("#") do%>
-                  <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
-                <% end %>
-              <% else %>
-                <%= link_to(edit_user_path(@user.id)) do%>
-                  <i class="fas fa-cog text-dark fa-lg" data-toggle="tooltip" title="ユーザー情報を編集" data-delay="500"></i>
-                <% end %>
-              <% end %>
-          <% end %>
-          </nav>
-        </div>
-      </div>  
-      <div class="pl-0 row">
-        <div class="col-9 offset-3 pl-0">
-          <span class="badge badge-pill badge-dark">お気に入り球団</span>
-          <% if guest_user %>
-            <p class="my-auto mr-auto bolder">ゲストチーム</p>
-          <% else %>
-            <p class="my-auto mr-auto bolder"><%= @user.favteam %></p>
-          <% end %>
-        </div>
-      </div>
-      <%# 戦績 %>
-      <div class="user-show-top-result-sp d-flex align-items-center justify-content-center">
-        <div>
-          <div class="h3 text-dark bolder pt-4">
-            <%= @user.count_game %>試合 <%= @user.count_win %>勝<%= @user.count_lose %>敗<% if @user.count_draw != 0%><%= @user.count_draw %>分<% end %> <%= @user.winning_percentage %>
-          </div>
-          <div class="form-group text-center">
-            <label>
-              <select class="form-control border-0 opacity-form bolder">
-                <option value="">2020年〜</option>
-                <option value="">2019年〜2020年</option>
-                <option value="">ALL</option>
-              </select>
-            </label>
+          <%# 戦績 %>
+          <div class="user-show-top-result-sp d-flex align-items-center justify-content-center">
+            <div>
+              <div class="h3 text-dark bolder pt-4">
+                <%= @user.count_game %>試合 <%= @user.count_win %>勝<%= @user.count_lose %>敗<% if @user.count_draw != 0%><%= @user.count_draw %>分<% end %> <%= @user.winning_percentage %>
+              </div>
+              <div class="form-group text-center">
+                <label>
+                  <select class="form-control border-0 opacity-form bolder">
+                    <option value="">2020年〜</option>
+                    <option value="">2019年〜2020年</option>
+                    <option value="">ALL</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            </div>
           </div>
         </div>
-        </div>
       </div>
-    </div>
-  </div>
+    </header>
 
   <%# 投稿一覧 %>
   <div class="user-show-body-wrapper-sp">
@@ -114,7 +118,7 @@
         </ul>
 
         <%# タブ・ボディ部分 %>
-        <div class="user-show-tab-content-sp border border-dark border-top-0 tab-content" id="myTabContent">
+        <div class="user-show-tab-content-sp border-top-0 tab-content" id="myTabContent">
           <%# 自分の投稿 %>
           <div class="tab-pane fade show active pt-3 pb-5 px-3" id="home" role="tabpanel" aria-labelledby="home-tab">
             <% @user.ballpark_logs.each do |ballpark_log| %>

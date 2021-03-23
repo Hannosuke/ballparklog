@@ -177,7 +177,7 @@ ul {
 /*----ログインページ----*/
 .login-form-wrapper {
   background-size: cover;
-  background-image: image-url("ballpark-img3.jpeg");
+  background-image: image-url("ballpark-img7.jpeg");
   padding-bottom: 100px;
 }
 
@@ -204,7 +204,6 @@ ul {
 .user-show-top {
    width: 750px;
    height: 450px;
-   opacity: 0.9;
    border-radius: 15px;
 }
 
@@ -283,6 +282,7 @@ ul {
 .user-show-top-sp {
    width: 380px;
    height: 300px;
+   border-radius: 15px;
 }
 
 .user-show-top-header-sp {
@@ -339,7 +339,7 @@ ul {
 .log-form-wrapper {
    background-size: cover;
    background-attachment: fixed;
-   background-image: image-url('ballpark-img5.jpeg');
+   background-image: image-url('ballpark-img3.jpeg');
 }
 
 .log-form-content {
@@ -450,6 +450,11 @@ ul {
 
 
 /*---投稿詳細ページ・sp用---*/
+.log-show-bg-sp {
+  background-image: image-url('ballpark-img6.jpeg');
+  background-size: cover;
+}
+
 .log-show-result-sp {
    font-size:3em;
    line-height:0.95em;

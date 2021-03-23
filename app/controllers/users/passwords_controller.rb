@@ -9,7 +9,7 @@ class Users::PasswordsController < ApplicationController
             flash[:notice] = "パスワード再設定のメールを送信しました"
             redirect_to(login_path)
         else
-            flash.now[:alert] = 'メールアドレスが間違っています'
+            @error = "メールアドレスが間違っています"
             render :new
         end
     end
@@ -36,6 +36,6 @@ class Users::PasswordsController < ApplicationController
     private
 
     def password_params
-        params.permit(:password, :password_confirmation, :password_reset_token)
+        params.require(:user).permit(:password, :password_confirmation, :password_reset_token)
     end
 end
