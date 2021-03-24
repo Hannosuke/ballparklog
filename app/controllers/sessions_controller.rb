@@ -12,10 +12,10 @@ class SessionsController < ApplicationController
       flash[:notice] = "ログインしました"
       redirect_to("/")
     else
-      flash.now[:alert] = 'メールアドレスまたはパスワードが間違っています'
+      @error = 'メールアドレスまたはパスワードが間違っています'
       @email = session_params[:email]
       @password = session_params[:password]
-      render("sessions/new")
+      render :new
     end
   end
 

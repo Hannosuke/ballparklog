@@ -2,7 +2,7 @@
     <div class="login-form-wrapper d-flex justify-content-center">
         <div class="login-form-content">
             <div class="text-center login-form-title">
-                <h1 class="text-primary bolder">パスワード再設定</h1>
+                <h1 class="text-light bolder">パスワード再設定</h1>
             </div>
             <div class="login-form border bg-light shadow m-0">
                 <p>下記よりご登録のメールアドレスを入力して下さい。<br>
@@ -14,7 +14,7 @@
                             <%= f.email_field :email, class:"form-control #{ "is-invalid" if @error.present? } ", placeholder: "メールアドレス"%>
                             <% if @error.present?%>
                                 <span class="form-error-message">
-                                <strong><%= @error %></strong>
+                                    <strong><%= @error %></strong>
                                 </span>
                             <% end %>
                         </div>
