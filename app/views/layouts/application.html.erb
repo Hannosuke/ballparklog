@@ -32,7 +32,7 @@
       <%# Navigation %>
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <div class="container">
-          <span class="navbar-brand"><%= link_to("BallParkLog", "/", class:"noline bolder js-scroll-trigger") %></span>
+          <span class="navbar-brand"><%= link_to("BallParkLog", "/", class:"text-light noline bolder js-scroll-trigger") %></span>
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               Menu
               <i class="fas fa-bars ml-1"></i>
@@ -40,14 +40,14 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto">
               <% if current_user %>
-                <li class="nav-item d-flex align-items-center"><%= link_to("Logを登録", new_ballpark_log_path, class:"js-scroll-trigger p-2 noline bolder")%></li>
-                <li class="nav-item d-flex align-items-center"><%= link_to("みんなのLog", ballpark_logs_path, class:"js-scroll-trigger p-2 noline bolder")%></li>
-                <li class="nav-item d-flex align-items-center"><%= link_to("マイページ", user_path(current_user.id), class:"js-scroll-trigger p-2 noline bolder")%></li>
-                <li class="nav-item d-flex align-items-center"><%= link_to("ログアウト", logout_path, method: :delete, class:"js-scroll-trigger p-2 noline bolder")%></li>
+                <li class="nav-item d-flex align-items-center"><%= link_to("Logを登録", new_ballpark_log_path, class:"text-light js-scroll-trigger p-2 noline bolder")%></li>
+                <li class="nav-item d-flex align-items-center"><%= link_to("みんなのLog", ballpark_logs_path, class:"text-light js-scroll-trigger p-2 noline bolder")%></li>
+                <li class="nav-item d-flex align-items-center"><%= link_to("マイページ", user_path(current_user.id), class:"text-light js-scroll-trigger p-2 noline bolder")%></li>
+                <li class="nav-item d-flex align-items-center"><%= link_to("ログアウト", logout_path, method: :delete, class:"text-light js-scroll-trigger p-2 noline bolder")%></li>
               <% else %>
-                <li class="nav-item mt-2"><%= link_to("ゲストログイン", guest_path, method: :post, class: "js-scroll-trigger noline mr-2 bolder") %></li>
-                <li class="nav-item mt-2"><%= link_to("新規登録", new_user_path, class:"js-scroll-trigger noline mr-2 bolder") %></li>
-                <li class="nav-item mt-2"><%= link_to("ログイン", login_path, class:"js-scroll-trigger noline bolder")%></li>
+                <li class="nav-item mt-2"><%= link_to("ゲストログイン", guest_path, method: :post, class: "text-light js-scroll-trigger noline mr-2 bolder") %></li>
+                <li class="nav-item mt-2"><%= link_to("新規登録", new_user_path, class:"text-light js-scroll-trigger noline mr-2 bolder") %></li>
+                <li class="nav-item mt-2"><%= link_to("ログイン", login_path, class:"text-light js-scroll-trigger noline bolder")%></li>
               <% end %>
             </ul>
           </div>

@@ -79,7 +79,7 @@
                         <% if current_user %>
                             <% if Like.find_by(user_id: current_user.id, ballpark_log_id: @ballpark_log.id) %>
                                 <div class="dislike-btn">
-                                    <i class="fas fa-thumbs-up fa-lg text-primary"></i>
+                                    <i class="fas fa-thumbs-up fa-lg text-success"></i>
                                         <%# jpueryに変数を渡す %>
                                         <input name="ballparklog-id", type="hidden", value= <%= @ballpark_log.id%> class="dislike-ballparklog-id" >
                                         <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="dislike-current-user-id" >

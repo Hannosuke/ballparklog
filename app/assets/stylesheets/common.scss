@@ -36,7 +36,7 @@ footer {
    background-color: rgba(98, 98, 221, 0.8);
    height: 45px;
    width: 100%;
-   position: sticky;
+   position: fixed;
    top: 78px;
 }
 
@@ -4791,7 +4791,6 @@ input[type=button].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
 }
 .card > hr {
   margin-right: 0;
@@ -10613,6 +10612,7 @@ header.masthead .masthead-subheading {
   font-family: "Droid Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 header.masthead .masthead-heading {
+  font-style: italic;
   font-size: 3.25rem;
   font-weight: 700;
   line-height: 3.25rem;

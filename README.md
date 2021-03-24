@@ -17,6 +17,7 @@ https://ballparklog.work
   - VPC
   - EC2
   - S3
+  - CloudWatch
 - Capistrano 3.16.0
 - RSpec
 
