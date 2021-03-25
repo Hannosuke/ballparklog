@@ -61,6 +61,4 @@ workflows:
   rubocop_rspec:
     jobs:
       - rubocop
-      - test:
-          requires:
-            - build
+      - test
