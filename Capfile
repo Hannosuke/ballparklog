@@ -1,12 +1,12 @@
-require 'capistrano/setup'
-require 'capistrano/deploy'
+require "capistrano/setup"
+require "capistrano/deploy"
 require "capistrano/scm/git"
-require 'capistrano/rails'
-require 'capistrano/rbenv'
-require 'capistrano/bundler'
-require 'capistrano/puma'
+require "capistrano/rails"
+require "capistrano/rbenv"
+require "capistrano/bundler"
+require "capistrano/puma"
 
-require 'capistrano/safe_deploy_to'
+require "capistrano/safe_deploy_to"
 
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Daemon

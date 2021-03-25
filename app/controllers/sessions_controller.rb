@@ -1,8 +1,7 @@
 class SessionsController < ApplicationController
-  before_action :forbid_login_user, only:[:new,:create]
+  before_action :forbid_login_user, only: %i[new create]
 
-  def new
-  end
+  def new; end
 
   def create
     @user = User.find_by(email: session_params[:email])
@@ -12,7 +11,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "ログインしました"
       redirect_to("/")
     else
-      @error = 'メールアドレスまたはパスワードが間違っています'
+      @error = "メールアドレスまたはパスワードが間違っています"
       @email = session_params[:email]
       @password = session_params[:password]
       render :new
@@ -26,7 +25,7 @@ class SessionsController < ApplicationController
   end
 
   private
-  
+
   def session_params
     params.require(:session).permit(:email, :password)
   end

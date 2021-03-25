@@ -1,11 +1,9 @@
 class BallparkLogsController < ApplicationController
-  before_action :authenticate_user, only:[:new,:create,:edit,:update,:delete]
-  before_action :ensure_correct_user, only:[:edit,:update,:destroy]
-  before_action :set_ballpark_log, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user, only: %i[new create edit update delete]
+  before_action :ensure_correct_user, only: %i[edit update destroy]
+  before_action :set_ballpark_log, only: %i[show edit update destroy]
 
   INDEX_PER_PAGE = 16
-
 
   def index
     @ballpark_logs = BallparkLog.includes(:game).order("games.date DESC").page(params[:page]).per(INDEX_PER_PAGE)
@@ -51,23 +49,21 @@ class BallparkLogsController < ApplicationController
 
   private
 
-    def set_ballpark_log
-      @ballpark_log = BallparkLog.find(params[:id])
-    end
+  def set_ballpark_log
+    @ballpark_log = BallparkLog.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def ballpark_log_params
-      params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :game_id, :result)
-    end
+  # Only allow a list of trusted parameters through.
+  def ballpark_log_params
+    params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :game_id, :result)
+  end
 
-    def update_ballpark_log_params
-      params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :game_id, :result)
-    end
+  def update_ballpark_log_params
+    params.require(:ballpark_log).permit(:title, :description, :image, :stadium_id, :game_id, :result)
+  end
 
-    def ensure_correct_user
-      @ballpark_log = BallparkLog.find(params[:id])
-      if @ballpark_log.user_id != current_user.id
-        redirect_to root_path, alert: "権限がありません"
-      end
-    end
+  def ensure_correct_user
+    @ballpark_log = BallparkLog.find(params[:id])
+    redirect_to root_path, alert: "権限がありません" if @ballpark_log.user_id != current_user.id
+  end
 end

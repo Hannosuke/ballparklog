@@ -1,4 +1,3 @@
 class Stadium < ApplicationRecord
-    has_many :ballpark_logs
-
+  has_many :ballpark_logs
 end

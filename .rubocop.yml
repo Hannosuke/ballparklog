@@ -36,3 +36,6 @@ Bundler/OrderedGems:
 
 Lint/ShadowedException:
   Enabled: false
+
+StringLiterals:
+  EnforcedStyle: double_quotes
