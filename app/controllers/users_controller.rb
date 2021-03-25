@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :authenticate_user, only:[:edit,:update]
-  before_action :forbid_login_user, only:[:new,:create]
-  before_action :ensure_correct_user, only:[:edit,:update]
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :ensrure_guest_user, only: [:edit, :update]
+  before_action :authenticate_user, only: %i[edit update]
+  before_action :forbid_login_user, only: %i[new create]
+  before_action :ensure_correct_user, only: %i[edit update]
+  before_action :set_user, only: %i[show edit update]
+  before_action :ensrure_guest_user, only: %i[edit update]
 
   def new
     @user = User.new
@@ -21,9 +23,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
-  
+  def edit; end
+
   def update
     if @user.update(update_user_params)
       flash[:notice] = "ユーザー情報を更新しました"
@@ -37,11 +38,6 @@ class UsersController < ApplicationController
     @ballpark_logs = BallparkLog.where(user_id: @user.id).includes(:game).order("games.date DESC").page(params[:page])
   end
 
-
-  
-
-
-
   private
 
   def set_user
@@ -49,11 +45,12 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :image, :password, :password_confirmation, favorite_team_attributes: [:team_id])
+    params.require(:user).permit(:name, :email, :image, :password, :password_confirmation,
+                                 favorite_team_attributes: [:team_id])
   end
-  
+
   def update_user_params
-    params.require(:user).permit(:name, :email, :image, favorite_team_attributes: [:team_id, :_destroy, :id])
+    params.require(:user).permit(:name, :email, :image, favorite_team_attributes: %i[team_id _destroy id])
   end
 
   def ensure_correct_user
@@ -62,6 +59,4 @@ class UsersController < ApplicationController
       redirect_to("/")
     end
   end
-
-
 end

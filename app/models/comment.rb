@@ -1,6 +1,8 @@
-class Comment < ApplicationRecord
-    validates :content, presence: true
+# frozen_string_literal: true
 
-    belongs_to :user
-    belongs_to :ballpark_log
+class Comment < ApplicationRecord
+  validates :content, presence: true
+
+  belongs_to :user
+  belongs_to :ballpark_log
 end
