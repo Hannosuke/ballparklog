@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::GamesController < ApplicationController
   def index
     @games = Game.where(date: "%#{params[:date]}%")

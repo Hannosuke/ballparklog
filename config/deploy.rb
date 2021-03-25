@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config/deploy.rb
 # capistranoのバージョン固定
 lock "3.15.0"

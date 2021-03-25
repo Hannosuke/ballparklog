@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   before_action do
     request.variant = :sp if request.user_agent =~ /iPhone|Android/

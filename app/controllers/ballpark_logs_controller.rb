@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BallparkLogsController < ApplicationController
   before_action :authenticate_user, only: %i[new create edit update delete]
   before_action :ensure_correct_user, only: %i[edit update destroy]

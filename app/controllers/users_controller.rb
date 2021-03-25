@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authenticate_user, only: %i[edit update]
   before_action :forbid_login_user, only: %i[new create]

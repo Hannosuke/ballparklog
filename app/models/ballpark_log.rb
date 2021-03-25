@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BallparkLog < ApplicationRecord
   validates :game_id, presence: true
   validates :stadium_id, presence: true

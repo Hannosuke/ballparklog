@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :game_result do
   desc "試合結果を取得する"
   task fetch: :environment do
