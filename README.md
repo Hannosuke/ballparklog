@@ -2,12 +2,14 @@
  プロ野球観戦記録投稿サイトです。<br >
  リアルな思い出を記録し、またそれを共有した交流ができます。 <br >
  レスポンシブ対応しているので、スマートフォンからもご確認いただけます。
-<img width="1435" alt="スクリーンショット 2021-03-15 11 06 36" src="https://user-images.githubusercontent.com/70847530/111094377-85143680-857e-11eb-8bd4-96cb69a614bb.png">
+<img width="1435" alt="スクリーンショット 2021-03-25 15 37 08" src="https://user-images.githubusercontent.com/70847530/112435499-27ef6080-8d88-11eb-91a9-27bb5bf16cc4.png">
+![A0A09427-874F-41B4-B030-00EC5E8BD27B_1_105_c](https://user-images.githubusercontent.com/70847530/112435587-49e8e300-8d88-11eb-8238-5ee3a80942d8.jpeg)
 
 # URL
 https://ballparklog.work
 
 # 使用技術
+
 - Ruby 2.7.0
 - Ruby on Rails 6.0.3.5
 - PostgreSQL 11.5
