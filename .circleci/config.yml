@@ -36,7 +36,7 @@ jobs:
           DB_HOST: 127.0.0.1
           RAILS_ENV: test
           BUNDLER_VERSION: 2.1.4
-      - image: circleci/postgresql:9.4
+      - image: circleci/postgresql:9.4.26
     steps:
       - checkout
       - restore_cache:
