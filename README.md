@@ -3,6 +3,7 @@
  リアルな思い出を記録し、またそれを共有した交流ができます。 <br >
  レスポンシブ対応しているので、スマートフォンからもご確認いただけます。
 <img width="1435" alt="スクリーンショット 2021-03-25 15 37 08" src="https://user-images.githubusercontent.com/70847530/112435499-27ef6080-8d88-11eb-91a9-27bb5bf16cc4.png">
+![B17CACB9-B9D3-4F20-8D49-B291DDA4119D_1_105_c](https://user-images.githubusercontent.com/70847530/112435892-af3cd400-8d88-11eb-8da0-0c717ed8b8a3.jpeg)
 ![A0A09427-874F-41B4-B030-00EC5E8BD27B_1_105_c](https://user-images.githubusercontent.com/70847530/112435587-49e8e300-8d88-11eb-8238-5ee3a80942d8.jpeg)
 
 # URL
