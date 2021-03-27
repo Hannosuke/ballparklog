@@ -3,7 +3,7 @@
 class User < ApplicationRecord
   has_secure_password
   VALID_PASSWORD_REGEX = /\A\w+\z/.freeze
-  validates :password, length: { minimum: 8 }, presence: true, allow_nil: true, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, length: { minimum: 8 }, presence: true, format: { with: VALID_PASSWORD_REGEX }
   validates :email, uniqueness: true, presence: true
 
   has_one_attached :image

@@ -6,7 +6,7 @@
             </div>
             <div class="login-form border bg-light shadow m-0">
                 <div class="form-group mt-5 bolder">
-                    <%= form_with(url: users_password_path(@user), model: @user, local: true, method: :PATCH) do |f|%>
+                    <%= form_with(url: users_password_path(@user.password_reset_token), model: @user, local: true, method: :PATCH) do |f|%>
                         <div class="form-lagel-group">
                             <%= f.label :"パスワード" %>
                             <%= f.password_field :password, class:"form-control mb-3" %>
