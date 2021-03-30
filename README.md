@@ -23,6 +23,8 @@ https://ballparklog.work
   - CloudWatch
 - Capistrano 3.16.0
 - RSpec
+- Docker
+- CircleCi
 
 
 # 機能一覧
@@ -30,7 +32,7 @@ https://ballparklog.work
 - メール配信機能(ActiveMailer・Gmail)
 - スクレイピング機能
 - 投稿機能
-  - 画像ファイルアップロード(ActiveStorage)
+  - 画像ファイルアップロード(ActiveStorage・s3)
   - 画像プレビュー
   - 投稿一覧・詳細表示機能
 - いいね機能(Ajax)
