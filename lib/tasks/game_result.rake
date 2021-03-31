@@ -49,8 +49,8 @@ namespace :game_result do
 
   desc "試合結果を取得する"
   task fetch2021: :environment do
-    start_date = Date.parse("2021-03-26")
-    end_date = Date.today
+    start_date = Date.parse("2021-03-28")
+    end_date = Date.parse("2021-03-30")
     game_month = []
 
     (start_date..end_date).each do |months|
@@ -74,8 +74,7 @@ namespace :game_result do
         next if doc.css("#date#{game_day}").css(".team1").blank? 
 
         doc.css("#date#{game_day}").each do |node|
-          next if node.css(".cancel").present?
-          next if node.css(".score1").first.content == " "
+          next if node.css(".cancel").present? or node.css(".score1").first.content =~ /\u{00A0}/
 
           home_team = node.css(".team1").first.content
           visitor_team = node.css(".team2").first.content
