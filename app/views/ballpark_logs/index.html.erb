@@ -67,36 +67,7 @@
               <div class="index-card-footer row justify-content-between mt-4">
                 <%# いいねボタン %>
                 <div class="col-4 pr-0">
-                  <% if current_user %>
-                    <div class="ml-3 bolder">
-                      <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
-                        <div class="dislike-btn">
-                          <i class="fas fa-thumbs-up text-info pointer"></i>
-                            <%# jpueryに変数を渡す %>
-                            <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="dislike-ballparklog-id" >
-                            <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="dislike-current-user-id" >
-                            <%# -------------- %>
-                          <span><%= ballpark_log.count_likes %></span>
-                        </div>
-                      <% else %>
-                        <div class="like-btn">
-                          <i class="far fa-thumbs-up pointer" ></i>
-                          <%# jpueryに変数を渡す %>
-                            <input name="ballparklog-id", type="hidden", value= <%= ballpark_log.id%> class="like-ballparklog-id" >
-                            <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="like-current-user-id" >
-                          <%# -------------- %>
-                          <span><%= ballpark_log.count_likes %></span>
-                        </div>
-                      <% end %>
-                    </div>
-                  <% else %>
-                    <div class="ml-3 bolder">
-                      <div>
-                        <i class="far fa-thumbs-up" ></i>
-                        <span><%= ballpark_log.count_likes %></span>
-                      </div>
-                    </div>
-                  <% end %>
+                  <%= render partial: 'likes/like' %>
                 </div>
                 <div class="comment-icon bolder col-3 p-0">
                   <i class="far fa-comment"></i>
