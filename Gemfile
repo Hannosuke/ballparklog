@@ -84,3 +84,6 @@ gem "ransack"
 
 # 本番環境のActiveStorage保存先にAmazonS3を使用
 gem "aws-sdk-s3", require: false
+
+# 関連レコード数の集計
+gem "counter_culture"

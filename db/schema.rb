@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_24_131745) do
+ActiveRecord::Schema.define(version: 2021_04_04_035733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_131745) do
     t.bigint "team_id"
     t.bigint "game_id"
     t.string "result"
+    t.integer "likes_count", default: 0, null: false
     t.index ["game_id"], name: "index_ballpark_logs_on_game_id"
     t.index ["stadium_id"], name: "index_ballpark_logs_on_stadium_id"
     t.index ["team_id"], name: "index_ballpark_logs_on_team_id"
