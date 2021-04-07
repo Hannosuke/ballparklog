@@ -74,40 +74,9 @@
                 </div>
             </div>
             <div class="log-show-footer bolder p-3 mt-3">
-                <div>
-                    <%# いいね %>
-                    <% if current_user %>
-                        <% if Like.find_by(user_id: current_user.id, ballpark_log_id: @ballpark_log.id) %>
-                            <div class="dislike-btn">
-                                <i class="fas fa-thumbs-up fa-lg text-info"></i>
-                                    <%# jpueryに変数を渡す %>
-                                    <input name="ballparklog-id", type="hidden", value= <%= @ballpark_log.id%> class="dislike-ballparklog-id" >
-                                    <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="dislike-current-user-id" >
-                                    <%# -------------- %>
-                                <span>
-                                    <%= @ballpark_log.count_likes %>
-                                </span>
-                            </div>
-                        <% else %>
-                            <div class="like-btn">
-                                <i class="far fa-thumbs-up fa-lg" ></i>
-                                <%# jpueryに変数を渡す %>
-                                    <input name="ballparklog-id", type="hidden", value= <%= @ballpark_log.id%> class="like-ballparklog-id" >
-                                    <input name="current-user-id", type="hidden", value= <%= current_user.id%> class="like-current-user-id" >
-                                <%# -------------- %>
-                                <span>
-                                    <%= @ballpark_log.count_likes %>
-                                </span>
-                            </div>
-                        <% end %>
-                    <% else %>
-                        <div>
-                            <i class="far fa-thumbs-up fa-lg" ></i>
-                            <span>
-                                <%= @ballpark_log.count_likes %>
-                            </span>
-                        </div>
-                    <% end %>
+                <%# いいね %>
+                <div id="likes_buttons_<%= @ballpark_log.id %>">
+                    <%= render partial: "likes/like", locals: { ballpark_log: @ballpark_log } %>
                 </div>
             </div>
         </div>
