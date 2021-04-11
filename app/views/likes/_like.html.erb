@@ -1,28 +1,26 @@
-<div class="col-4 pr-0">
-    <% if current_user %>
-        <div class="ml-3 bolder">
-            <% if Like.find_by(user_id: current_user.id, ballpark_log_id: @ballpark_log.id) %>
-                <div class="dislike-btn">
-                    <%= link_to(ballpark_log_like_path(@ballpark_log.id, id: current_user.id), method: :delete, remote: true) do %>
-                        <i class="fas fa-thumbs-up text-info pointer"></i>
-                    <% end %>
-                    <span><%= ballpark_log.count_likes %></span>
-                </div>
-            <% else %>
-                <div class="like-btn">
-                    <%= link_to(ballpark_log_likes_path(ballpark_log_id: @ballpark_log.id), method: :post, remote: true) do %>
-                        <i class="far fa-thumbs-up text-dark pointer" ></i>
-                    <% end %>
-                    <span><%= ballpark_log.count_likes %></span>
-                </div>
-            <% end %>
-        </div>
-    <% else %>
-        <div class="ml-3 bolder">
-            <div>
-                <i class="far fa-thumbs-up" ></i>
+<% if current_user %>
+    <div class="ml-3 bolder">
+        <% if Like.find_by(user_id: current_user.id, ballpark_log_id: ballpark_log.id) %>
+            <div class="dislike-btn">
+                <%= link_to(ballpark_log_like_path(ballpark_log.id, id: current_user.id), method: :delete, remote: true) do %>
+                    <i class="fas fa-thumbs-up text-info pointer"></i>
+                <% end %>
                 <span><%= ballpark_log.count_likes %></span>
             </div>
+        <% else %>
+            <div class="like-btn">
+                <%= link_to(ballpark_log_likes_path(ballpark_log_id: ballpark_log.id), method: :post, remote: true) do %>
+                    <i class="far fa-thumbs-up text-dark pointer" ></i>
+                <% end %>
+                <span><%= ballpark_log.count_likes %></span>
+            </div>
+        <% end %>
+    </div>
+<% else %>
+    <div class="ml-3 bolder">
+        <div>
+            <i class="far fa-thumbs-up" ></i>
+            <span><%= ballpark_log.count_likes %></span>
         </div>
-    <% end %>
-</div>
+    </div>
+<% end %>

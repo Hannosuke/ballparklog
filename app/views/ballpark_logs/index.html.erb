@@ -67,11 +67,10 @@
               <div class="index-card-footer row justify-content-between mt-4">
                 <%# いいね %>
                 <div class="col-4 pr-0">
-                  <div class="ml-3 bolder">
-                      <div>
-                          <i class="far fa-thumbs-up" ></i>
-                          <span><%= ballpark_log.count_likes %></span>
-                      </div>
+                  <div class="ml-3 ">
+                    <div id="likes_buttons_<%= ballpark_log.id %>">
+                        <%= render partial: "likes/like", locals: { ballpark_log: ballpark_log } %>                       
+                    </div>
                   </div>                 
                 </div>
                 <%# コメント %>
