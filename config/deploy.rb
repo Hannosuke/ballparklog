@@ -2,7 +2,7 @@
 
 # config/deploy.rb
 # capistranoのバージョン固定
-lock "3.15.0"
+lock "3.16.0"
 # デプロイするアプリケーション名
 set :application, "BallparkLog"
 # cloneするgitのリポジトリ
