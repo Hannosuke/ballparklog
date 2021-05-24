@@ -3,7 +3,7 @@
 class LikesController < ApplicationController
   before_action :authenticate_user
 
-  def create 
+  def create
     @ballpark_log = BallparkLog.find(params[:ballpark_log_id])
     @like = Like.new(
       user_id: current_user.id,
