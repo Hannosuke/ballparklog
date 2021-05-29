@@ -50,8 +50,8 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
+      # - run: bundle exec rake db:create
+      # - run: bundle exec rake db:schema:load
       # Run rspec in parallel
       - run: bundle exec rspec
 
