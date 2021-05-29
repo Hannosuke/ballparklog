@@ -85,67 +85,6 @@ $("#datepicker").datepicker({
 
 
 
-
-// //いいねボタン
-// $(".like-btn").each( (i) => {
-//   $(`.like-btn:eq(${i})`).on("click", (event) => {
-//     event.preventDefault();
-//     var likeUserId = $(`.like-current-user-id`).val();
-//     var likeLogId = $(`.like-ballparklog-id:eq(${i})`).val();
-    
-//     $.ajax({
-//       type: "POST",
-//       url: `/ballpark_logs/${likeLogId}/likes`,
-//       data: {
-//         like: {
-//           user_id: likeUserId,
-//           ballpark_log_id: likeLogId
-//         }
-//       }
-//     })
-    
-//     .done(() => {
-//       $(`.like-btn:eq(${i})`).children("i").replaceWith('<i class="dislike-btn fas fa-thumbs-up text-primary"></i>');
-//       var likecount = $(`.like-btn:eq(${i})`).children("span").text();
-//       var likenum = Number( likecount );
-//       $(`.like-btn:eq(${i})`).children("span").replaceWith(`<span>${likenum + 1}</span>`)
-//     })
-//   })
-// });
-
-
-// //いいね取り消しボタン
-// $(".dislike-btn").each( (i) => {
-//   $(`.dislike-btn:eq(${i})`).on("click", (event) => {
-//     event.preventDefault();
-//     var likeUserId = $(`.dislike-current-user-id`).val();
-//     var likeLogId = $(`.dislike-ballparklog-id:eq(${i})`).val();
-    
-//     $.ajax({
-//       type: "POST",
-//       url: `/ballpark_logs/${likeLogId}/like/${likeUserId}`,
-//       data: {
-//         like: {
-//           user_id: likeUserId,
-//           ballpark_log_id: likeLogId,
-//         }
-//       }
-//     })
-    
-//     .done(() => {
-//       $(`.dislike-btn:eq(${i})`).children("i").replaceWith('<i class="like-btn far fa-thumbs-up"></i>');
-//       var likecount = $(`.dislike-btn:eq(${i})`).children("span").text();
-//       var likenum = Number( likecount );
-//       var likedcount = ( likenum - 1 );
-//       $(`.dislike-btn:eq(${i})`).children("span").replaceWith(`<span>${likedcount}</span>`)
-//     })
-//   })
-// });
-
-
-
-
-
 // フラッシュ一定時間で消滅
 $(() => {
   setTimeout("$('.time-limit').fadeOut('slow')",1500)
